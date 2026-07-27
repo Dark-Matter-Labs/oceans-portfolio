@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oceans Continuity Studio — Strategic Framework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-xco-paper:#FFFFFF; --color-xco-ink:#1C1B17; --color-xco-ink-muted:#5F5C53;
+    --color-xco-navy:#000064; --color-xco-ocean:#005096; --color-xco-teal:#0082aa;
+    --color-xco-sand:#ffa064; --color-xco-dusk:#ff5a00;
+    --d1:#0082aa; --d2:#9a7bc8; --d3:#4fa8ac; --d4:#e9b44c;
+    --rule:rgba(28,27,23,0.12);
+    --bg:var(--color-xco-paper); --fg:var(--color-xco-ink); --fg-muted:var(--color-xco-ink-muted);
+    --sp-1:3px; --sp-2:5px; --sp-3:8px; --sp-4:13px; --sp-5:21px; --sp-6:34px; --sp-7:55px; --sp-8:89px; --sp-9:144px;
+    --font-display:'Crimson Pro',Georgia,serif; --font-body:'Inter',-apple-system,sans-serif; --font-mono:'DM Mono','Courier New',monospace;
+    --radius:0.125rem;
+  }
+  [data-theme="dark"]{ --bg:var(--color-xco-ink); --fg:var(--color-xco-paper); --fg-muted:#A9A6A0; --rule:rgba(255,255,255,0.16); }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-body); font-weight:400; font-size:17px; line-height:1.55; transition:background .15s linear,color .15s linear;}
+  b,strong{font-weight:500;}
+  .container{max-width:1200px; margin:0 auto; padding:0 var(--sp-6);}
+  .measure{max-width:68ch;}
+  h1,h2,h3{margin:0; font-weight:500;}
+  .logo{font-family:var(--font-display); font-weight:500; font-size:clamp(38px,7vw,84px); line-height:.98; letter-spacing:-.01em;}
+  .h1{font-family:var(--font-display); font-weight:500; font-size:clamp(26px,3.6vw,40px); line-height:1.1;}
+  .h2{font-family:var(--font-body); font-weight:500; font-size:23px; line-height:1.3;}
+  .h3{font-family:var(--font-body); font-weight:500; font-size:16px; line-height:1.3; letter-spacing:.02em; text-transform:uppercase; color:var(--fg-muted); margin:0 0 var(--sp-5);}
+  .lede{font-family:var(--font-body); font-weight:400; font-size:23px; line-height:1.42;}
+  .mono{font-family:var(--font-mono);}
+  .eyebrow{font-family:var(--font-mono); font-weight:500; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--fg-muted);}
+  a{color:var(--color-xco-ocean); text-decoration:none; border-bottom:1px solid var(--rule);}
+  a:hover{border-bottom-color:currentColor;}
+  [data-theme="dark"] a{color:var(--color-xco-teal);}
+  hr,.rule{border:none; border-top:1px solid var(--rule); margin:0;}
+
+  .cover{padding:var(--sp-8) 0 var(--sp-7); border-bottom:1.5px solid var(--fg);}
+  .cover .eyebrow{margin-bottom:var(--sp-4);}
+  .cover .doc-type{display:inline-block; margin-top:var(--sp-3); font-family:var(--font-mono); font-weight:500; font-size:.85rem; letter-spacing:.03em; padding:var(--sp-2) var(--sp-4); border:1.5px solid var(--fg);}
+  .cover .lede{margin-top:var(--sp-6);}
+  .meta-line{margin-top:var(--sp-5); font-family:var(--font-mono); font-size:.85rem; color:var(--fg-muted);}
+
+  .topnav{position:sticky; top:0; z-index:20; background:var(--bg); border-bottom:1px solid var(--rule); padding:var(--sp-4) 0;}
+  .topnav .container{display:flex; align-items:center; justify-content:space-between; gap:var(--sp-5); flex-wrap:wrap;}
+  .topnav ul{list-style:none; display:flex; gap:var(--sp-5); margin:0; padding:0; flex-wrap:wrap;}
+  .topnav a{font-family:var(--font-mono); font-size:.78rem; color:var(--fg); border-bottom:none;}
+  .topnav a:hover{color:var(--color-xco-ocean);}
+  .theme-toggle{font-family:var(--font-mono); font-size:.8rem; background:none; border:1px solid var(--fg); color:var(--fg); padding:var(--sp-2) var(--sp-4); cursor:pointer; border-radius:var(--radius);}
+
+  section{padding:var(--sp-8) 0; border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{display:grid; grid-template-columns:61.8fr 38.2fr; gap:var(--sp-7); margin-bottom:var(--sp-7);}
+  .section-head .section-note{font-family:var(--font-mono); font-style:italic; font-size:.9375rem; color:var(--fg-muted); border-left:1px solid var(--rule); padding-left:var(--sp-5); align-self:start;}
+  @media (max-width:820px){ .section-head{grid-template-columns:1fr;} .section-head .section-note{border-left:none; padding-left:0; border-top:1px solid var(--rule); padding-top:var(--sp-4);} }
+
+  .subsection{margin-top:var(--sp-7);}
+  .section-head + .subsection{margin-top:0;}
+  /* every block object carries the same air, top and bottom; adjacent margins collapse to one gap */
+  .twostack, .mapframe-wrap, .diagram, .domain-map, .chain, .dol, .arch-key, .matrix-frame, .matrix-legend,
+  .lab-grid, .lab-anat, .opt-grid, .expand-grid, .founding-grid, .stages, .ladder, .tier-flow, table.isnot{margin:var(--sp-6) 0;}
+  .container > *:last-child, .subsection > *:last-child{margin-bottom:0;}
+  .h3 + *{margin-top:0;}
+  .subsection .h3{margin:0 0 var(--sp-5);}
+  .split{display:grid; grid-template-columns:61.8fr 38.2fr; gap:var(--sp-7);}
+  @media (max-width:820px){ .split{grid-template-columns:1fr;} }
+  .margin-note{font-family:var(--font-mono); font-style:italic; font-size:.9375rem; line-height:1.6; color:var(--fg-muted); border-left:1px solid var(--rule); padding-left:var(--sp-5);}
+  .margin-note + .margin-note{margin-top:var(--sp-5);}
+  .tag{color:var(--color-xco-ocean); font-style:normal; font-weight:500;}
+  [data-theme="dark"] .tag{color:var(--color-xco-teal);}
+
+  p{margin:0 0 var(--sp-5);}
+  ul.plain{padding-left:1.1em; margin:0 0 var(--sp-5);}
+  ol.plain-ol{padding-left:1.4em; margin:0 0 var(--sp-5);}
+  ol.plain-ol li{margin-bottom:var(--sp-4);}
+  ol.plain-ol li:last-child{margin-bottom:0;}
+  ul.plain li{margin-bottom:var(--sp-3);}
+
+  /* two-stack */
+  .twostack{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-5);}
+  @media (max-width:720px){ .twostack{grid-template-columns:1fr;} }
+  .stackcard{border:1px solid var(--rule); padding:var(--sp-6);}
+  .stackcard h4{margin:0 0 var(--sp-4); font-family:var(--font-body); font-weight:500; font-size:17px;}
+  .stackcard .layer{font-size:14px; padding:var(--sp-2) 0; border-bottom:1px dotted var(--rule); color:var(--fg-muted);}
+  .stackcard .layer:last-child{border-bottom:none;}
+  .stackcard .layer b{color:var(--fg); font-weight:500;}
+  .stackcard.provision{border-top:3px solid var(--color-xco-teal);}
+  .stackcard.shock{border-top:3px solid var(--color-xco-dusk);}
+
+  /* embedded interactive map */
+  .mapframe-wrap{border:1.5px solid var(--fg); background:#192640; position:relative;}
+  .mapframe-wrap iframe{display:block; width:100%; height:1450px; border:0;}
+  .mapframe-cap{font-family:var(--font-mono); font-size:.78rem; color:var(--fg-muted); margin-top:var(--sp-3);}
+  @media (max-width:720px){ .mapframe-wrap iframe{height:1100px;} }
+
+  /* diagram primitives */
+  /* block rhythm defined below */
+  .diagram-band{display:flex; gap:var(--sp-5); flex-wrap:wrap; justify-content:center;}
+  .connector{display:flex; flex-direction:column; align-items:center; margin:var(--sp-4) 0;}
+  .connector .line{width:1.5px; height:var(--sp-6); background:var(--fg);}
+  .connector .dot{width:8px; height:8px; border-radius:50%; background:var(--fg); margin:-1px 0;}
+  .node{font-family:var(--font-body); font-weight:400; font-size:14px; line-height:1.35; padding:var(--sp-5); min-width:150px; max-width:210px; display:flex; flex-direction:column; gap:var(--sp-3);}
+  .node-label{font-weight:500;}
+  .node-annotation{font-family:var(--font-mono); font-style:italic; font-size:12px; line-height:1.5;}
+  .node-risk{background:var(--color-xco-dusk); color:var(--color-xco-paper); border:1.5px solid var(--color-xco-ink); max-width:360px; text-align:center; align-items:center;}
+  .node-risk .node-annotation{color:rgba(255,255,255,.85);}
+  .node-field{background:var(--bg); color:var(--fg); border:1.5px dashed var(--color-xco-ocean);}
+  [data-theme="dark"] .node-field{border-color:var(--color-xco-teal);}
+  .node-field .node-annotation{color:var(--color-xco-ocean);}
+  [data-theme="dark"] .node-field .node-annotation{color:var(--color-xco-teal);}
+  .node-option{background:var(--bg); color:var(--fg); border:1.5px solid var(--fg);}
+  .node-option .node-annotation{color:var(--fg-muted);}
+
+  /* FOUR DOMAINS diagram */
+
+  .domain-risk{max-width:720px; margin:0 auto var(--sp-5); text-align:center; border:1.5px solid var(--color-xco-dusk); background:color-mix(in srgb,var(--color-xco-dusk) 10%,var(--bg)); padding:var(--sp-4) var(--sp-6); font-size:14.5px;}
+  .domain-risk b{color:var(--color-xco-dusk);}
+  .domain-cols{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-4);}
+  @media (max-width:860px){ .domain-cols{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .domain-cols{grid-template-columns:1fr;} }
+  .domain-col{border:1px solid var(--rule); border-top-width:3px; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .domain-col .dc-no{font-family:var(--font-mono); font-size:.72rem; color:var(--fg-muted);}
+  .domain-col .dc-name{font-weight:500; font-size:15px; line-height:1.25;}
+  .domain-col .dc-does{font-size:13px; color:var(--fg-muted);}
+  .domain-col .dc-gap{font-family:var(--font-mono); font-style:italic; font-size:11.5px; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-3); border-top:1px dotted var(--rule);}
+  .domain-col .dc-lab{font-family:var(--font-mono); font-size:11.5px; margin-top:var(--sp-2);}
+  .domain-col.dcol1{border-top-color:var(--d1);} .domain-col.dcol1 .dc-lab{color:var(--d1);}
+  .domain-col.dcol2{border-top-color:var(--d2);} .domain-col.dcol2 .dc-lab{color:var(--d2);}
+  .domain-col.dcol3{border-top-color:var(--d3);} .domain-col.dcol3 .dc-lab{color:var(--d3);}
+  .domain-col.dcol4{border-top-color:var(--d4);} .domain-col.dcol4 .dc-lab{color:#b6892f;}
+
+  /* architecture key (03) */
+  .arch-key{margin:var(--sp-6) 0;}
+  .ak-title{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--color-xco-ocean); margin-bottom:var(--sp-4);}
+  [data-theme="dark"] .ak-title{color:var(--color-xco-teal);}
+  .ak-row{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-5); align-items:stretch;}
+  .ak-note{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.6; color:var(--fg-muted); margin-top:var(--sp-4); padding-top:var(--sp-3); border-top:1px dotted var(--rule);}
+  .ak-conn{display:flex; align-items:center; justify-content:center;}
+  .ak-conn .hline{height:1.5px; width:100%; background:var(--fg);}
+  .ak-conn .d{width:8px; height:8px; border-radius:50%; background:var(--fg); flex:none; margin-left:-1px;}
+  .ak-box{padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .ak-box .ak-k{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted); display:flex; align-items:center; justify-content:space-between; gap:var(--sp-4);}
+  .ak-box .ak-name{font-size:19px; font-weight:500; line-height:1.15;}
+  .ak-box .ak-def{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.55; color:var(--fg-muted);}
+  .ak-box .ak-where{font-family:var(--font-mono); font-size:11.5px; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .ak-box.b-dom{border:1px solid var(--rule); border-top:3px solid var(--d1);}
+  .ak-box.b-lab{border:1.5px dashed var(--color-xco-ocean);}
+  [data-theme="dark"] .ak-box.b-lab{border-color:var(--color-xco-teal);}
+  .ak-box.b-opt{border:1.5px solid var(--fg);}
+  .ak-box.b-iv{border:1.5px solid var(--fg); background:color-mix(in srgb,var(--fg) 7%,var(--bg));}
+  .dstrip{display:inline-flex; gap:2px; flex:none;}
+  .dstrip i{width:10px; height:3px; display:block;}
+  .dstrip i:nth-child(1){background:var(--d1);} .dstrip i:nth-child(2){background:var(--d2);}
+  .dstrip i:nth-child(3){background:var(--d3);} .dstrip i:nth-child(4){background:var(--d4);}
+  @media (max-width:900px){
+    .ak-row{grid-template-columns:1fr;}
+    .ak-conn{height:var(--sp-5); flex-direction:column;}
+    .ak-conn .hline{width:1.5px; height:100%;}
+    .ak-conn .d{margin:-1px 0 0;}
+  }
+
+  /* domain chain (03) */
+  .chain{display:grid; grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr; align-items:stretch;}
+  .chain-card{border:1px solid var(--rule); border-top:3px solid; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .chain-card.c1{border-top-color:var(--d1);} .chain-card.c2{border-top-color:var(--d2);}
+  .chain-card.c3{border-top-color:var(--d3);} .chain-card.c4{border-top-color:var(--d4);}
+  .chain-card .cc-no{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted);}
+  .chain-card .cc-name{font-weight:500; font-size:15.5px; line-height:1.2;}
+  .chain-card .cc-body{font-size:13.5px; color:var(--fg-muted);}
+  .chain-card .cc-hand{font-family:var(--font-mono); font-style:italic; font-size:12px; line-height:1.5; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .chain-card .cc-hand b{font-style:normal; font-weight:500; color:var(--fg);}
+  .chain-card .cc-closes{font-family:var(--font-mono); font-size:11.5px; line-height:1.5; color:var(--fg-muted);}
+  .chain-card .cc-lab{font-family:var(--font-mono); font-size:11.5px; line-height:1.5; padding-top:var(--sp-3);}
+  .chain-card.c1 .cc-lab{color:var(--d1);} .chain-card.c2 .cc-lab{color:var(--d2);}
+  .chain-card.c3 .cc-lab{color:var(--fg-muted);} .chain-card.c4 .cc-lab{color:#b6892f;}
+  .dol{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-5);}
+  @media (max-width:860px){ .dol{grid-template-columns:1fr;} }
+  .dol-card{padding:var(--sp-5) var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .dol-card.d-studio{border:1px solid var(--rule); border-top:3px solid var(--color-xco-ocean);}
+  [data-theme="dark"] .dol-card.d-studio{border-top-color:var(--color-xco-teal);}
+  .dol-card.d-lab{border:1.5px dashed var(--color-xco-ocean);}
+  [data-theme="dark"] .dol-card.d-lab{border-color:var(--color-xco-teal);}
+  .dol-card.d-option{border:1.5px solid var(--fg);}
+  .dol-card .dol-k{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted);}
+  .dol-card .dol-name{font-size:19px; font-weight:500; line-height:1.15;}
+  .dol-card .dol-holds{font-size:14.5px;}
+  .dol-card .dol-holds b{font-weight:500;}
+  .dol-card .dol-test{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.55; color:var(--color-xco-ocean); border-top:1px dotted var(--rule); padding-top:var(--sp-3);}
+  [data-theme="dark"] .dol-card .dol-test{color:var(--color-xco-teal);}
+  .dol-card .dol-eg{font-family:var(--font-mono); font-size:11.5px; line-height:1.6; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-3); border-top:1px dotted var(--rule);}
+  .chain-loop{font-family:var(--font-mono); font-style:italic; font-size:12.5px; color:var(--color-xco-ocean); border-top:1px dotted var(--rule); padding-top:var(--sp-3);}
+  [data-theme="dark"] .chain-loop{color:var(--color-xco-teal);}
+  @media (max-width:900px){ .chain{grid-template-columns:1fr;} }
+
+  /* lab draw-down (03) */
+  .ld-lab{border:1.5px dashed var(--color-xco-ocean); padding:var(--sp-5) var(--sp-6); max-width:660px; margin:0 auto; display:flex; flex-direction:column; gap:var(--sp-3); align-items:center; text-align:center;}
+  [data-theme="dark"] .ld-lab{border-color:var(--color-xco-teal);}
+  .ld-lab .ld-tag{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--d1);}
+  .ld-lab .ld-name{font-weight:500; font-size:19px;}
+  .ld-lab .ld-spec{font-size:14px; color:var(--fg-muted); max-width:52ch;}
+  .ld-lab.pair{max-width:none; margin:0; text-align:left; align-items:flex-start;}
+  .ld-lab.pair .ld-instr{justify-content:flex-start;}
+  .lab-pair{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-5); margin:var(--sp-5) 0 var(--sp-4);}
+  @media (max-width:820px){ .lab-pair{grid-template-columns:1fr;} }
+  .lab-pair-note{font-family:var(--font-mono); font-style:italic; font-size:12px; color:var(--fg-muted);}
+  .eg-wrap{border-left:1.5px solid var(--color-xco-ocean); padding-left:var(--sp-5); margin-top:var(--sp-7);}
+  [data-theme="dark"] .eg-wrap{border-left-color:var(--color-xco-teal);}
+  .eg-tag{display:inline-block; font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--color-xco-ocean); border:1.5px solid var(--color-xco-ocean); padding:1px var(--sp-3); margin-bottom:var(--sp-4);}
+  [data-theme="dark"] .eg-tag{color:var(--color-xco-teal); border-color:var(--color-xco-teal);}
+  .ld-cols{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-5);}
+  @media (max-width:820px){ .ld-cols{grid-template-columns:1fr;} }
+  .ld-opt{border:1px solid var(--rule); padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3); align-items:flex-start;}
+  .ld-opt.live{border-left:3px solid var(--fg);}
+  .ld-opt.emerging{border-left:3px dashed var(--color-xco-ocean);}
+  [data-theme="dark"] .ld-opt.emerging{border-left-color:var(--color-xco-teal);}
+  .ld-opt .ld-o{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted);}
+  .ld-opt .ld-note{font-family:var(--font-mono); font-style:italic; font-size:11.5px; line-height:1.5; color:var(--fg-muted);}
+  .ld-lab .ld-steward{font-family:var(--font-mono); font-size:11.5px; font-style:italic; color:var(--fg-muted); border-top:1px dotted var(--rule); padding-top:var(--sp-3); width:100%;}
+  .ld-instr{display:flex; flex-wrap:wrap; gap:var(--sp-3); justify-content:center;}
+  .ld-instr .pill.next{border-style:dotted; border-color:var(--rule); color:var(--fg-muted);}
+  .ld-fan{display:grid; grid-template-columns:1.55fr 1fr; gap:var(--sp-6); align-items:start;}
+  @media (max-width:900px){ .ld-fan{grid-template-columns:1fr;} }
+  .ld-btitle{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted); text-align:center; margin-bottom:var(--sp-4);}
+  .ld-ahead{border:1px dotted var(--rule); padding:var(--sp-5); font-size:14px; color:var(--fg-muted); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .ld-ahead b{color:var(--fg);}
+  .ld-ahead .la-eg{font-family:var(--font-mono); font-style:italic; font-size:11.5px; border-top:1px dotted var(--rule); padding-top:var(--sp-3);}
+  .lm-exception{border:1px dotted var(--rule); background:color-mix(in srgb,var(--fg) 3%,var(--bg)); padding:var(--sp-4) var(--sp-5); font-size:14.5px; margin-top:var(--sp-6);}
+  .lm-buys{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.6; color:var(--fg-muted); margin-top:var(--sp-4);}
+
+  /* founding cards */
+  .founding-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--sp-5);}
+  @media (max-width:820px){ .founding-grid.two{grid-template-columns:1fr !important;} }
+  .founding-card{border:1px solid var(--rule); padding:var(--sp-6);}
+  .founding-card .h3{color:var(--fg); text-transform:none; letter-spacing:0; font-size:19px; margin-bottom:var(--sp-4);}
+  .founding-card .role-tag{font-family:var(--font-mono); font-size:.76rem; color:var(--color-xco-ocean); text-transform:uppercase; letter-spacing:.04em; display:block; margin-bottom:var(--sp-3);}
+  [data-theme="dark"] .founding-card .role-tag{color:var(--color-xco-teal);}
+  .founding-card ul{margin:var(--sp-4) 0 0; padding-left:1.1em;}
+  .founding-card li{margin-bottom:var(--sp-3);}
+
+  /* THE MATRIX */
+  .matrix-frame{border:1.5px solid var(--fg); overflow-x:auto;}
+  .matrix-legend:empty{display:none;}
+  .matrix-inner{min-width:1000px;}
+  .foundband{background:color-mix(in srgb, var(--color-xco-navy) 6%, var(--bg)); border-bottom:1.5px solid var(--fg); padding:var(--sp-4) var(--sp-5);}
+  .foundband .fb-title{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--color-xco-ocean); margin-bottom:var(--sp-3);}
+  [data-theme="dark"] .foundband .fb-title{color:var(--color-xco-teal);}
+  .foundband .fb-line{font-size:13px; margin-bottom:var(--sp-2);}
+  .foundband .fb-line .who{font-weight:500;}
+  .foundband .fb-line .fn{color:var(--fg-muted);}
+  .mgrid{display:grid; grid-template-columns:170px repeat(4,1fr);}
+  .mcell{border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:var(--sp-4); font-size:13px;}
+  .mcell:nth-child(5n){border-right:none;}
+  .mhead{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; border-bottom:1.5px solid var(--fg);}
+  .mhead .optsub{display:block; text-transform:none; font-style:italic; margin-top:var(--sp-2); color:var(--fg-muted); font-weight:400; letter-spacing:0;}
+  .mrowlabel{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.02em; color:var(--fg-muted); background:color-mix(in srgb, var(--fg) 3%, var(--bg));}
+  .mrowlabel .lab-in-row{display:block; margin-top:var(--sp-3); font-style:normal; text-transform:none; letter-spacing:0; font-size:12px; padding:var(--sp-2) var(--sp-3); border:1.5px solid; border-radius:2px;}
+  .lab1{color:var(--d1); border-color:var(--d1); background:color-mix(in srgb,var(--d1) 7%,var(--bg));}
+  .lab2{color:var(--d2); border-color:var(--d2); background:color-mix(in srgb,var(--d2) 7%,var(--bg));}
+  .lab4{color:#b6892f; border-color:var(--d4); background:color-mix(in srgb,var(--d4) 12%,var(--bg));}
+  .pill{display:inline-block; padding:3px var(--sp-3); border:1.5px dashed var(--color-xco-ocean); font-size:12.5px; border-radius:2px;}
+  [data-theme="dark"] .pill{border-color:var(--color-xco-teal);}
+  .pill.solid{border-style:solid; border-color:var(--fg);}
+  .empty{color:var(--fg-muted); font-family:var(--font-mono); font-size:.8rem;}
+  .matrix-legend{display:flex; gap:var(--sp-5); margin-top:var(--sp-5); font-family:var(--font-mono); font-size:.78rem; color:var(--fg-muted); flex-wrap:wrap;}
+  .matrix-legend span{display:inline-flex; align-items:center; gap:var(--sp-3);}
+  .swatch{width:14px; height:14px; display:inline-block;}
+  .swatch.solid{border:1.5px solid var(--fg);}
+  .swatch.dashed{border:1.5px dashed var(--color-xco-ocean);}
+  [data-theme="dark"] .swatch.dashed{border-color:var(--color-xco-teal);}
+
+  /* LAB anatomy diagram */
+  .lab-anat{border:1.5px dashed var(--color-xco-ocean); padding:var(--sp-6); max-width:680px; margin:0 auto;}
+  [data-theme="dark"] .lab-anat{border-color:var(--color-xco-teal);}
+  .lab-anat .la-title{text-align:center; margin-bottom:var(--sp-5); color:var(--color-xco-ocean); font-family:var(--font-mono); font-style:italic; font-size:12px;}
+  [data-theme="dark"] .lab-anat .la-title{color:var(--color-xco-teal);}
+  .lab-anat .la-three{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-4);}
+  @media (max-width:600px){ .lab-anat .la-three{grid-template-columns:1fr;} }
+
+  /* LAB roster cards */
+  .lab-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:var(--sp-5);}
+  @media (max-width:900px){ .lab-grid{grid-template-columns:1fr;} }
+  .lab-card{border:1px solid var(--rule); border-top-width:3px; padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-4);}
+  .lab-card.lc1{border-top-color:var(--d1);}
+  .lab-card.lc2{border-top-color:var(--d2);}
+  .lab-card.lc4{border-top-color:var(--d4);}
+  .lab-card .lc-domain{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted);}
+  .lab-card .lc-name{font-weight:500; font-size:19px; line-height:1.2;}
+  .lab-card .lc-block .lc-h{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:block; margin-bottom:var(--sp-2);}
+  .lab-card .lc-block{font-size:14px;}
+  .lab-card .lc-block + .lc-block{margin-top:var(--sp-2);}
+  .lab-card .lc-partners{font-size:13px; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .lab-card .lc-instr{font-weight:500;}
+  .lab-card.placeholder{border-top-style:dashed; border-top-color:var(--fg-muted);}
+  .lab-card.placeholder .lc-name{color:var(--fg-muted);}
+
+  /* OPTIONS roster */
+  .opt-grid{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-5);}
+  @media (max-width:820px){ .opt-grid{grid-template-columns:1fr;} }
+  .opt-card{border:1px solid var(--rule); padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .opt-card.live{border-left:3px solid var(--fg);}
+  .opt-card.emerging{border-left:3px dashed var(--color-xco-ocean);}
+  [data-theme="dark"] .opt-card.emerging{border-left-color:var(--color-xco-teal);}
+  .opt-card .oc-status{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted);}
+  .opt-card .oc-name{font-weight:500; font-size:21px; line-height:1.15;}
+  .opt-card .oc-unit{font-family:var(--font-mono); font-style:italic; font-size:12.5px; color:var(--color-xco-ocean);}
+  [data-theme="dark"] .opt-card .oc-unit{color:var(--color-xco-teal);}
+  .opt-card .oc-body{font-size:14.5px; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .opt-card .oc-partners{font-size:13px; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .opt-card .oc-paper{font-family:var(--font-mono); font-size:.8rem; margin-top:var(--sp-2);}
+
+  /* stage row */
+  .stages{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1.5px solid var(--fg);}
+  .stage{background:var(--bg); padding:var(--sp-5);}
+  .stage .stage-no{font-family:var(--font-mono); font-size:.76rem; color:var(--fg-muted);}
+  .stage .stage-name{font-weight:500; margin:var(--sp-2) 0 var(--sp-4); font-size:16px;}
+  .stage p{font-size:13.5px; margin-bottom:var(--sp-3); color:var(--fg-muted);}
+  .stage .cap{font-family:var(--font-mono); font-size:11.5px; color:var(--color-xco-ocean); border-top:1px dotted var(--rule); padding-top:var(--sp-3);}
+  [data-theme="dark"] .stage .cap{color:var(--color-xco-teal);}
+  @media (max-width:880px){ .stages{grid-template-columns:1fr;} }
+
+  /* pilot pairing (07) */
+  .pilot-x{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-5);}
+  .pilot-x .px-k{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--color-xco-ocean); display:flex; align-items:center; gap:var(--sp-3); margin-bottom:var(--sp-2);}
+  .px-ico{flex:none; width:16px; height:16px; display:block; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
+  [data-theme="dark"] .pilot-x .px-k{color:var(--color-xco-teal);}
+  .pilot-x .px-name{font-weight:500; font-size:19px; line-height:1.2;}
+  .pilot-x .px-sub{display:block; font-size:13px; line-height:1.55; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .pilot-x .px-blank{border:none;}
+  .pilot-x .px-lab, .pilot-x .px-opt{border:1.5px solid var(--fg); background:color-mix(in srgb,var(--fg) 5%,var(--bg)); padding:var(--sp-5) var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-2);}
+  [data-theme="dark"] .pilot-x .px-lab{border-color:var(--color-xco-teal);}
+
+  @media (max-width:720px){ .pilot-x{grid-template-columns:1fr;} }
+
+  /* capital ladder */
+  .ladder{display:flex; flex-direction:column-reverse; border:1.5px solid var(--fg);}
+  .rung{border-top:1px solid var(--rule); padding:var(--sp-5) var(--sp-6); display:grid; grid-template-columns:80px 1fr; gap:var(--sp-5); align-items:baseline;}
+  .rung:first-child{border-top:none;}
+  .rung .htag{font-family:var(--font-mono); font-weight:500; font-size:.85rem;}
+  .rung .name{font-weight:500; display:block; margin-bottom:var(--sp-2);}
+  .rung .detail{font-size:13.5px; color:var(--fg-muted);}
+  .r1{background:color-mix(in srgb,var(--color-xco-dusk) 12%,var(--bg));}
+  .r2{background:color-mix(in srgb,var(--color-xco-sand) 14%,var(--bg));}
+  .r3{background:color-mix(in srgb,var(--color-xco-teal) 10%,var(--bg));}
+  .r4{background:color-mix(in srgb,var(--color-xco-navy) 8%,var(--bg));}
+  @media (max-width:640px){ .rung{grid-template-columns:1fr;} }
+
+  /* is/isnot */
+  table.isnot{width:100%; border-collapse:collapse; margin-top:var(--sp-6); font-size:15px;}
+  table.isnot th{font-family:var(--font-mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); text-align:left; padding:var(--sp-3) var(--sp-4); border-bottom:1.5px solid var(--fg);}
+  table.isnot td{padding:var(--sp-3) var(--sp-4); border-bottom:1px solid var(--rule); vertical-align:top;}
+  table.isnot td:first-child{border-right:1px solid var(--rule); width:50%;}
+
+  /* engagement tiers */
+  .tier-flow{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-5); margin-top:var(--sp-6);}
+  @media (max-width:820px){ .tier-flow{grid-template-columns:1fr;} }
+  .tier{border:1px solid var(--rule); padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-4);}
+  .tier .t-tag{font-family:var(--font-mono); font-size:.74rem; text-transform:uppercase; letter-spacing:.03em; color:var(--color-xco-ocean);}
+  [data-theme="dark"] .tier .t-tag{color:var(--color-xco-teal);}
+  .tier .t-name{font-weight:500; font-size:19px;}
+  .tier .t-row{font-size:13.5px;}
+  .tier .t-row .t-k{font-weight:500;}
+  .expand-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-4); margin-top:var(--sp-6);}
+  @media (max-width:820px){ .expand-grid{grid-template-columns:1fr;} }
+  .expand-card{border:1px solid var(--rule); padding:var(--sp-5); font-size:14px;}
+  .expand-card .ec-h{font-weight:500; display:block; margin-bottom:var(--sp-2);}
+  .expand-card .ec-tag{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:block; margin-bottom:var(--sp-3);}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="container">
+    <div class="eyebrow">xCO · Dark Matter Labs — Oceans</div>
+    <div class="logo">Oceans Continuity Studio</div>
+    <span class="doc-type">Strategic Framework · Working Draft · v1.0 · for internal review</span>
+    <p class="lede measure">A venture studio for building continuity infrastructure in the oceans, i.e. the institutions, instruments, and financing that keep marine systems — and everything depending on them — functioning over time.</p>
+    <div class="meta-line">27 July 2026 · <i>This draft was prepared by Prateek Shankar, in conversation with Indy Johar, Robyn Bennett, Malik Lakoubay, Gurden Batra, Kate Armstrong, Irina Wang, Cristiane Bosman, Darko Manakovski, Leena Al Olaimy, among other thought leaders and practitioners in our extended ecosystems.</i></div>
+  </div>
+</header>
+
+<nav class="topnav">
+  <div class="container">
+    <ul>
+      <li><a href="#why">01 Moment</a></li>
+      <li><a href="#studio">02 Studio</a></li>
+      <li><a href="#architecture">03 Architecture</a></li>
+      <li><a href="#options">04 Options</a></li>
+      <li><a href="#labs">05 Labs</a></li>
+      <li><a href="#capital">06 Capital</a></li>
+      <li><a href="#sequence">07 Sequence</a></li>
+      <li><a href="#engagement">08 Partners</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" type="button">dark</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ==================== 01 WHY ==================== -->
+<section id="why">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">01 — The moment</h1>
+      <div class="section-note">The ocean has quietly become load-bearing infrastructure for modern civilisation. The systems built to govern it were designed for a time when it was not.</div>
+    </div>
+
+    <div class="split">
+      <div>
+        <p>For most of the industrial era the ocean was understood in two ways: an environment to protect, or a frontier to extract from. Both are now insufficient. Offshore energy is becoming a cornerstone of decarbonisation; subsea cables carry the overwhelming majority of global data; fisheries and marine agriculture underwrite food security for billions; marine biodiversity is a frontier for pharmaceutical and material discovery; and the ocean regulates the climate system that agriculture, insurance, and coastlines depend on. The ocean is no longer peripheral. It is a <b>continuity infrastructure</b> — the substrate through which resilience, provisioning, and systemic risk are increasingly organised.</p>
+        <p>Two forces now move against each other.</p>
+<ol class="plain-ol">
+<li>The <b>provision stack</b> — the layered systems through which the ocean supplies energy, data, food, materials, and biological discovery — is deepening as societies lean on it harder.</li>
+<li>The <b>shock stack</b> — sea-level rise, intensifying storms, ecosystem destabilisation, infrastructure exposure — is escalating as the climate breaks down. The gap between the two is where continuity is won or lost, and it is widening.</li>
+</ol>
+        <p>The problem is not a shortage of concern or capital. It is structural. Governance is fragmented across sectors and bounded by national jurisdiction, while ecological systems cross both by design. Verification is thin, so disputes over ecological fact escalate into political ones. Finance is built for short horizons and cannot price ecological integrity or capitalise public goods. Each institution behaves rationally inside its own mandate, yet the ocean is not divisible into those mandates. The result is a system that defaults toward fragmentation and extraction — not because anyone chooses it, but because the machinery currently in place cannot choose anything else.</p>
+        <p>Closing that gap is not an environmental ambition layered on top of the economy. It is a precondition for the stability of the wealth, provisioning, and public systems that depend on the ocean.<br><br><b>That is the work the Oceans Continuity Studio is being constituted to do.</b></p>
+      </div>
+      <div>
+        <div class="margin-note"><span class="tag">Provision × Shock.</span> Empirical work already links the two: analysing disasters across 104 countries and 27 market indices, Pagnottoni et al. (2022) found biological and climatic shocks exerted the strongest effects on financial markets. Ecological disruption is a financial-stability question, not only a planetary one.</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">The two stacks</div>
+      <div class="twostack">
+        <div class="stackcard provision">
+          <h4>Ocean Provision Stack</h4>
+          <div class="layer"><b>Biomaterials</b> — algae, seaweed, deep-sea systems replacing fossil-based inputs</div>
+          <div class="layer"><b>Bionutrients &amp; food</b> — fisheries and marine agriculture feeding billions</div>
+          <div class="layer"><b>Biopharma discovery</b> — marine molecular diversity for medicine</div>
+          <div class="layer"><b>Energy &amp; data</b> — offshore renewables, subsea cable networks</div>
+          <div class="layer"><b>Life Search Option Space</b> — biodiversity as an irreplaceable discovery reservoir</div>
+        </div>
+        <div class="stackcard shock">
+          <h4>Ocean Shock Stack</h4>
+          <div class="layer"><b>Sea-level rise</b> — re-baselining coastal risk from rare to persistent</div>
+          <div class="layer"><b>Flood &amp; surge</b> — compound failure across drainage, aquifers, logistics</div>
+          <div class="layer"><b>Storm intensification</b> — atmospheric rivers, heavier extremes</div>
+          <div class="layer"><b>Ecosystem destabilisation</b> — warming, acidification, deoxygenation</div>
+          <div class="layer"><b>Infrastructure exposure</b> — cables, energy arrays, ports at rising risk</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">Keystone map: what is actually at stake</div>
+      <p class="measure">The stakes are not diffuse. A small number of marine systems are load-bearing for human stability — keystone not because they are large, but because the failure of each transmits outward through food, markets, migration, coastline, and climate into large-population destabilisation. The map below is a transmission diagram, not a territory: select any node to trace its collapse trigger, the population that depends on it, and the cascade it sets off.</p>
+
+      <div class="mapframe-wrap">
+        <iframe title="Keystone Marine Bioregions — Collapse &amp; Cascade" src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgo8dGl0bGU+S2V5c3RvbmUgTWFyaW5lIEJpb3JlZ2lvbnMg4oCUIENvbGxhcHNlICYgQ2FzY2FkZTwvdGl0bGU+CjxtZXRhIG5hbWU9ImRlc2NyaXB0aW9uIiBjb250ZW50PSJBbiBpbnRlcmFjdGl2ZSB0cmFuc21pc3Npb24gbWFwIG9mIGVpZ2h0IGtleXN0b25lIG1hcmluZSBiaW9yZWdpb25zIHdob3NlIGNvbGxhcHNlIHByb3BhZ2F0ZXMgdGhyb3VnaCBmb29kLCBtYXJrZXRzLCBtaWdyYXRpb24sIGNvYXN0bGluZSBhbmQgY2xpbWF0ZSBpbnRvIGxhcmdlLXBvcHVsYXRpb24gZGVzdGFiaWxpc2F0aW9uLiI+CjxtZXRhIG5hbWU9ImF1dGhvciIgY29udGVudD0iRGFyayBNYXR0ZXIgTGFicyDigJQgRXhwYW5kaW5nIENpdmlsaXNhdGlvbmFsIE9wdGlvbmFsaXR5Ij4KPG1ldGEgcHJvcGVydHk9Im9nOnRpdGxlIiBjb250ZW50PSJLZXlzdG9uZSBNYXJpbmUgQmlvcmVnaW9ucyDigJQgQ29sbGFwc2UgJiBDYXNjYWRlIj4KPG1ldGEgcHJvcGVydHk9Im9nOmRlc2NyaXB0aW9uIiBjb250ZW50PSJFaWdodCBvY2VhbiBzeXN0ZW1zIHRoYXQgYXJlIGxvYWQtYmVhcmluZyBmb3IgaHVtYW4gc3RhYmlsaXR5LCBhbmQgdGhlIHBhdGh3YXlzIHRoZWlyIGNvbGxhcHNlIHJ1bnMgdGhyb3VnaC4iPgo8bWV0YSBwcm9wZXJ0eT0ib2c6dHlwZSIgY29udGVudD0iYXJ0aWNsZSI+CjxzdHlsZT4KICBAaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Dcmltc29uK1BybzppdGFsLHdnaHRAMCw0MDA7MCw1MDA7MCw2MDA7MSw0MDAmZmFtaWx5PUludGVyOndnaHRANDAwOzUwMDs2MDAmZmFtaWx5PURNK01vbm86d2dodEA0MDA7NTAwJmRpc3BsYXk9c3dhcCcpOwoKICA6cm9vdHsKICAgIC0tc2hhZG93OiMxOTI2NDA7CiAgICAtLXNoYWRvdy1kZWVwOiMxMDFhMmU7CiAgICAtLXNoYWRvdy1wYW5lbDojMTQxZjM2OwogICAgLS1oaTojZWVmMmY5OwogICAgLS1oaS1kaW06IzhhOTdhZTsKICAgIC0tbGluZTojMmIzYTU4OwogICAgLS1vcmFuZ2U6I2YyN2YzZDsKICAgIC8qIHBhdGh3YXkgaHVlcyAqLwogICAgLS1mb29kOiNmMjdmM2Q7CiAgICAtLW1hcmtldDojZTliNDRjOwogICAgLS1taWdyYXRpb246I2Q5NTczZDsKICAgIC0tY29hc3RhbDojNGZhOGFjOwogICAgLS1jbGltYXRlOiM5YTdiYzg7CiAgICAtLWZlZWRiYWNrOiM2YjdhOTk7CiAgICAvKiB0aXBwaW5nIGhlYXQgcmluZyAqLwogICAgLS1oZWF0LXBhc3Npbmc6I2ZmNmI0YTsKICAgIC0taGVhdC1yaXNrOiNmZmIxM2M7CiAgICAtLWhlYXQtd2F0Y2g6I2ZmZTA4YTsKICB9CgogICp7Ym94LXNpemluZzpib3JkZXItYm94O30KICBodG1sLGJvZHl7bWFyZ2luOjA7cGFkZGluZzowO30KICBib2R5ewogICAgYmFja2dyb3VuZDp2YXIoLS1zaGFkb3cpOwogICAgY29sb3I6dmFyKC0taGkpOwogICAgZm9udC1mYW1pbHk6J0ludGVyJyxzeXN0ZW0tdWksc2Fucy1zZXJpZjsKICAgIC13ZWJraXQtZm9udC1zbW9vdGhpbmc6YW50aWFsaWFzZWQ7CiAgICBsaW5lLWhlaWdodDoxLjU7CiAgfQoKICAud3JhcHttYXgtd2lkdGg6MTI4MHB4O21hcmdpbjowIGF1dG87cGFkZGluZzoyOHB4IDIycHggNjBweDt9CgogIGhlYWRlci5tYXN0aGVhZHsKICAgIGJvcmRlci1ib3R0b206MXB4IHNvbGlkIHZhcigtLWxpbmUpOwogICAgcGFkZGluZy1ib3R0b206MjBweDttYXJnaW4tYm90dG9tOjIycHg7CiAgfQogIC5leWVicm93ewogICAgZm9udC1mYW1pbHk6J0RNIE1vbm8nLG1vbm9zcGFjZTsKICAgIGZvbnQtc2l6ZToxMXB4O2xldHRlci1zcGFjaW5nOi4yOGVtO3RleHQtdHJhbnNmb3JtOnVwcGVyY2FzZTsKICAgIGNvbG9yOnZhcigtLW9yYW5nZSk7bWFyZ2luOjAgMCAxMHB4OwogIH0KICBoMXsKICAgIGZvbnQtZmFtaWx5OidDcmltc29uIFBybycsc2VyaWY7CiAgICBmb250LXdlaWdodDo1MDA7CiAgICBmb250LXNpemU6Y2xhbXAoMjhweCw0LjR2dyw0NnB4KTsKICAgIGxpbmUtaGVpZ2h0OjEuMDY7bGV0dGVyLXNwYWNpbmc6LS4wMWVtOwogICAgbWFyZ2luOjAgMCAxMnB4O21heC13aWR0aDoyMGNoOwogIH0KICAuc3RhbmRmaXJzdHsKICAgIGZvbnQtZmFtaWx5OidDcmltc29uIFBybycsc2VyaWY7CiAgICBmb250LXNpemU6Y2xhbXAoMTVweCwxLjd2dywxOHB4KTsKICAgIGNvbG9yOiNjM2NjZGQ7bWF4LXdpZHRoOjYyY2g7bWFyZ2luOjA7Zm9udC13ZWlnaHQ6NDAwOwogIH0KCiAgLyogbGF5b3V0ICovCiAgLnN0YWdlewogICAgZGlzcGxheTpncmlkOwogICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOm1pbm1heCgwLDFmcikgMzcycHg7CiAgICBnYXA6MjJweDthbGlnbi1pdGVtczpzdGFydDsKICB9CiAgQG1lZGlhIChtYXgtd2lkdGg6OTIwcHgpewogICAgLnN0YWdle2dyaWQtdGVtcGxhdGUtY29sdW1uczoxZnI7fQogIH0KCiAgLm1hcGNhcmR7CiAgICBiYWNrZ3JvdW5kOnZhcigtLXNoYWRvdy1kZWVwKTsKICAgIGJvcmRlcjoxcHggc29saWQgdmFyKC0tbGluZSk7CiAgICBib3JkZXItcmFkaXVzOjRweDsKICAgIG92ZXJmbG93OmhpZGRlbjtwb3NpdGlvbjpyZWxhdGl2ZTsKICB9CiAgLm1hcHRvb2xzewogICAgZGlzcGxheTpmbGV4O2ZsZXgtd3JhcDp3cmFwO2dhcDo3cHg7YWxpZ24taXRlbXM6Y2VudGVyOwogICAgcGFkZGluZzoxMnB4IDE0cHg7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgdmFyKC0tbGluZSk7CiAgICBiYWNrZ3JvdW5kOmxpbmVhci1ncmFkaWVudCgjMTYyMjNhLCMxMzFkMzMpOwogIH0KICAudG9vbHNsYWJlbHsKICAgIGZvbnQtZmFtaWx5OidETSBNb25vJyxtb25vc3BhY2U7Zm9udC1zaXplOjEwcHg7bGV0dGVyLXNwYWNpbmc6LjE4ZW07CiAgICB0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2U7Y29sb3I6dmFyKC0taGktZGltKTttYXJnaW4tcmlnaHQ6MnB4OwogIH0KICAuY2hpcHsKICAgIGZvbnQtZmFtaWx5OidETSBNb25vJyxtb25vc3BhY2U7Zm9udC1zaXplOjExcHg7CiAgICBsZXR0ZXItc3BhY2luZzouMDJlbTsKICAgIGJvcmRlcjoxcHggc29saWQgdmFyKC0tbGluZSk7CiAgICBiYWNrZ3JvdW5kOnRyYW5zcGFyZW50O2NvbG9yOiNjM2NjZGQ7CiAgICBwYWRkaW5nOjVweCAxMHB4IDVweCA4cHg7Ym9yZGVyLXJhZGl1czoyMHB4O2N1cnNvcjpwb2ludGVyOwogICAgZGlzcGxheTppbmxpbmUtZmxleDthbGlnbi1pdGVtczpjZW50ZXI7Z2FwOjZweDsKICAgIHRyYW5zaXRpb246Ym9yZGVyLWNvbG9yIC4xNXMsb3BhY2l0eSAuMTVzLGJhY2tncm91bmQgLjE1czsKICB9CiAgLmNoaXAgLnN3e3dpZHRoOjlweDtoZWlnaHQ6OXB4O2JvcmRlci1yYWRpdXM6MnB4O2ZsZXg6bm9uZTt9CiAgLmNoaXBbYXJpYS1wcmVzc2VkPSJmYWxzZSJde29wYWNpdHk6LjM4O30KICAuY2hpcDpob3Zlcntib3JkZXItY29sb3I6IzNmNTI3OTt9CiAgLmNoaXA6Zm9jdXMtdmlzaWJsZXtvdXRsaW5lOjJweCBzb2xpZCB2YXIoLS1vcmFuZ2UpO291dGxpbmUtb2Zmc2V0OjJweDt9CgogIHN2ZyNtYXB7ZGlzcGxheTpibG9jazt3aWR0aDoxMDAlO2hlaWdodDphdXRvO2JhY2tncm91bmQ6CiAgICByYWRpYWwtZ3JhZGllbnQoMTIwJSA5MCUgYXQgNTAlIDEyJSwgIzFjMmM0YyAwJSwgIzE3MjM0MSA0NSUsICMwZjE4MzAgMTAwJSk7fQoKICAvKiBtYXAgZWxlbWVudHMgKi8KICAuZ3JpZC1saW5le3N0cm9rZTojMjIzMDRjO3N0cm9rZS13aWR0aDouNjtmaWxsOm5vbmU7fQogIC5jb250aW5lbnR7ZmlsbDojMjAzMDRmO29wYWNpdHk6LjU1O3N0cm9rZTpub25lO30KICAuYmFzaW4tbGFiZWx7CiAgICBmb250LWZhbWlseTonRE0gTW9ubycsbW9ub3NwYWNlO2ZvbnQtc2l6ZTo4cHg7bGV0dGVyLXNwYWNpbmc6LjIyZW07CiAgICBmaWxsOiM0YTVjN2U7dGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOwogIH0KCiAgLmVkZ2V7ZmlsbDpub25lO3N0cm9rZS1saW5lY2FwOnJvdW5kO3RyYW5zaXRpb246b3BhY2l0eSAuMnM7fQogIC5lZGdlLmZsb3d7c3Ryb2tlLWRhc2hhcnJheToyIDk7YW5pbWF0aW9uOmZsb3cgMi42cyBsaW5lYXIgaW5maW5pdGU7fQogIEBrZXlmcmFtZXMgZmxvd3t0b3tzdHJva2UtZGFzaG9mZnNldDotMTEwO319CiAgLm1vZGxpbmV7ZmlsbDpub25lO3N0cm9rZTp2YXIoLS1mZWVkYmFjayk7c3Ryb2tlLXdpZHRoOjE7CiAgICBzdHJva2UtZGFzaGFycmF5OjEgNjtvcGFjaXR5Oi41O3N0cm9rZS1saW5lY2FwOnJvdW5kO30KCiAgLm9ub2Rle2ZpbGw6IzFkMmM0OTtzdHJva2U6IzNhNGQ3MjtzdHJva2Utd2lkdGg6MTt9CiAgLm9ub2RlLWd7dHJhbnNpdGlvbjpvcGFjaXR5IC4yczt9CiAgLm9ub2RlLWcub2RpbXtvcGFjaXR5Oi4yO30KICAub25vZGUtbGFiZWwsLm9ub2RlLXN1Yntmb250LWZhbWlseTonSW50ZXInLHNhbnMtc2VyaWY7CiAgICBwYWludC1vcmRlcjpzdHJva2U7c3Ryb2tlOiMwZjE4MzA7c3Ryb2tlLXdpZHRoOjIuOHB4O3N0cm9rZS1saW5lam9pbjpyb3VuZDt9CiAgLm9ub2RlLWxhYmVse2ZvbnQtc2l6ZTo5LjVweDtmb250LXdlaWdodDo2MDA7ZmlsbDojOWZhYmMxO30KICAub25vZGUtc3Vie2ZvbnQtc2l6ZTo4cHg7ZmlsbDojN2Y4ZGE1O30KICAub25vZGUtZy5vaG90IC5vbm9kZS1sYWJlbHtmaWxsOiNmZmZmZmY7fQogIC5vbm9kZS1nLm9ob3QgLm9ub2RlLXN1YntmaWxsOiNjN2QwZTA7fQogIC5vbm9kZS1nLm9ob3QgLm9ub2Rle3N0cm9rZTojZTZlY2ZiO2ZpbGw6IzJhM2M1ZDt9CgogIC5ibm9kZXtjdXJzb3I6cG9pbnRlcjt9CiAgLmJub2RlIC5jb3Jle2ZpbGw6I2YyN2YzZDt0cmFuc2l0aW9uOmZpbGwgLjE1czt9CiAgLmJub2RlIC5oYWxve2ZpbGw6bm9uZTtzdHJva2Utd2lkdGg6Mjt9CiAgLmJub2RlIC5zeXNyaW5ne2ZpbGw6bm9uZTtzdHJva2UtZGFzaGFycmF5OjIgMztvcGFjaXR5Oi44NTt9CiAgLmJub2RlIC5jb2Rle2ZvbnQtZmFtaWx5OidETSBNb25vJyxtb25vc3BhY2U7Zm9udC1zaXplOjguNXB4O2ZvbnQtd2VpZ2h0OjUwMDtmaWxsOiMwZjE4MzA7dGV4dC1hbmNob3I6bWlkZGxlO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWw7cG9pbnRlci1ldmVudHM6bm9uZTt9CiAgLmJub2RlIC5ibmFtZXtmb250LWZhbWlseTonQ3JpbXNvbiBQcm8nLHNlcmlmO2ZvbnQtc2l6ZToxM3B4O2ZvbnQtd2VpZ2h0OjYwMDtmaWxsOiNlZWYyZjk7cG9pbnRlci1ldmVudHM6bm9uZTsKICAgIHBhaW50LW9yZGVyOnN0cm9rZTtzdHJva2U6IzBmMTgzMDtzdHJva2Utd2lkdGg6My4ycHg7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KICAuYm5vZGU6Zm9jdXMtdmlzaWJsZXtvdXRsaW5lOm5vbmU7fQogIC5ibm9kZTpmb2N1cy12aXNpYmxlIC5mb2N1c3Jpbmd7b3BhY2l0eToxO30KICAuZm9jdXNyaW5ne2ZpbGw6bm9uZTtzdHJva2U6I2ZmZjtzdHJva2Utd2lkdGg6MS40O3N0cm9rZS1kYXNoYXJyYXk6MiAzO29wYWNpdHk6MDt9CiAgLmJub2Rle3RyYW5zZm9ybS1ib3g6ZmlsbC1ib3g7dHJhbnNmb3JtLW9yaWdpbjpjZW50ZXI7fQogIEBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjpuby1wcmVmZXJlbmNlKXsKICAgIC5ibm9kZXthbmltYXRpb246cG9wIC41cyBjdWJpYy1iZXppZXIoLjIsLjcsLjMsMSkgYmFja3dhcmRzO30KICAgIEBrZXlmcmFtZXMgcG9we2Zyb217b3BhY2l0eTowO3RyYW5zZm9ybTpzY2FsZSguMzUpO310b3tvcGFjaXR5OjE7dHJhbnNmb3JtOnNjYWxlKDEpO319CiAgfQoKICAvKiBub2RlIGluZGV4IChpbiBvdmVydmlldykgKi8KICAubGVmdGNvbHtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2dhcDoyMnB4O21pbi13aWR0aDowO30KICAubWFwY2FwdGlvbntmb250LWZhbWlseTonRE0gTW9ubycsbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB4O2xldHRlci1zcGFjaW5nOi4wMmVtOwogICAgY29sb3I6IzdjOGFhNjttYXJnaW46MDtwYWRkaW5nOjExcHggMTVweCAxM3B4O2JvcmRlci10b3A6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2xpbmUtaGVpZ2h0OjEuNTU7fQogIC5pbmRleGNhcmR7YmFja2dyb3VuZDp2YXIoLS1zaGFkb3ctcGFuZWwpO2JvcmRlcjoxcHggc29saWQgdmFyKC0tbGluZSk7Ym9yZGVyLXJhZGl1czo0cHg7cGFkZGluZzoxNnB4IDE4cHggNnB4O30KICAuaWR4Z3JpZHtkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOjFmciAxZnI7Z2FwOjAgMjZweDt9CiAgQG1lZGlhIChtYXgtd2lkdGg6NTYwcHgpey5pZHhncmlke2dyaWQtdGVtcGxhdGUtY29sdW1uczoxZnI7fX0KICAuaWR4LWhpbnR7Zm9udC1zaXplOjEycHg7Y29sb3I6IzhmOWNiMzttYXJnaW46MCAwIDE0cHg7bGluZS1oZWlnaHQ6MS40NTt9CiAgLmlkeC1yb3d7CiAgICBkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOjI2cHggMWZyIGF1dG87Z2FwOjEwcHg7YWxpZ24taXRlbXM6Y2VudGVyOwogICAgd2lkdGg6MTAwJTt0ZXh0LWFsaWduOmxlZnQ7YmFja2dyb3VuZDp0cmFuc3BhcmVudDtib3JkZXI6MDsKICAgIGJvcmRlci1ib3R0b206MXB4IHNvbGlkIHZhcigtLWxpbmUpO3BhZGRpbmc6OXB4IDRweDtjdXJzb3I6cG9pbnRlcjtjb2xvcjppbmhlcml0OwogICAgdHJhbnNpdGlvbjpiYWNrZ3JvdW5kIC4xMnM7CiAgfQogIC5pZHgtcm93OmhvdmVyLC5pZHgtcm93LmFjdGl2ZXtiYWNrZ3JvdW5kOiMxYjI4NDE7fQogIC5pZHgtcm93OmZvY3VzLXZpc2libGV7b3V0bGluZToycHggc29saWQgdmFyKC0tb3JhbmdlKTtvdXRsaW5lLW9mZnNldDotMnB4O30KICAuaWR4LWNvZGV7Zm9udC1mYW1pbHk6J0RNIE1vbm8nLG1vbm9zcGFjZTtmb250LXNpemU6MTFweDtjb2xvcjojMTAxYTJlO2ZvbnQtd2VpZ2h0OjYwMDsKICAgIGJhY2tncm91bmQ6I2YyN2YzZDtib3JkZXItcmFkaXVzOjNweDt0ZXh0LWFsaWduOmNlbnRlcjtwYWRkaW5nOjJweCAwO30KICAuaWR4LWNvZGUuc3lze2JhY2tncm91bmQ6dHJhbnNwYXJlbnQ7Y29sb3I6IzlmYjBjYztib3JkZXI6MXB4IGRhc2hlZCAjNmI3YTk5O30KICAuaWR4LW5hbWV7Zm9udC1mYW1pbHk6J0NyaW1zb24gUHJvJyxzZXJpZjtmb250LXNpemU6MTVweDtmb250LXdlaWdodDo2MDA7Y29sb3I6I2VlZjJmOTtsaW5lLWhlaWdodDoxLjE1O30KICAuaWR4LWRlcHtmb250LWZhbWlseTonSW50ZXInLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtjb2xvcjojODQ5M2FjO2Rpc3BsYXk6YmxvY2s7bWFyZ2luLXRvcDoxcHg7fQogIC5pZHgtZG90e3dpZHRoOjlweDtoZWlnaHQ6OXB4O2JvcmRlci1yYWRpdXM6NTAlO2ZsZXg6bm9uZTt9CgogIC5kaW1tZWR7b3BhY2l0eTouMTIgIWltcG9ydGFudDt9CiAgLmVkZ2UuaG90e29wYWNpdHk6MSAhaW1wb3J0YW50O30KCiAgLyogc2lkZSBwYW5lbCAqLwogIC5wYW5lbHsKICAgIGJhY2tncm91bmQ6dmFyKC0tc2hhZG93LXBhbmVsKTsKICAgIGJvcmRlcjoxcHggc29saWQgdmFyKC0tbGluZSk7Ym9yZGVyLXJhZGl1czo0cHg7CiAgICBwYWRkaW5nOjA7cG9zaXRpb246c3RpY2t5O3RvcDoxNnB4OwogICAgbWluLWhlaWdodDo0MjBweDtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uOwogIH0KICBAbWVkaWEgKG1heC13aWR0aDo5MjBweCl7LnBhbmVse3Bvc2l0aW9uOnN0YXRpYzt9fQogIC5wYW5lbC1oZWFkewogICAgcGFkZGluZzoxNnB4IDE4cHggMTRweDtib3JkZXItYm90dG9tOjFweCBzb2xpZCB2YXIoLS1saW5lKTsKICB9CiAgLnBhbmVsLWtpY2tlcnsKICAgIGZvbnQtZmFtaWx5OidETSBNb25vJyxtb25vc3BhY2U7Zm9udC1zaXplOjEwcHg7bGV0dGVyLXNwYWNpbmc6LjJlbTsKICAgIHRleHQtdHJhbnNmb3JtOnVwcGVyY2FzZTtjb2xvcjp2YXIoLS1oaS1kaW0pO21hcmdpbjowIDAgNnB4OwogIH0KICAucGFuZWwtdGl0bGV7CiAgICBmb250LWZhbWlseTonQ3JpbXNvbiBQcm8nLHNlcmlmO2ZvbnQtd2VpZ2h0OjUwMDtmb250LXNpemU6MjJweDsKICAgIGxpbmUtaGVpZ2h0OjEuMTttYXJnaW46MDtjb2xvcjojZmZmOwogIH0KICAucGFuZWwtYm9keXtwYWRkaW5nOjE2cHggMThweDtvdmVyZmxvdy15OmF1dG87ZmxleDoxO30KCiAgLmxlZ2VuZC1ncm91cHttYXJnaW4tYm90dG9tOjIwcHg7fQogIC5sZWdlbmQtaHsKICAgIGZvbnQtZmFtaWx5OidETSBNb25vJyxtb25vc3BhY2U7Zm9udC1zaXplOjEwcHg7bGV0dGVyLXNwYWNpbmc6LjE2ZW07CiAgICB0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2U7Y29sb3I6dmFyKC0taGktZGltKTttYXJnaW46MCAwIDEwcHg7CiAgfQogIC5sZWdyb3d7ZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6MTBweDttYXJnaW4tYm90dG9tOjhweDtmb250LXNpemU6MTIuNXB4O2NvbG9yOiNjOGQxZTI7fQogIC5sZWdyb3cgLnN3e3dpZHRoOjIycHg7aGVpZ2h0OjA7Ym9yZGVyLXRvcDoycHggc29saWQ7ZmxleDpub25lO30KICAubGVncm93IC5kb3R7d2lkdGg6MTJweDtoZWlnaHQ6MTJweDtib3JkZXItcmFkaXVzOjUwJTtmbGV4Om5vbmU7Ym9yZGVyOjJweCBzb2xpZDt9CiAgLmxlZ3JvdyAuc3lzZG90e3dpZHRoOjE0cHg7aGVpZ2h0OjE0cHg7Ym9yZGVyLXJhZGl1czo1MCU7ZmxleDpub25lOwogICAgYm9yZGVyOjEuNXB4IGRhc2hlZCAjOWZiMGNjO2JhY2tncm91bmQ6I2YyN2YzZDMzO30KICAubGVnZW5kLW5vdGV7Zm9udC1zaXplOjExcHg7Y29sb3I6Izg0OTNhYzttYXJnaW4tdG9wOjRweDtsaW5lLWhlaWdodDoxLjQ7fQoKICAuc2l6ZXNjYWxle2Rpc3BsYXk6ZmxleDthbGlnbi1pdGVtczpmbGV4LWVuZDtnYXA6MTRweDttYXJnaW4tdG9wOjRweDt9CiAgLnNpemVzY2FsZSAuc3tkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6NXB4O30KICAuc2l6ZXNjYWxlIC5zIHNwYW57Zm9udC1mYW1pbHk6J0RNIE1vbm8nLG1vbm9zcGFjZTtmb250LXNpemU6OS41cHg7Y29sb3I6Izg0OTNhYzt9CiAgLnNpemVzY2FsZSAuY3tib3JkZXItcmFkaXVzOjUwJTtiYWNrZ3JvdW5kOiNmMjdmM2QzMztib3JkZXI6MS41cHggc29saWQgI2YyN2YzZDt9CgogIC8qIGRvc3NpZXIgKi8KICAuZHp7ZGlzcGxheTpub25lO30KICAuZHoub257ZGlzcGxheTpibG9jazt9CiAgLm1ldGEtZ3JpZHtkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOmF1dG8gMWZyO2dhcDo2cHggMTRweDttYXJnaW46MnB4IDAgMTZweDt9CiAgLm1ldGEta3tmb250LWZhbWlseTonRE0gTW9ubycsbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB4O2xldHRlci1zcGFjaW5nOi4wOGVtOwogICAgdGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlO2NvbG9yOnZhcigtLWhpLWRpbSk7cGFkZGluZy10b3A6MnB4O30KICAubWV0YS12e2ZvbnQtc2l6ZToxM3B4O2NvbG9yOiNkY2UzZjA7fQogIC5tZXRhLXYgLmJpZ3tmb250LWZhbWlseTonQ3JpbXNvbiBQcm8nLHNlcmlmO2ZvbnQtc2l6ZToxOXB4O2NvbG9yOiNmZmY7Zm9udC13ZWlnaHQ6NjAwO2xpbmUtaGVpZ2h0OjE7fQogIC50aXAtYmFkZ2V7ZGlzcGxheTppbmxpbmUtYmxvY2s7Zm9udC1mYW1pbHk6J0RNIE1vbm8nLG1vbm9zcGFjZTtmb250LXNpemU6MTBweDsKICAgIGxldHRlci1zcGFjaW5nOi4wNmVtO3BhZGRpbmc6MnB4IDhweDtib3JkZXItcmFkaXVzOjNweDtjb2xvcjojMTAxYTJlO2ZvbnQtd2VpZ2h0OjUwMDt9CiAgLnNlYy1oe2ZvbnQtZmFtaWx5OidETSBNb25vJyxtb25vc3BhY2U7Zm9udC1zaXplOjEwcHg7bGV0dGVyLXNwYWNpbmc6LjE2ZW07CiAgICB0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2U7Y29sb3I6dmFyKC0tb3JhbmdlKTttYXJnaW46MThweCAwIDhweDt9CiAgLm1lY2h7Zm9udC1zaXplOjEzcHg7Y29sb3I6I2M4ZDFlMjttYXJnaW46MCAwIDZweDt9CiAgLmNoYWlue2xpc3Qtc3R5bGU6bm9uZTttYXJnaW46OHB4IDAgMDtwYWRkaW5nOjA7fQogIC5jaGFpbiBsaXtwb3NpdGlvbjpyZWxhdGl2ZTtwYWRkaW5nOjAgMCAxMnB4IDIwcHg7Zm9udC1zaXplOjEyLjVweDtjb2xvcjojYzhkMWUyO30KICAuY2hhaW4gbGk6OmJlZm9yZXtjb250ZW50OiIiO3Bvc2l0aW9uOmFic29sdXRlO2xlZnQ6NHB4O3RvcDo1cHg7d2lkdGg6N3B4O2hlaWdodDo3cHg7CiAgICBib3JkZXItcmFkaXVzOjUwJTtiYWNrZ3JvdW5kOnZhcigtLW9yYW5nZSk7fQogIC5jaGFpbiBsaTo6YWZ0ZXJ7Y29udGVudDoiIjtwb3NpdGlvbjphYnNvbHV0ZTtsZWZ0OjdweDt0b3A6MTJweDtib3R0b206MDt3aWR0aDoxcHg7YmFja2dyb3VuZDp2YXIoLS1saW5lKTt9CiAgLmNoYWluIGxpOmxhc3QtY2hpbGR7cGFkZGluZy1ib3R0b206MDt9CiAgLmNoYWluIGxpOmxhc3QtY2hpbGQ6OmFmdGVye2Rpc3BsYXk6bm9uZTt9CiAgLmJhY2toaW50e2ZvbnQtZmFtaWx5OidETSBNb25vJyxtb25vc3BhY2U7Zm9udC1zaXplOjEwcHg7Y29sb3I6IzZjN2M5ODttYXJnaW4tdG9wOjE2cHg7CiAgICBsZXR0ZXItc3BhY2luZzouMDRlbTt9CgogIC5mb290ewogICAgbWFyZ2luLXRvcDoyNnB4O2JvcmRlci10b3A6MXB4IHNvbGlkIHZhcigtLWxpbmUpO3BhZGRpbmctdG9wOjE2cHg7CiAgICBmb250LXNpemU6MTEuNXB4O2NvbG9yOiM3ZDhhYTM7bWF4LXdpZHRoOjkwY2g7CiAgfQogIC5mb290IGJ7Y29sb3I6I2FhYjZjYztmb250LXdlaWdodDo2MDA7fQogIC5mb290IC5zcmN7Zm9udC1mYW1pbHk6J0RNIE1vbm8nLG1vbm9zcGFjZTtmb250LXNpemU6MTAuNXB4O2NvbG9yOiM4NTkyYWI7fQo8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5Pgo8ZGl2IGNsYXNzPSJ3cmFwIj4KICA8aGVhZGVyIGNsYXNzPSJtYXN0aGVhZCI+CiAgICA8cCBjbGFzcz0iZXllYnJvdyI+Q2l2aWxpc2F0aW9uYWwgT3B0aW9uYWxpdHkgwrcgU3lzdGVtaWMgTWFyaW5lIFJpc2s8L3A+CiAgICA8aDE+S2V5c3RvbmUgbWFyaW5lIGJpb3JlZ2lvbnMgYW5kIHRoZSBwYXRod2F5cyB0aGVpciBjb2xsYXBzZSBydW5zIHRocm91Z2guPC9oMT4KICAgIDxwIGNsYXNzPSJzdGFuZGZpcnN0Ij5FaWdodCBvY2VhbiBzeXN0ZW1zIHRoYXQgYXJlIGxvYWQtYmVhcmluZyBmb3IgaHVtYW4gc3RhYmlsaXR5IOKAlCBub3QgYmVjYXVzZSB0aGV5IGFyZSBsYXJnZSwgYnV0IGJlY2F1c2UgdGhlIGZhaWx1cmUgb2YgZWFjaCB0cmFuc21pdHMgb3V0d2FyZCB0aHJvdWdoIGZvb2QsIG1hcmtldHMsIG1pZ3JhdGlvbiwgY29hc3RsaW5lIGFuZCBjbGltYXRlIGludG8gbGFyZ2UtcG9wdWxhdGlvbiBkZXN0YWJpbGlzYXRpb24uIFRoZSBtYXAgcmVhZHMgYXMgYSB0cmFuc21pc3Npb24gZGlhZ3JhbSwgbm90IGEgdGVycml0b3J5LiBTZWxlY3QgYW55IG5vZGUgZm9yIGl0cyBjb2xsYXBzZSB0cmlnZ2VyLCBkZXBlbmRlbnQgcG9wdWxhdGlvbiwgYW5kIGNhc2NhZGUgY2hhaW4uPC9wPgogIDwvaGVhZGVyPgoKICA8ZGl2IGNsYXNzPSJzdGFnZSI+CiAgICA8IS0tIExFRlQ6IE1BUCArIElOREVYIC0tPgogICAgPGRpdiBjbGFzcz0ibGVmdGNvbCI+CiAgICA8ZGl2IGNsYXNzPSJtYXBjYXJkIj4KICAgICAgPGRpdiBjbGFzcz0ibWFwdG9vbHMiIGlkPSJ0b29scyI+CiAgICAgICAgPHNwYW4gY2xhc3M9InRvb2xzbGFiZWwiPlBhdGh3YXlzPC9zcGFuPgogICAgICAgIDwhLS0gY2hpcHMgaW5qZWN0ZWQgLS0+CiAgICAgIDwvZGl2PgogICAgICA8c3ZnIGlkPSJtYXAiIHZpZXdCb3g9IjAgMCAxMDAwIDUwMCIgcm9sZT0iaW1nIgogICAgICAgICAgIGFyaWEtbGFiZWw9IlNjaGVtYXRpYyB3b3JsZCBtYXAgb2Yga2V5c3RvbmUgbWFyaW5lIGJpb3JlZ2lvbnMgYW5kIHRoZWlyIGNhc2NhZGUgcGF0aHdheXMgdG8gaHVtYW4gZGVzdGFiaWxpc2F0aW9uLiI+PC9zdmc+CiAgICAgIDxwIGNsYXNzPSJtYXBjYXB0aW9uIj5TY2hlbWF0aWMgdHJhbnNtaXNzaW9uIGNhcnRvZ3JhcGh5IOKAlCBub2RlIHBvc2l0aW9uIGlzIGdlb2dyYXBoaWM7IG5vZGUgc2l6ZSBhbmQgcGF0aHdheSB3ZWlnaHQgZW5jb2RlIGh1bWFuIGV4cG9zdXJlLCBub3Qgc2VhIGFyZWEuIFRpcHBpbmcgc3RhdHVzIGFmdGVyIHRoZSBHbG9iYWwgVGlwcGluZyBQb2ludHMgUmVwb3J0IDIwMjUuPC9wPgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJpbmRleGNhcmQiPgogICAgICA8cCBjbGFzcz0iaWR4LWhpbnQiPlRoZSBlaWdodCBrZXlzdG9uZSBzeXN0ZW1zLCBvcmRlcmVkIGJ5IHRyYW5zbWlzc2lvbiByZWFjaC4gVGFwIGFueSBjYXJkIOKAlCBvciBhbnkgbm9kZSBvbiB0aGUgbWFwIOKAlCB0byB0cmFjZSBpdHMgY2FzY2FkZS48L3A+CiAgICAgIDxkaXYgaWQ9Im5vZGVpbmRleCIgY2xhc3M9ImlkeGdyaWQiPjwvZGl2PgogICAgPC9kaXY+CiAgICA8L2Rpdj4KCiAgICA8IS0tIFBBTkVMIC0tPgogICAgPGFzaWRlIGNsYXNzPSJwYW5lbCI+CiAgICAgIDxkaXYgY2xhc3M9InBhbmVsLWhlYWQiPgogICAgICAgIDxwIGNsYXNzPSJwYW5lbC1raWNrZXIiIGlkPSJwayI+UmVhZGluZyB0aGUgbWFwPC9wPgogICAgICAgIDxoMiBjbGFzcz0icGFuZWwtdGl0bGUiIGlkPSJwdCI+TGVnZW5kICYgbWV0aG9kPC9oMj4KICAgICAgPC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9InBhbmVsLWJvZHkiPgogICAgICAgIDwhLS0gT1ZFUlZJRVcgLS0+CiAgICAgICAgPGRpdiBjbGFzcz0iZHogb24iIGlkPSJkei1vdmVydmlldyI+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJsZWdlbmQtZ3JvdXAiPgogICAgICAgICAgICA8cCBjbGFzcz0ibGVnZW5kLWgiPlRyYW5zbWlzc2lvbiBwYXRod2F5PC9wPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJsZWdyb3ciPjxzcGFuIGNsYXNzPSJzdyIgc3R5bGU9ImJvcmRlci1jb2xvcjp2YXIoLS1mb29kKSI+PC9zcGFuPkZvb2QgJiBwcm90ZWluIHNlY3VyaXR5PC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImxlZ3JvdyI+PHNwYW4gY2xhc3M9InN3IiBzdHlsZT0iYm9yZGVyLWNvbG9yOnZhcigtLW1hcmtldCkiPjwvc3Bhbj5HbG9iYWwgZmVlZCAmIHByaWNlIHNob2NrPC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImxlZ3JvdyI+PHNwYW4gY2xhc3M9InN3IiBzdHlsZT0iYm9yZGVyLWNvbG9yOnZhcigtLW1pZ3JhdGlvbikiPjwvc3Bhbj5Gb3JjZWQgbWlncmF0aW9uPC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImxlZ3JvdyI+PHNwYW4gY2xhc3M9InN3IiBzdHlsZT0iYm9yZGVyLWNvbG9yOnZhcigtLWNvYXN0YWwpIj48L3NwYW4+Q29hc3RhbCAvIGRlbHRhIGludW5kYXRpb248L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0ibGVncm93Ij48c3BhbiBjbGFzcz0ic3ciIHN0eWxlPSJib3JkZXItY29sb3I6dmFyKC0tY2xpbWF0ZSkiPjwvc3Bhbj5DbGltYXRlIHRlbGVjb25uZWN0aW9uPC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImxlZ3JvdyI+PHNwYW4gY2xhc3M9InN3IiBzdHlsZT0iYm9yZGVyLWNvbG9yOnZhcigtLWZlZWRiYWNrKTtib3JkZXItdG9wLXN0eWxlOmRhc2hlZCI+PC9zcGFuPkZlZWRiYWNrIC8gYW1wbGlmaWNhdGlvbjwvZGl2PgogICAgICAgICAgPC9kaXY+CgogICAgICAgICAgPGRpdiBjbGFzcz0ibGVnZW5kLWdyb3VwIj4KICAgICAgICAgICAgPHAgY2xhc3M9ImxlZ2VuZC1oIj5Ob2RlIHR5cGU8L3A+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImxlZ3JvdyI+PHNwYW4gY2xhc3M9ImRvdCIgc3R5bGU9ImJvcmRlci1jb2xvcjojZjI3ZjNkO2JhY2tncm91bmQ6I2YyN2YzZDMzIj48L3NwYW4+UG9wdWxhdGlvbiBub2RlIOKAlCBzaXplZCBieSBwZW9wbGUgd2hvIGRlcGVuZCBvbiBpdDwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJsZWdyb3ciPjxzcGFuIGNsYXNzPSJzeXNkb3QiPjwvc3Bhbj5TeXN0ZW1pYyBub2RlIOKAlCBnbG9iYWwgcmVhY2gsIG5vdCBhIGhlYWRjb3VudDwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJzaXplc2NhbGUiPgogICAgICAgICAgICAgIDxkaXYgY2xhc3M9InMiPjxzcGFuIGNsYXNzPSJjIiBzdHlsZT0id2lkdGg6MTNweDtoZWlnaHQ6MTNweCI+PC9zcGFuPjxzcGFuPn43TTwvc3Bhbj48L2Rpdj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJzIj48c3BhbiBjbGFzcz0iYyIgc3R5bGU9IndpZHRoOjIxcHg7aGVpZ2h0OjIxcHgiPjwvc3Bhbj48c3Bhbj5+MTIwTTwvc3Bhbj48L2Rpdj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJzIj48c3BhbiBjbGFzcz0iYyIgc3R5bGU9IndpZHRoOjU0cHg7aGVpZ2h0OjU0cHgiPjwvc3Bhbj48c3Bhbj5+MUI8L3NwYW4+PC9kaXY+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPC9kaXY+CgogICAgICAgICAgPGRpdiBjbGFzcz0ibGVnZW5kLWdyb3VwIj4KICAgICAgICAgICAgPHAgY2xhc3M9ImxlZ2VuZC1oIj5UaXBwaW5nIHByb3hpbWl0eSAob3V0ZXIgcmluZyk8L3A+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImxlZ3JvdyI+PHNwYW4gY2xhc3M9ImRvdCIgc3R5bGU9ImJvcmRlci1jb2xvcjp2YXIoLS1oZWF0LXBhc3NpbmcpO2JhY2tncm91bmQ6dHJhbnNwYXJlbnQiPjwvc3Bhbj5QYXNzaW5nIHRocmVzaG9sZCBub3c8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0ibGVncm93Ij48c3BhbiBjbGFzcz0iZG90IiBzdHlsZT0iYm9yZGVyLWNvbG9yOnZhcigtLWhlYXQtcmlzayk7YmFja2dyb3VuZDp0cmFuc3BhcmVudCI+PC9zcGFuPkhpZ2ggbmVhci10ZXJtIHJpc2s8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0ibGVncm93Ij48c3BhbiBjbGFzcz0iZG90IiBzdHlsZT0iYm9yZGVyLWNvbG9yOnZhcigtLWhlYXQtd2F0Y2gpO2JhY2tncm91bmQ6dHJhbnNwYXJlbnQiPjwvc3Bhbj5PbiB3YXRjaDwvZGl2PgogICAgICAgICAgPC9kaXY+CgogICAgICAgICAgPHAgY2xhc3M9ImxlZ2VuZC1ub3RlIj5MaW5lIHdlaWdodCB0cmFja3MgdGhlIHNjYWxlIG9mIGh1bWFuIGV4cG9zdXJlIGEgcGF0aHdheSBjYXJyaWVzIOKAlCB0aGlja2VyIG1lYW5zIG1vcmUgcGVvcGxlIGRvd25zdHJlYW0uIFRoZSBOb3J0aCBBdGxhbnRpYyBvdmVydHVybmluZyBub2RlIChNNCkgY2FycmllcyBkYXNoZWQgdGV0aGVycyB0byBmb3VyIG90aGVyIHN5c3RlbXM6IGFzIGEgbWFzdGVyIG5vZGUsIGl0cyB3ZWFrZW5pbmcgbW9kdWxhdGVzIHRoZSB1cHdlbGxpbmcsIG1vbnNvb24gYW5kIHJlZWYgc3lzdGVtcyBpdCBpcyBwaHlzaWNhbGx5IGNvdXBsZWQgdG8uPC9wPgogICAgICAgIDwvZGl2PgoKICAgICAgICA8IS0tIERPU1NJRVIgLS0+CiAgICAgICAgPGRpdiBjbGFzcz0iZHoiIGlkPSJkei1kZXRhaWwiPgogICAgICAgICAgPGRpdiBjbGFzcz0ibWV0YS1ncmlkIiBpZD0ibWV0YSI+PC9kaXY+CiAgICAgICAgICA8ZGl2IGlkPSJtZWNod3JhcCI+PC9kaXY+CiAgICAgICAgICA8cCBjbGFzcz0iYmFja2hpbnQiPlRhcCBlbXB0eSBvY2VhbiB0byByZXR1cm4gdG8gdGhlIGxlZ2VuZC48L3A+CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9hc2lkZT4KICA8L2Rpdj4KCiAgPGRpdiBjbGFzcz0iZm9vdCI+CiAgICA8Yj5Ib3cgdG8gcmVhZCBjb2xsYXBzZSBoZXJlLjwvYj4gTm9kZXMgYXJlIGtleXN0b25lIG5vdCBieSBzaXplIGJ1dCBieSB0aGUgcmVhY2ggb2YgdGhlaXIgZmFpbHVyZS4gUG9wdWxhdGlvbiBub2RlcyBhcmUgc2NhbGVkIGJ5IHRoZSBwZW9wbGUgd2hvIGRpcmVjdGx5IGRlcGVuZCBvbiB0aGVtOyBzeXN0ZW1pYyBub2RlcyAoSHVtYm9sZHQsIE5vcnRoIEF0bGFudGljIG92ZXJ0dXJuaW5nLCBTb3V0aGVybiBPY2VhbiwgQXJjdGljKSBjYXJyeSBnbG9iYWwgcmVhY2ggdGhhdCBubyBoZWFkY291bnQgY2FwdHVyZXMuIFBhdGh3YXlzIHNob3cgdGhlIGRvbWluYW50IGNoYW5uZWwgZWFjaCBjb2xsYXBzZSB0cmF2ZWxzIOKAlCBzZXZlcmFsIG5vZGVzIGFsc28gZmVlZCBjaGFubmVscyBzaG93biBvbmx5IGluIHRoZWlyIGRvc3NpZXIuCiAgICA8YnI+PGJyPgogICAgPHNwYW4gY2xhc3M9InNyYyI+U291cmNlczogR2xvYmFsIFRpcHBpbmcgUG9pbnRzIFJlcG9ydCAyMDI1IChaU0wvVW5pdi4gRXhldGVyKSDCtyBDb3JhbCBUcmlhbmdsZSBJbml0aWF0aXZlIChDVEktQ0ZGKSDCtyBGQU8gLyBJTUFSUEUgSHVtYm9sZHQgZmlzaGVyaWVzIMK3IE5hdHVyZSBTY2kuIFJlcG9ydHMgJiBJT00gb24gTlctQWZyaWNhIHVwd2VsbGluZyBhbmQgbWlncmF0aW9uIMK3IFdvcmxkIEJhbmsgLyBQTE9TIHN0b3JtLXN1cmdlIHN0dWRpZXMsIEJheSBvZiBCZW5nYWwgwrcgQ29wZXJuaWN1cyBFU0Qgb24gQU1PQyAmIHN1YnBvbGFyIGd5cmUuIEZpZ3VyZXMgYXJlIG9yZGVyLW9mLW1hZ25pdHVkZSBhbmQgaW50ZW5kZWQgZm9yIG9yaWVudGF0aW9uLCBub3QgcHJlY2lzaW9uLjwvc3Bhbj4KICA8L2Rpdj4KPC9kaXY+Cgo8c2NyaXB0PgovKiAtLS0tLS0tLS0tIHByb2plY3Rpb24gLS0tLS0tLS0tLSAqLwpjb25zdCBXPTEwMDAsSD01MDA7CmNvbnN0IHByb2o9KGxvbixsYXQpPT5bIChsb24rMTgwKS8zNjAqVywgKDkwLWxhdCkvMTgwKkggXTsKCi8qIC0tLS0tLS0tLS0gc2NoZW1hdGljIGNvbnRpbmVudHMgKGRlbGliZXJhdGVseSBjb2Fyc2UpIC0tLS0tLS0tLS0gKi8KY29uc3QgQ09OVElORU5UUz1bCiBbWy0xNjUsNjhdLFstMTUwLDYwXSxbLTEyNyw1MF0sWy0xMjIsMzZdLFstMTA4LDI1XSxbLTk3LDE4XSxbLTgzLDldLFstODAsMjVdLFstNzQsMzVdLFstNjgsNDVdLFstNTYsNDldLFstNzgsNjNdLFstOTgsNzBdLFstMTM1LDcxXSxbLTE2NSw2OF1dLAogW1stODAsOF0sWy03MiwtNF0sWy03MCwtMjBdLFstNzMsLTQwXSxbLTY4LC01M10sWy01OCwtNTBdLFstNDgsLTI0XSxbLTM1LC03XSxbLTUwLDFdLFstNjMsN10sWy04MCw4XV0sCiBbWy0xNiwxNV0sWy05LDI4XSxbMTEsMzRdLFszMSwzMV0sWzM2LDIyXSxbNTIsMTJdLFs0NSwtMV0sWzQwLC0xOF0sWzI1LC0zNF0sWzE3LC0zNF0sWzksMl0sWy05LDVdLFstMTYsMTVdXSwKIFtbLTksMzhdLFstNCw0NF0sWzQsNTFdLFsxMiw1NV0sWzI3LDU2XSxbNDIsNTZdLFs2Miw2MV0sWzkyLDY3XSxbMTIyLDYwXSxbMTQyLDU0XSxbMTM1LDQ0XSxbMTIwLDM0XSxbMTA2LDIwXSxbOTYsMTFdLFs4MCw3XSxbNzIsMjBdLFs1NSwyNl0sWzQ0LDQwXSxbMzAsNDVdLFsxNSw0MV0sWzAsNDBdLFstOSwzOF1dLAogW1sxMTMsLTIyXSxbMTMxLC0xMl0sWzE0NiwtMTVdLFsxNTEsLTI4XSxbMTQwLC0zOF0sWzExOSwtMzRdLFsxMTMsLTIyXV0sCiBbWy00Niw2MF0sWy0zMCw3MF0sWy0xOSw3Nl0sWy00Niw4Ml0sWy02MSw3Nl0sWy01MCw2Nl0sWy00Niw2MF1dLAogW1stMTgwLC02NF0sWzE4MCwtNjRdLFsxODAsLTg2XSxbLTE4MCwtODZdXQpdOwoKY29uc3QgQkFTSU5TPVsKIFsiUGFjaWZpYyIsLTE0MCw1XSxbIkF0bGFudGljIiwtMzUsMTVdLFsiSW5kaWFuIiw3NSwtMThdLAogWyJTb3V0aGVybiBPY2VhbiIsLTMwLC01OF0sWyJQYWNpZmljIiwxNjUsLTEwXQpdOwoKLyogLS0tLS0tLS0tLSBiaW9yZWdpb24gbm9kZXMgLS0tLS0tLS0tLSAqLwovKiBraW5kOiAncG9wJyBzaXplZCBieSBwb3AobWlsbGlvbnMpIHwgJ3N5cycgZml4ZWQgc3lzdGVtaWMgKi8KY29uc3QgTk9ERVM9Wwoge2lkOiJNMSIsbmFtZToiQ29yYWwgVHJpYW5nbGUiLGxvbjoxMjUsbGF0Oi0yLGtpbmQ6InBvcCIscG9wOjEyMCxoZWF0OiJwYXNzaW5nIiwKICByZWdpb246IkluZG8tUGFjaWZpYyAoSW5kb25lc2lhIMK3IFBoaWxpcHBpbmVzIMK3IFBORyDCtyBNYWxheXNpYSDCtyBTb2xvbW9uIElzLiDCtyBUaW1vci1MZXN0ZSkiLAogIHBvcExhYmVsOiIxMjBNIGRpcmVjdCDCtyAzNzBNIGluIHJlZ2lvbiIsCiAgdHJpZ2dlcjoiTWFyaW5lIGhlYXR3YXZlcyAmIG1hc3MgYmxlYWNoaW5nIGNvbXBvdW5kZWQgYnkgb3ZlcmZpc2hpbmciLAogIHRpcDoiV2FybS13YXRlciByZWVmcyBwYXNzaW5nIHRoZWlyIHRocmVzaG9sZCAoMeKAkzEuNcKwQzsgfjEuMsKwQyBjZW50cmFsKS4gNHRoIGdsb2JhbCBibGVhY2hpbmcgMjAyM+KAkzI0IGhpdCB+ODQlIG9mIHJlZWZzLiIsCiAgbWVjaDoiVGhlIGdsb2JhbCBlcGljZW50cmUgb2YgbWFyaW5lIGJpb2RpdmVyc2l0eSAo4omINzYlIG9mIGNvcmFsIHNwZWNpZXMpLiBSZWVmIGFuZCBmaXNoZXJ5IGNvbGxhcHNlIHJlbW92ZXMgNTDigJM5MCUgb2YgdGhlIGFuaW1hbCBwcm90ZWluIGNvYXN0YWwgY29tbXVuaXRpZXMgZWF0LiIsCiAgY2hhaW46WyJSZWVmICYgcmVlZi1maXNoZXJ5IGNvbGxhcHNlIiwiUHJvdGVpbiBzdXBwbHkgZm9yIDEyME0rIGZhaWxzIiwiRm9vZC1wcmljZSBzdHJlc3MgYWNyb3NzIG1hcml0aW1lIFNFIEFzaWEiLCJMaXZlbGlob29kIGxvc3Mg4oaSIGludGVybmFsIGRpc3BsYWNlbWVudCAmIGluc3RhYmlsaXR5Il0sCiAgZWRnZXM6W1siTzEiLCJmb29kIl1dfSwKCiB7aWQ6Ik0yIixuYW1lOiJIdW1ib2xkdCBDdXJyZW50Iixsb246LTc4LGxhdDotMTIsa2luZDoic3lzIixoZWF0OiJyaXNrIiwKICByZWdpb246IlBlcnXigJNDaGlsZSBlYXN0ZXJuLWJvdW5kYXJ5IHVwd2VsbGluZyIsCiAgcG9wTGFiZWw6In4xNSUgb2YgdGhlIGdsb2JhbCB3aWxkIGNhdGNoIMK3IH41MCUgb2Ygd29ybGQgZmlzaG1lYWwiLAogIHRyaWdnZXI6IkVOU08gYW1wbGlmaWNhdGlvbiArIHN1cmZhY2Ugd2FybWluZyArIGRlb3h5Z2VuYXRpb24gc2h1dHRpbmcgZG93biB1cHdlbGxpbmciLAogIHRpcDoiTW9zdC1leHBsb2l0ZWQgc2luZ2xlLXNwZWNpZXMgZmlzaGVyeSBvbiBFYXJ0aCAoYW5jaG92ZXRhKTsgcGVhayBiaW9tYXNzIGFscmVhZHkgdGhvdWdodCBwYXNzZWQuIiwKICBtZWNoOiJDb3ZlcnMgMC4xJSBvZiB0aGUgb2NlYW4geWV0IGZlZWRzIHRoZSB3b3JsZCBpbmRpcmVjdGx5IOKAlCBtb3N0IGFuY2hvdmV0YSBiZWNvbWVzIGZpc2htZWFsIGZvciBnbG9iYWwgYXF1YWN1bHR1cmUsIHBvdWx0cnkgYW5kIGxpdmVzdG9jay4gSXRzIGZhaWx1cmUgaXMgYSBtYXJrZXQgc2hvY2ssIG5vdCBhIGxvY2FsIG9uZS4iLAogIGNoYWluOlsiVXB3ZWxsaW5nIHdlYWtlbnMg4oaSIGFuY2hvdmV0YSBjb2xsYXBzZSIsIkdsb2JhbCBmaXNobWVhbCAvIGZpc2gtb2lsIHN1cHBseSBjb250cmFjdHMiLCJBcXVhY3VsdHVyZSAmIGFuaW1hbC1mZWVkIGNvc3RzIHNwaWtlIHdvcmxkd2lkZSIsIlByb3RlaW4gcHJpY2VzIHRyYW5zbWl0IHRvIGltcG9ydC1kZXBlbmRlbnQgcG9wdWxhdGlvbnMiXSwKICBlZGdlczpbWyJPMiIsIm1hcmtldCJdXX0sCgoge2lkOiJNMyIsbmFtZToiQ2FuYXJ5IEN1cnJlbnQgdXB3ZWxsaW5nIixsb246LTE4LGxhdDoxOSxraW5kOiJwb3AiLHBvcDo3LGhlYXQ6InBhc3NpbmciLAogIHJlZ2lvbjoiTlcgQWZyaWNhIChNb3JvY2NvIMK3IE1hdXJpdGFuaWEgwrcgU2VuZWdhbCDCtyBHdWluZWEpIiwKICBwb3BMYWJlbDoifjdNIGRpcmVjdGx5IGRlcGVuZGVudCBvbiBmaXNoIiwKICB0cmlnZ2VyOiJXYXJtaW5nICsgaW5kdXN0cmlhbCBvdmVyZmlzaGluZyArIGZpc2htZWFsLWZhY3RvcnkgZXh0cmFjdGlvbiArIGRlb3h5Z2VuYXRpb24iLAogIHRpcDoiU2FyZGluZWxsYSBhbHJlYWR5IHNoaWZ0ZWQgPjIwMCBrbSBub3J0aDsgc29tZSBjYXRjaGVzIGRvd24gNzDigJM4MCUuIiwKICBtZWNoOiJXaGVuIFNlbmVnYWxlc2UgYW5kIE1hdXJpdGFuaWFuIHN0b2NrcyBjb2xsYXBzZWQgaW4gMjAwNSwgY2xvc2UgdG8gMzYsMDAwIHBlb3BsZSBhdHRlbXB0ZWQgdGhlIENhbmFyeSBJc2xhbmRzIGNyb3NzaW5nIG92ZXIgMjAwNeKAkzIwMDYuIEZpc2hlcnkgZmFpbHVyZSBoZXJlIGlzIGEgbWlncmF0aW9uIGVuZ2luZSBpbnRvIEV1cm9wZS4iLAogIGNoYWluOlsiU21hbGwtcGVsYWdpYyBzdG9ja3MgY29sbGFwc2UgLyBzaGlmdCBub3J0aCIsIkNvYXN0YWwgbGl2ZWxpaG9vZHMgJiBmb29kIHNlY3VyaXR5IGZhaWwiLCJJcnJlZ3VsYXIgbWlncmF0aW9uIHN1cmdlcyB0b3dhcmQgdGhlIENhbmFyeSBJc2xhbmRzIiwiUG9saXRpY2FsIHN0cmVzcyB0cmFuc21pdHRlZCBpbnRvIEV1cm9wZSJdLAogIGVkZ2VzOltbIk8zIiwibWlncmF0aW9uIl1dfSwKCiB7aWQ6Ik00IixuYW1lOiJOb3J0aCBBdGxhbnRpYyBvdmVydHVybmluZyIsbG9uOi0zMixsYXQ6NTQsa2luZDoic3lzIixoZWF0OiJyaXNrIiwKICByZWdpb246IkFNT0MgKyBTdWJwb2xhciBHeXJlIiwKICBwb3BMYWJlbDoiR2xvYmFsIGNsaW1hdGUgY29udHJvbCBub2RlIiwKICB0cmlnZ2VyOiJGcmVzaHdhdGVyIGZsdXggZnJvbSBHcmVlbmxhbmQgbWVsdCB3ZWFrZW5pbmcgZGVlcC13YXRlciBmb3JtYXRpb24iLAogIHRpcDoiQXQgcmlzayBvZiBjb2xsYXBzZSBiZWxvdyAywrBDOyBzdWJwb2xhciBneXJlIGFscmVhZHkgZmxhZ2dlZCBhcyBhIGNyb3NzaW5nIGVsZW1lbnQuIiwKICBtZWNoOiJUaGUgbWFzdGVyIG5vZGUuIEEgd2Vha2VuaW5nIEFNT0MgZGlzcnVwdHMgdGhlIFdlc3QtQWZyaWNhbiBhbmQgSW5kaWFuIG1vbnNvb25zLCBjb29scyBOVyBFdXJvcGUsIGFuZCBsb3dlcnMgYWdyaWN1bHR1cmFsIHlpZWxkcyBhY3Jvc3MgbXVjaCBvZiB0aGUgd29ybGQg4oCUIHdoaWxlIG1vZHVsYXRpbmcgdGhlIHVwd2VsbGluZyBhbmQgcmVlZiBzeXN0ZW1zIGl0IGlzIGNvdXBsZWQgdG8uIiwKICBjaGFpbjpbIkFNT0MgLyBzdWJwb2xhciBneXJlIHdlYWtlbnMiLCJXZXN0LUFmcmljYW4gJiBJbmRpYW4gbW9uc29vbnMgZGlzcnVwdGVkIiwiQWdyaWN1bHR1cmFsIHlpZWxkcyBmYWxsIGFjcm9zcyBTb3V0aCBBc2lhICYgU2FoZWwiLCJGb29kIGluc2VjdXJpdHkgZm9yIGJpbGxpb25zOyBvdGhlciBtYXJpbmUgbm9kZXMgZGVzdGFiaWxpc2VkIl0sCiAgZWRnZXM6W1siTzQiLCJjbGltYXRlIl1dLAogIG1vZHVsYXRlczpbIk0xIiwiTTIiLCJNMyIsIk04Il19LAoKIHtpZDoiTTUiLG5hbWU6IlN1bmRhcmJhbnMgbWFuZ3JvdmUgYmVsdCIsbG9uOjg5LGxhdDoyMCxraW5kOiJwb3AiLHBvcDozOCxoZWF0OiJyaXNrIiwKICByZWdpb246IkJheSBvZiBCZW5nYWwgKEJhbmdsYWRlc2ggwrcgV2VzdCBCZW5nYWwpIiwKICBwb3BMYWJlbDoifjM4TSBpbiB0aGUgcHJvdGVjdGVkIGNvYXN0YWwgem9uZSIsCiAgdHJpZ2dlcjoiTWFuZ3JvdmUgbG9zcyArIHNlYS1sZXZlbCByaXNlICsgaW50ZW5zaWZ5aW5nIGN5Y2xvbmVzIiwKICB0aXA6IkJhbmdsYWRlc2ggaXMgdGhlIHdvcmxkJ3MgbW9zdCBjeWNsb25lLWV4cG9zZWQgY291bnRyeTsgdGhlIGJlbHQgaXMgaXRzIG9ubHkgbmF0dXJhbCBzdXJnZSBiYXJyaWVyLiIsCiAgbWVjaDoiVGhlIHdvcmxkJ3MgbGFyZ2VzdCBtYW5ncm92ZSBmb3Jlc3QgYXR0ZW51YXRlcyBzdG9ybSBzdXJnZSBmb3Igb25lIG9mIHRoZSBkZW5zZXN0IGRlbHRhcyBvbiBFYXJ0aC4gUmVtb3ZlIHRoZSBiYXJyaWVyIGFuZCBzdXJnZSByZWFjaGVzIHBvcHVsYXRpb25zIHdpdGggbm90aGluZyBiZWhpbmQgaXQuIiwKICBjaGFpbjpbIk1hbmdyb3ZlIGRlZ3JhZGF0aW9uICsgcmlzaW5nIHNlYXMiLCJTdG9ybS1zdXJnZSBhdHRlbnVhdGlvbiBsb3N0IiwiQ2F0YXN0cm9waGljIGludW5kYXRpb24gb2YgdGhlIGRlbHRhIiwiTWFzcyBjYXN1YWx0aWVzICYgZGlzcGxhY2VtZW50IGluIGEgbWVnYS1kZW5zZSBkZWx0YSJdLAogIGVkZ2VzOltbIk81YSIsImNvYXN0YWwiXV19LAoKIHtpZDoiTTYiLG5hbWU6IlNvdXRoZXJuIE9jZWFuIixsb246MjAsbGF0Oi02MixraW5kOiJzeXMiLGhlYXQ6IndhdGNoIiwKICByZWdpb246IkFudGFyY3RpYyBtYXJnaW5hbCBzZWFzIiwKICBwb3BMYWJlbDoiQ2FyYm9uIHNpbmsgwrcgZm9vZC13ZWIgYmFzZSDCtyBpY2UgY291cGxpbmciLAogIHRyaWdnZXI6Ildhcm1pbmcgKyBhY2lkaWZpY2F0aW9uICsgaWNlLXNoZWxmIGxvc3MgKG1hcmluZSBpY2Utc2hlZXQgaW5zdGFiaWxpdHkpIiwKICB0aXA6IkNvdXBsZWQgdG8gV2VzdCBBbnRhcmN0aWMgaWNlLXNoZWV0IHRpcHBpbmc7IGtyaWxsIGFuZCBjYXJib24gdXB0YWtlIGJvdGggYXQgcmlzay4iLAogIG1lY2g6IktyaWxsIGFuY2hvciB0aGUgZW50aXJlIFNvdXRoZXJuLU9jZWFuIGZvb2Qgd2ViIHdoaWxlIHRoZSByZWdpb24gZHJhd3MgZG93biBhIGxhcmdlIHNoYXJlIG9mIG9jZWFuIGNhcmJvbi4gSXRzIGRlY2xpbmUgYm90aCBzdGFydmVzIHRoZSBmb29kIHdlYiBhbmQgcmVtb3ZlcyBhIGdsb2JhbCBjYXJib24gYnJha2Ug4oCUIGNvdXBsZWQgdG8gc2VhLWxldmVsIHJpc2UuIiwKICBjaGFpbjpbIldhcm1pbmcgJiBhY2lkaWZpY2F0aW9uIGhpdCBrcmlsbCIsIkZvb2Qgd2ViICh3aGFsZXMsIHBlbmd1aW5zLCBmaXNoKSBjb250cmFjdHMiLCJDYXJib24gdXB0YWtlIGZhbGxzIOKGkiB3YXJtaW5nIGFjY2VsZXJhdGVzIiwiU2VhLWxldmVsIHJpc2UgYW1wbGlmaWVzIGFjcm9zcyBhbGwgY29hc3RhbCBub2RlcyJdLAogIGVkZ2VzOltbIk82IiwiZmVlZGJhY2siXV19LAoKIHtpZDoiTTciLG5hbWU6IkFyY3RpYyBzZWEtaWNlIHN5c3RlbSIsbG9uOjQsbGF0OjgyLGtpbmQ6InN5cyIsaGVhdDoicmlzayIsCiAgcmVnaW9uOiJBcmN0aWMgT2NlYW4iLAogIHBvcExhYmVsOiJQbGFuZXRhcnkgYWxiZWRvICYgZmVlZGJhY2sgbm9kZSIsCiAgdHJpZ2dlcjoiU3VtbWVyIHNlYS1pY2UgbG9zcyIsCiAgdGlwOiJJY2UtYWxiZWRvIGZlZWRiYWNrIGFscmVhZHkgYWR2YW5jZWQ7IGVjb3N5c3RlbSByZWdpbWUgc2hpZnQgdW5kZXJ3YXkuIiwKICBtZWNoOiJTZWEtaWNlIGxvc3MgcmVwbGFjZXMgYSByZWZsZWN0aXZlIHN1cmZhY2Ugd2l0aCBkYXJrIG9jZWFuLCBhY2NlbGVyYXRpbmcgd2FybWluZyBldmVyeXdoZXJlLiBOb3QgYSBkaXJlY3QtZGVwZW5kZW5jZSBub2RlIOKAlCBhbiBhbXBsaWZpZXIgdGhhdCBwdXNoZXMgZXZlcnkgb3RoZXIgc3lzdGVtIGNsb3NlciB0byBpdHMgdGhyZXNob2xkLiIsCiAgY2hhaW46WyJTdW1tZXIgc2VhLWljZSByZXRyZWF0IiwiQWxiZWRvIGZlZWRiYWNrIOKGkiBmYXN0ZXIgd2FybWluZyIsIkV2ZXJ5IG90aGVyIG1hcmluZSB0aHJlc2hvbGQgYXBwcm9hY2hlZCBzb29uZXIiLCJDb21wb3VuZHMgcmVlZiwgdXB3ZWxsaW5nLCBBTU9DIGFuZCBpY2UgcmlzayJdLAogIGVkZ2VzOltbIk82IiwiZmVlZGJhY2siXV19LAoKIHtpZDoiTTgiLG5hbWU6Ildhcm0td2F0ZXIgY29yYWwgcmVlZnMiLGxvbjotODAsbGF0OjE3LGtpbmQ6InBvcCIscG9wOjEwMDAsaGVhdDoicGFzc2luZyIsCiAgcmVnaW9uOiJHbG9iYWwgd2FybS13YXRlciByZWVmIGJlbHQgKENhcmliYmVhbiBtYXJrZXIpIiwKICBwb3BMYWJlbDoifjEgYmlsbGlvbiBwZW9wbGUgZGVwZW5kIGdsb2JhbGx5IiwKICB0cmlnZ2VyOiJPY2VhbiB0aGVybWFsIHRocmVzaG9sZCBleGNlZWRlZCAoPjEuMsKwQyBhYm92ZSBwcmUtaW5kdXN0cmlhbCkiLAogIHRpcDoiUGFzc2luZyB0aXBwaW5nIHBvaW50IG5vdzsgYSBxdWFydGVyIG9mIGFsbCBtYXJpbmUgbGlmZSBkZXBlbmRzIG9uIHJlZWZzLiIsCiAgbWVjaDoiQmV5b25kIGZvb2QsIHJlZWZzIGFyZSBjb2FzdGFsIGFybW91ciBmb3IgYSBiaWxsaW9uIHBlb3BsZS4gQXMgdGhlIGJlbHQgZGllcyBiYWNrIHdvcmxkd2lkZSwgdGhlIHNob3JlbGluZSBwcm90ZWN0aW9uIGl0IHByb3ZpZGVzIOKAlCBmcm9tIHRoZSBDYXJpYmJlYW4gdG8gdGhlIEluZG8tUGFjaWZpYyDigJQgZ29lcyB3aXRoIGl0LiIsCiAgY2hhaW46WyJHbG9iYWwgcmVlZiBkaWViYWNrIiwiTG9zcyBvZiBuYXR1cmFsIGNvYXN0YWwtd2F2ZSBwcm90ZWN0aW9uIiwiU2hvcmVsaW5lcyBleHBvc2VkIHRvIHN1cmdlICYgZXJvc2lvbiIsIkNvYXN0YWwgZGlzcGxhY2VtZW50IGFjcm9zcyB0aGUgdHJvcGljcyJdLAogIGVkZ2VzOltbIk81YiIsImNvYXN0YWwiXV19Cl07CgovKiAtLS0tLS0tLS0tIG91dGNvbWUgbm9kZXMgLS0tLS0tLS0tLSAqLwpjb25zdCBPVVQ9ewogTzE6e2xvbjoxMTQsbGF0Oi05LGxhYmVsOiJSZWdpb25hbCBwcm90ZWluIGNvbGxhcHNlIixzdWI6Im1hcml0aW1lIFNFIEFzaWEiLGE6InN0YXJ0In0sCiBPMjp7bG9uOi0xMTgsbGF0Oi0yNyxsYWJlbDoiR2xvYmFsIGZlZWQgJiBwcmljZSBzaG9jayIsc3ViOiJ3b3JsZHdpZGUgbWFya2V0cyIsYToic3RhcnQifSwKIE8zOntsb246OCxsYXQ6NDUsbGFiZWw6IkZvcmNlZCBtaWdyYXRpb24iLHN1Yjoi4oaSIEV1cm9wZSIsYToic3RhcnQifSwKIE80Ontsb246NTUsbGF0OjMsbGFiZWw6Ik1vbnNvb24gJiBoYXJ2ZXN0IGZhaWx1cmUiLHN1YjoiU291dGggQXNpYSArIFNhaGVsIMK3IGJpbGxpb25zIixhOiJlbmQifSwKIE81YTp7bG9uOjg3LGxhdDozLGxhYmVsOiJEZWx0YSBpbnVuZGF0aW9uIixzdWI6IkJlbmdhbCBkaXNwbGFjZW1lbnQiLGE6InN0YXJ0In0sCiBPNWI6e2xvbjotMTA0LGxhdDotNCxsYWJlbDoiQ29hc3RhbCBpbnVuZGF0aW9uIixzdWI6InRyb3BpY2FsIHNob3JlbGluZXMiLGE6ImVuZCJ9LAogTzY6e2xvbjo0NCxsYXQ6LTQ2LGxhYmVsOiJDYXJib24tc2luayBsb3NzICYgc2VhLWxldmVsIHJpc2UiLHN1YjoiZ2xvYmFsIGZlZWRiYWNrIixhOiJzdGFydCJ9Cn07CgovKiByZWxheTogZ2xvYmFsIG1hcmtldCBzaG9jayByYWRpYXRlcyBvbndhcmQgKi8KY29uc3QgUkVMQVk9W1siTzIiLCJPMSIsIm1hcmtldCJdLFsiTzIiLCJPNCIsIm1hcmtldCJdXTsKLyogZmVlZGJhY2sgbG9vcCBiYWNrIHRvIG1hc3RlciBub2RlICovCmNvbnN0IExPT1A9W1siTzYiLCJNNCIsImZlZWRiYWNrIl1dOwoKY29uc3QgUEFUSF9DT0xPUj17Zm9vZDoidmFyKC0tZm9vZCkiLG1hcmtldDoidmFyKC0tbWFya2V0KSIsbWlncmF0aW9uOiJ2YXIoLS1taWdyYXRpb24pIiwKICBjb2FzdGFsOiJ2YXIoLS1jb2FzdGFsKSIsY2xpbWF0ZToidmFyKC0tY2xpbWF0ZSkiLGZlZWRiYWNrOiJ2YXIoLS1mZWVkYmFjaykifTsKY29uc3QgSEVBVD17cGFzc2luZzoidmFyKC0taGVhdC1wYXNzaW5nKSIscmlzazoidmFyKC0taGVhdC1yaXNrKSIsd2F0Y2g6InZhcigtLWhlYXQtd2F0Y2gpIn07CmNvbnN0IEhFQVRfTEFCRUw9e3Bhc3Npbmc6WyJQYXNzaW5nIHRocmVzaG9sZCBub3ciLCJ2YXIoLS1oZWF0LXBhc3NpbmcpIl0sCiAgcmlzazpbIkhpZ2ggbmVhci10ZXJtIHJpc2siLCJ2YXIoLS1oZWF0LXJpc2spIl0sd2F0Y2g6WyJPbiB3YXRjaCIsInZhcigtLWhlYXQtd2F0Y2gpIl19OwoKY29uc3QgU1ZHTlM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIjsKY29uc3Qgc3ZnPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJtYXAiKTsKY29uc3QgZWw9KG4sYT17fSk9Pntjb25zdCBlPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnROUyhTVkdOUyxuKTtmb3IoY29uc3QgayBpbiBhKWUuc2V0QXR0cmlidXRlKGssYVtrXSk7cmV0dXJuIGU7fTsKCi8qIHJhZGl1cyBmb3IgcG9wdWxhdGlvbiBub2RlcyAqLwpjb25zdCByT2Y9bj0+IG4ua2luZD09PSJzeXMiID8gOSA6IE1hdGgubWF4KDYuNSwgTWF0aC5zcXJ0KG4ucG9wKSowLjk1KTsKCi8qIGxheWVyIGdyb3VwcyAqLwpjb25zdCBnR2VvPWVsKCJnIiksZ0VkZ2U9ZWwoImciKSxnT3V0PWVsKCJnIiksZ05vZGU9ZWwoImciKTsKCi8qIGdyYXRpY3VsZSAqLwpmb3IobGV0IGxvbj0tMTUwO2xvbjw9MTUwO2xvbis9MzApe2NvbnN0W2EsXT1wcm9qKGxvbiw5MCksW2IsXT1wcm9qKGxvbiwtOTApOwogIGdHZW8uYXBwZW5kQ2hpbGQoZWwoImxpbmUiLHtjbGFzczoiZ3JpZC1saW5lIix4MTphLHkxOjAseDI6Yix5MjpIfSkpO30KZm9yKGxldCBsYXQ9LTYwO2xhdDw9NjA7bGF0Kz0zMCl7Y29uc3RbLGFdPXByb2ooLTE4MCxsYXQpOwogIGdHZW8uYXBwZW5kQ2hpbGQoZWwoImxpbmUiLHtjbGFzczoiZ3JpZC1saW5lIix4MTowLHkxOmEseDI6Vyx5MjphfSkpO30KLyogY29udGluZW50cyAqLwpDT05USU5FTlRTLmZvckVhY2gocmluZz0+ewogIGNvbnN0IGQ9cmluZy5tYXAoKHAsaSk9Pntjb25zdFt4LHldPXByb2oocFswXSxwWzFdKTtyZXR1cm4gKGk/IkwiOiJNIikreC50b0ZpeGVkKDEpKyIgIit5LnRvRml4ZWQoMSk7fSkuam9pbigiICIpKyIgWiI7CiAgZ0dlby5hcHBlbmRDaGlsZChlbCgicGF0aCIse2NsYXNzOiJjb250aW5lbnQiLGR9KSk7Cn0pOwpCQVNJTlMuZm9yRWFjaCgoW3QsbG9uLGxhdF0pPT57Y29uc3RbeCx5XT1wcm9qKGxvbixsYXQpOwogIGNvbnN0IHR4PWVsKCJ0ZXh0Iix7Y2xhc3M6ImJhc2luLWxhYmVsIix4LHl9KTt0eC50ZXh0Q29udGVudD10O2dHZW8uYXBwZW5kQ2hpbGQodHgpO30pOwoKLyogYXJyb3doZWFkIG1hcmtlcnMgcGVyIGNvbG91ciAqLwpjb25zdCBkZWZzPWVsKCJkZWZzIik7Ck9iamVjdC5lbnRyaWVzKFBBVEhfQ09MT1IpLmZvckVhY2goKFtrLGNdKT0+ewogIGNvbnN0IG09ZWwoIm1hcmtlciIse2lkOiJhaC0iK2ssdmlld0JveDoiMCAwIDEwIDEwIixyZWZYOiI4IixyZWZZOiI1IiwKICAgIG1hcmtlcldpZHRoOiI2IixtYXJrZXJIZWlnaHQ6IjYiLG9yaWVudDoiYXV0by1zdGFydC1yZXZlcnNlIn0pOwogIG0uYXBwZW5kQ2hpbGQoZWwoInBhdGgiLHtkOiJNMCAxIEw5IDUgTDAgOSB6IixmaWxsOmN9KSk7CiAgZGVmcy5hcHBlbmRDaGlsZChtKTsKfSk7CnN2Zy5hcHBlbmRDaGlsZChkZWZzKTsKCi8qIGN1cnZlZCBlZGdlIHBhdGggKi8KZnVuY3Rpb24gZWRnZVBhdGgoYSxiLGN1cnZlPTAuMTgpewogIGNvbnN0W3gxLHkxXT1hLFt4Mix5Ml09YjsKICBjb25zdCBteD0oeDEreDIpLzIsbXk9KHkxK3kyKS8yOwogIGNvbnN0IGR4PXgyLXgxLGR5PXkyLXkxOwogIGNvbnN0IG54PS1keSxueT1keDsKICBjb25zdCBjeD1teCtueCpjdXJ2ZSxjeT1teStueSpjdXJ2ZTsKICByZXR1cm4gYE0ke3gxfSAke3kxfSBRJHtjeH0gJHtjeX0gJHt4Mn0gJHt5Mn1gOwp9CgovKiBidWlsZCBvdXRjb21lIG5vZGVzICovCmNvbnN0IG91dFBvcz17fSxvdXRHcm91cD17fTsKT2JqZWN0LmVudHJpZXMoT1VUKS5mb3JFYWNoKChbaWQsb10pPT57CiAgY29uc3RbeCx5XT1wcm9qKG8ubG9uLG8ubGF0KTtvdXRQb3NbaWRdPVt4LHldOwogIGNvbnN0IGc9ZWwoImciLHtjbGFzczoib25vZGUtZyJ9KTsKICBnLmFwcGVuZENoaWxkKGVsKCJyZWN0Iix7Y2xhc3M6Im9ub2RlIix4OngtMyx5OnktMyx3aWR0aDo2LGhlaWdodDo2LHJ4OjEsCiAgICB0cmFuc2Zvcm06YHJvdGF0ZSg0NSAke3h9ICR7eX0pYH0pKTsKICBjb25zdCBhbmM9by5hPT09ImVuZCI/ImVuZCI6InN0YXJ0IjsKICBjb25zdCBseD1vLmE9PT0iZW5kIj8geC05IDogeCs5OwogIGNvbnN0IHQxPWVsKCJ0ZXh0Iix7Y2xhc3M6Im9ub2RlLWxhYmVsIix4Omx4LHk6eS0xLCJ0ZXh0LWFuY2hvciI6YW5jfSk7dDEudGV4dENvbnRlbnQ9by5sYWJlbDsKICBjb25zdCB0Mj1lbCgidGV4dCIse2NsYXNzOiJvbm9kZS1zdWIiLHg6bHgseTp5KzksInRleHQtYW5jaG9yIjphbmN9KTt0Mi50ZXh0Q29udGVudD1vLnN1YjsKICBnLmFwcGVuZENoaWxkKHQxKTtnLmFwcGVuZENoaWxkKHQyKTsKICBnT3V0LmFwcGVuZENoaWxkKGcpO291dEdyb3VwW2lkXT1nOwp9KTsKCi8qIGJ1aWxkIGVkZ2VzICovCmNvbnN0IEVER0VTPVtdOwpOT0RFUy5mb3JFYWNoKG49PnsKICBjb25zdCBmcm9tPXByb2oobi5sb24sbi5sYXQpOwogIChuLmVkZ2VzfHxbXSkuZm9yRWFjaCgoW3RvLHR5cGVdKT0+ewogICAgY29uc3QgcD1lZGdlUGF0aChmcm9tLG91dFBvc1t0b10pOwogICAgY29uc3QgcGF0aD1lbCgicGF0aCIse2NsYXNzOiJlZGdlIGZsb3ciLGQ6cCxzdHJva2U6UEFUSF9DT0xPUlt0eXBlXSwKICAgICAgInN0cm9rZS13aWR0aCI6TWF0aC5tYXgoMS40LHJPZihuKS84KzEpLAogICAgICAibWFya2VyLWVuZCI6YHVybCgjYWgtJHt0eXBlfSlgLCJkYXRhLXR5cGUiOnR5cGUsImRhdGEtb3duZXIiOm4uaWQsb3BhY2l0eTouOX0pOwogICAgZ0VkZ2UuYXBwZW5kQ2hpbGQocGF0aCk7RURHRVMucHVzaCh7cGF0aCx0eXBlLG93bmVyOm4uaWQsdG99KTsKICB9KTsKfSk7Ci8qIHJlbGF5cyAqLwpSRUxBWS5mb3JFYWNoKChbYSxiLHR5cGVdKT0+ewogIGNvbnN0IHA9ZWRnZVBhdGgob3V0UG9zW2FdLG91dFBvc1tiXSwwLjEpOwogIGNvbnN0IHBhdGg9ZWwoInBhdGgiLHtjbGFzczoiZWRnZSBmbG93IixkOnAsc3Ryb2tlOlBBVEhfQ09MT1JbdHlwZV0sInN0cm9rZS13aWR0aCI6MS40LAogICAgIm1hcmtlci1lbmQiOmB1cmwoI2FoLSR7dHlwZX0pYCwiZGF0YS10eXBlIjp0eXBlLCJkYXRhLW93bmVyIjoiTTIiLG9wYWNpdHk6LjcsInN0cm9rZS1kYXNoYXJyYXkiOiIyIDkifSk7CiAgZ0VkZ2UuYXBwZW5kQ2hpbGQocGF0aCk7RURHRVMucHVzaCh7cGF0aCx0eXBlLG93bmVyOiJNMiIsdG86Yn0pOwp9KTsKLyogbG9vcCAqLwpMT09QLmZvckVhY2goKFthLGIsdHlwZV0pPT57CiAgY29uc3QgcD1lZGdlUGF0aChvdXRQb3NbYV0scHJvaihOT0RFUy5maW5kKG49Pm4uaWQ9PT1iKS5sb24sTk9ERVMuZmluZChuPT5uLmlkPT09YikubGF0KSwwLjIyKTsKICBjb25zdCBwYXRoPWVsKCJwYXRoIix7Y2xhc3M6ImVkZ2UgZmxvdyIsZDpwLHN0cm9rZTpQQVRIX0NPTE9SW3R5cGVdLCJzdHJva2Utd2lkdGgiOjEuMiwKICAgICJtYXJrZXItZW5kIjpgdXJsKCNhaC0ke3R5cGV9KWAsImRhdGEtdHlwZSI6dHlwZSwiZGF0YS1vd25lciI6Ik02IixvcGFjaXR5Oi41NX0pOwogIGdFZGdlLmFwcGVuZENoaWxkKHBhdGgpO0VER0VTLnB1c2goe3BhdGgsdHlwZSxvd25lcjoiTTYiLHRvOmJ9KTsKfSk7Ci8qIG1vZHVsYXRpb24gdGV0aGVycyAqLwpjb25zdCBNT0Q9W107Ck5PREVTLmZpbHRlcihuPT5uLm1vZHVsYXRlcykuZm9yRWFjaChuPT57CiAgY29uc3QgZnJvbT1wcm9qKG4ubG9uLG4ubGF0KTsKICBuLm1vZHVsYXRlcy5mb3JFYWNoKHRpZD0+ewogICAgY29uc3QgdD1OT0RFUy5maW5kKG09Pm0uaWQ9PT10aWQpO2NvbnN0IHRvPXByb2oodC5sb24sdC5sYXQpOwogICAgY29uc3QgcGF0aD1lbCgicGF0aCIse2NsYXNzOiJtb2RsaW5lIixkOmVkZ2VQYXRoKGZyb20sdG8sMC4xNCksImRhdGEtb3duZXIiOm4uaWR9KTsKICAgIGdFZGdlLmFwcGVuZENoaWxkKHBhdGgpO01PRC5wdXNoKHtwYXRoLG93bmVyOm4uaWQsdGFyZ2V0OnRpZH0pOwogIH0pOwp9KTsKCi8qIGJ1aWxkIGJpb3JlZ2lvbiBub2RlcyAqLwpOT0RFUy5mb3JFYWNoKChuLGkpPT57CiAgY29uc3RbeCx5XT1wcm9qKG4ubG9uLG4ubGF0KTtjb25zdCByPXJPZihuKTsKICBjb25zdCBnPWVsKCJnIix7Y2xhc3M6ImJub2RlIix0YWJpbmRleDoiMCIscm9sZToiYnV0dG9uIiwKICAgICJhcmlhLWxhYmVsIjpuLm5hbWUrIiDigJQgIituLnBvcExhYmVsKyIuICIrbi50cmlnZ2VyKyIuIn0pOwogIGcuc3R5bGUuYW5pbWF0aW9uRGVsYXk9KGkqNDUpKyJtcyI7CiAgLyogZW5sYXJnZWQgaW52aXNpYmxlIHRvdWNoIHRhcmdldCAqLwogIGcuYXBwZW5kQ2hpbGQoZWwoImNpcmNsZSIse2N4OngsY3k6eSxyOk1hdGgubWF4KHIrMTEsMTcpLGZpbGw6InRyYW5zcGFyZW50In0pKTsKICBnLmFwcGVuZENoaWxkKGVsKCJjaXJjbGUiLHtjbGFzczoiZm9jdXNyaW5nIixjeDp4LGN5OnkscjpyKzd9KSk7CiAgLyogaGVhdCByaW5nICovCiAgZy5hcHBlbmRDaGlsZChlbCgiY2lyY2xlIix7Y2xhc3M6ImhhbG8iLGN4OngsY3k6eSxyOnIrMy41LHN0cm9rZTpIRUFUW24uaGVhdF19KSk7CiAgaWYobi5raW5kPT09InN5cyIpewogICAgZy5hcHBlbmRDaGlsZChlbCgiY2lyY2xlIix7Y2xhc3M6InN5c3JpbmciLGN4OngsY3k6eSxyOnIrNi41LHN0cm9rZToiIzlmYjBjYyIsInN0cm9rZS13aWR0aCI6MX0pKTsKICB9CiAgZy5hcHBlbmRDaGlsZChlbCgiY2lyY2xlIix7Y2xhc3M6ImNvcmUiLGN4OngsY3k6eSxyfSkpOwogIGNvbnN0IGNvZGU9ZWwoInRleHQiLHtjbGFzczoiY29kZSIseCx5fSk7Y29kZS50ZXh0Q29udGVudD1uLmlkO2cuYXBwZW5kQ2hpbGQoY29kZSk7CiAgLyogbGFiZWw6IGJlbG93IG5vZGUgd2hlbiBuZWFyIHRvcCBlZGdlLCBzaWRlIG90aGVyd2lzZSAqLwogIGNvbnN0IG5lYXI9eS1yLTg8MTY7CiAgY29uc3Qgbm09ZWwoInRleHQiLHtjbGFzczoiYm5hbWUifSk7CiAgbm0uc2V0QXR0cmlidXRlKCJ4IiwgeD44NjA/IHgtci0yIDogKHg8MTQwPyB4K3IrMiA6IHgrcis0KSk7CiAgbm0uc2V0QXR0cmlidXRlKCJ5IiwgbmVhcj8geStyKzEzIDogeS1yLTgpOwogIG5tLnNldEF0dHJpYnV0ZSgidGV4dC1hbmNob3IiLCB4Pjg2MD8iZW5kIjoic3RhcnQiKTsKICBubS50ZXh0Q29udGVudD1uLm5hbWU7Zy5hcHBlbmRDaGlsZChubSk7CiAgZy5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsZT0+e2Uuc3RvcFByb3BhZ2F0aW9uKCk7c2VsZWN0KG4uaWQpO30pOwogIGcuYWRkRXZlbnRMaXN0ZW5lcigia2V5ZG93biIsZT0+e2lmKGUua2V5PT09IkVudGVyInx8ZS5rZXk9PT0iICIpe2UucHJldmVudERlZmF1bHQoKTtzZWxlY3Qobi5pZCk7fX0pOwogIGcuYWRkRXZlbnRMaXN0ZW5lcigibW91c2VlbnRlciIsKCk9PmhvdmVySW4obi5pZCkpOwogIGcuYWRkRXZlbnRMaXN0ZW5lcigibW91c2VsZWF2ZSIsaG92ZXJPdXQpOwogIGcuYWRkRXZlbnRMaXN0ZW5lcigiZm9jdXMiLCgpPT5ob3ZlckluKG4uaWQpKTsKICBnLmFkZEV2ZW50TGlzdGVuZXIoImJsdXIiLGhvdmVyT3V0KTsKICBnTm9kZS5hcHBlbmRDaGlsZChnKTsKICBuLl9nPWc7bi5feHk9W3gseV07Cn0pOwoKc3ZnLmFwcGVuZENoaWxkKGdHZW8pO3N2Zy5hcHBlbmRDaGlsZChnRWRnZSk7c3ZnLmFwcGVuZENoaWxkKGdPdXQpO3N2Zy5hcHBlbmRDaGlsZChnTm9kZSk7CnN2Zy5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsKCk9PnNlbGVjdChudWxsKSk7CgovKiAtLS0tLS0tLS0tIGZpbHRlciBjaGlwcyAtLS0tLS0tLS0tICovCmNvbnN0IFRZUEVTPVtbImZvb2QiLCJGb29kIl0sWyJtYXJrZXQiLCJNYXJrZXQiXSxbIm1pZ3JhdGlvbiIsIk1pZ3JhdGlvbiJdLAogIFsiY29hc3RhbCIsIkNvYXN0YWwiXSxbImNsaW1hdGUiLCJDbGltYXRlIl0sWyJmZWVkYmFjayIsIkZlZWRiYWNrIl1dOwpjb25zdCB0b29scz1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgidG9vbHMiKTsKY29uc3QgYWN0aXZlPW5ldyBTZXQoVFlQRVMubWFwKHQ9PnRbMF0pKTsKVFlQRVMuZm9yRWFjaCgoW2ssbGFiZWxdKT0+ewogIGNvbnN0IGI9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiYnV0dG9uIik7CiAgYi5jbGFzc05hbWU9ImNoaXAiO2Iuc2V0QXR0cmlidXRlKCJhcmlhLXByZXNzZWQiLCJ0cnVlIik7CiAgYi5pbm5lckhUTUw9YDxzcGFuIGNsYXNzPSJzdyIgc3R5bGU9ImJhY2tncm91bmQ6JHtQQVRIX0NPTE9SW2tdfSI+PC9zcGFuPiR7bGFiZWx9YDsKICBiLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwoKT0+ewogICAgaWYoYWN0aXZlLmhhcyhrKSl7YWN0aXZlLmRlbGV0ZShrKTtiLnNldEF0dHJpYnV0ZSgiYXJpYS1wcmVzc2VkIiwiZmFsc2UiKTt9CiAgICBlbHNle2FjdGl2ZS5hZGQoayk7Yi5zZXRBdHRyaWJ1dGUoImFyaWEtcHJlc3NlZCIsInRydWUiKTt9CiAgICBhcHBseUZpbHRlcigpOwogIH0pOwogIHRvb2xzLmFwcGVuZENoaWxkKGIpOwp9KTsKZnVuY3Rpb24gYXBwbHlGaWx0ZXIoKXsKICBFREdFUy5mb3JFYWNoKGU9PntlLnBhdGguc3R5bGUuZGlzcGxheT1hY3RpdmUuaGFzKGUudHlwZSk/IiI6Im5vbmUiO30pOwogIE1PRC5mb3JFYWNoKG09PnttLnBhdGguc3R5bGUuZGlzcGxheT1hY3RpdmUuaGFzKCJmZWVkYmFjayIpPyIiOiJub25lIjt9KTsKfQphcHBseUZpbHRlcigpOwoKLyogLS0tLS0tLS0tLSBzZWxlY3Rpb24gJiBoaWdobGlnaHQgLS0tLS0tLS0tLSAqLwpsZXQgY3VycmVudD1udWxsOwpjb25zdCBwcmltYXJ5VHlwZT1uPT4obi5lZGdlcyYmbi5lZGdlc1swXSk/bi5lZGdlc1swXVsxXToiZmVlZGJhY2siOwoKZnVuY3Rpb24gYXBwbHlIaWdobGlnaHQoaWQpewogIGlmKCFpZCl7CiAgICBFREdFUy5mb3JFYWNoKGU9PmUucGF0aC5jbGFzc0xpc3QucmVtb3ZlKCJkaW1tZWQiLCJob3QiKSk7CiAgICBNT0QuZm9yRWFjaChtPT57bS5wYXRoLmNsYXNzTGlzdC5yZW1vdmUoImRpbW1lZCIsImhvdCIpO20ucGF0aC5zdHlsZS5vcGFjaXR5PSIiO30pOwogICAgTk9ERVMuZm9yRWFjaChuPT5uLl9nLmNsYXNzTGlzdC5yZW1vdmUoImRpbW1lZCIpKTsKICAgIE9iamVjdC52YWx1ZXMob3V0R3JvdXApLmZvckVhY2goZz0+Zy5jbGFzc0xpc3QucmVtb3ZlKCJvaG90Iiwib2RpbSIpKTsKICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoIi5pZHgtcm93IikuZm9yRWFjaChyPT5yLmNsYXNzTGlzdC5yZW1vdmUoImFjdGl2ZSIpKTsKICAgIHJldHVybjsKICB9CiAgY29uc3Qgbj1OT0RFUy5maW5kKHg9PnguaWQ9PT1pZCk7CiAgY29uc3QgcmVsYXRlZD1uZXcgU2V0KFtpZCwuLi4obi5tb2R1bGF0ZXN8fFtdKV0pOwogIGNvbnN0IGFjdGl2ZU91dD1uZXcgU2V0KEVER0VTLmZpbHRlcihlPT5lLm93bmVyPT09aWQpLm1hcChlPT5lLnRvKSk7CiAgRURHRVMuZm9yRWFjaChlPT57Y29uc3Qgb249ZS5vd25lcj09PWlkO2UucGF0aC5jbGFzc0xpc3QudG9nZ2xlKCJob3QiLG9uKTtlLnBhdGguY2xhc3NMaXN0LnRvZ2dsZSgiZGltbWVkIiwhb24pO30pOwogIE1PRC5mb3JFYWNoKG09Pntjb25zdCBvbj1tLm93bmVyPT09aWQ7bS5wYXRoLmNsYXNzTGlzdC50b2dnbGUoImhvdCIsb24pO20ucGF0aC5jbGFzc0xpc3QudG9nZ2xlKCJkaW1tZWQiLCFvbik7bS5wYXRoLnN0eWxlLm9wYWNpdHk9b24/IjAuOSI6IiI7fSk7CiAgTk9ERVMuZm9yRWFjaCh4PT54Ll9nLmNsYXNzTGlzdC50b2dnbGUoImRpbW1lZCIsIXJlbGF0ZWQuaGFzKHguaWQpKSk7CiAgT2JqZWN0LmVudHJpZXMob3V0R3JvdXApLmZvckVhY2goKFtvaWQsZ10pPT57CiAgICBjb25zdCBvbj1hY3RpdmVPdXQuaGFzKG9pZCk7CiAgICBnLmNsYXNzTGlzdC50b2dnbGUoIm9ob3QiLG9uKTsKICAgIGcuY2xhc3NMaXN0LnRvZ2dsZSgib2RpbSIsIW9uKTsKICB9KTsKICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCIuaWR4LXJvdyIpLmZvckVhY2gocj0+ci5jbGFzc0xpc3QudG9nZ2xlKCJhY3RpdmUiLHIuZGF0YXNldC5pZD09PWlkKSk7Cn0KCmZ1bmN0aW9uIHNldFBhbmVsKGlkKXsKICBjb25zdCBvdj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZHotb3ZlcnZpZXciKTsKICBjb25zdCBkdD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiZHotZGV0YWlsIik7CiAgaWYoIWlkKXsKICAgIG92LmNsYXNzTGlzdC5hZGQoIm9uIik7ZHQuY2xhc3NMaXN0LnJlbW92ZSgib24iKTsKICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJwayIpLnRleHRDb250ZW50PSJSZWFkaW5nIHRoZSBtYXAiOwogICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInB0IikudGV4dENvbnRlbnQ9IkxlZ2VuZCAmIG1ldGhvZCI7CiAgICByZXR1cm47CiAgfQogIGNvbnN0IG49Tk9ERVMuZmluZCh4PT54LmlkPT09aWQpOwogIG92LmNsYXNzTGlzdC5yZW1vdmUoIm9uIik7ZHQuY2xhc3NMaXN0LmFkZCgib24iKTsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicGsiKS50ZXh0Q29udGVudD1uLnJlZ2lvbjsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicHQiKS50ZXh0Q29udGVudD1uLm5hbWU7CiAgY29uc3RbaGwsaGNdPUhFQVRfTEFCRUxbbi5oZWF0XTsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibWV0YSIpLmlubmVySFRNTD1gCiAgICA8ZGl2IGNsYXNzPSJtZXRhLWsiPkRlcGVuZGVuY2U8L2Rpdj4KICAgIDxkaXYgY2xhc3M9Im1ldGEtdiI+PHNwYW4gY2xhc3M9ImJpZyI+JHtuLnBvcExhYmVsfTwvc3Bhbj48L2Rpdj4KICAgIDxkaXYgY2xhc3M9Im1ldGEtayI+VHJpZ2dlcjwvZGl2PjxkaXYgY2xhc3M9Im1ldGEtdiI+JHtuLnRyaWdnZXJ9PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJtZXRhLWsiPlN0YXR1czwvZGl2PgogICAgPGRpdiBjbGFzcz0ibWV0YS12Ij48c3BhbiBjbGFzcz0idGlwLWJhZGdlIiBzdHlsZT0iYmFja2dyb3VuZDoke2hjfSI+JHtobH08L3NwYW4+PC9kaXY+YDsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibWVjaHdyYXAiKS5pbm5lckhUTUw9YAogICAgPHAgY2xhc3M9Im1lY2giPiR7bi5tZWNofTwvcD4KICAgIDxwIGNsYXNzPSJzZWMtaCI+Q2FzY2FkZSBjaGFpbjwvcD4KICAgIDx1bCBjbGFzcz0iY2hhaW4iPiR7bi5jaGFpbi5tYXAoYz0+YDxsaT4ke2N9PC9saT5gKS5qb2luKCIiKX08L3VsPmA7Cn0KCmZ1bmN0aW9uIHNlbGVjdChpZCl7Y3VycmVudD1pZDtzZXRQYW5lbChpZCk7YXBwbHlIaWdobGlnaHQoaWQpO30KZnVuY3Rpb24gaG92ZXJJbihpZCl7YXBwbHlIaWdobGlnaHQoaWQpO30KZnVuY3Rpb24gaG92ZXJPdXQoKXthcHBseUhpZ2hsaWdodChjdXJyZW50KTt9CgovKiAtLS0tLS0tLS0tIG5vZGUgaW5kZXggKHNjYW5uYWJsZSArIHRvdWNoLWZyaWVuZGx5KSAtLS0tLS0tLS0tICovCihmdW5jdGlvbiBidWlsZEluZGV4KCl7CiAgY29uc3QgaG9zdD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibm9kZWluZGV4Iik7CiAgTk9ERVMuZm9yRWFjaChuPT57CiAgICBjb25zdCByb3c9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiYnV0dG9uIik7CiAgICByb3cuY2xhc3NOYW1lPSJpZHgtcm93Ijtyb3cuZGF0YXNldC5pZD1uLmlkOwogICAgcm93LnNldEF0dHJpYnV0ZSgiYXJpYS1sYWJlbCIsbi5uYW1lKyIg4oCUICIrbi5wb3BMYWJlbCk7CiAgICByb3cuaW5uZXJIVE1MPWAKICAgICAgPHNwYW4gY2xhc3M9ImlkeC1jb2RlICR7bi5raW5kPT09J3N5cyc/J3N5cyc6Jyd9Ij4ke24uaWR9PC9zcGFuPgogICAgICA8c3Bhbj48c3BhbiBjbGFzcz0iaWR4LW5hbWUiPiR7bi5uYW1lfTwvc3Bhbj48c3BhbiBjbGFzcz0iaWR4LWRlcCI+JHtuLnBvcExhYmVsfTwvc3Bhbj48L3NwYW4+CiAgICAgIDxzcGFuIGNsYXNzPSJpZHgtZG90IiBzdHlsZT0iYmFja2dyb3VuZDoke1BBVEhfQ09MT1JbcHJpbWFyeVR5cGUobildfSI+PC9zcGFuPmA7CiAgICByb3cuYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCgpPT5zZWxlY3Qobi5pZCkpOwogICAgcm93LmFkZEV2ZW50TGlzdGVuZXIoIm1vdXNlZW50ZXIiLCgpPT5ob3ZlckluKG4uaWQpKTsKICAgIHJvdy5hZGRFdmVudExpc3RlbmVyKCJtb3VzZWxlYXZlIixob3Zlck91dCk7CiAgICBob3N0LmFwcGVuZENoaWxkKHJvdyk7CiAgfSk7Cn0pKCk7CgovKiByZWR1Y2VkIG1vdGlvbiAqLwppZih3aW5kb3cubWF0Y2hNZWRpYSYmd2luZG93Lm1hdGNoTWVkaWEoIihwcmVmZXJzLXJlZHVjZWQtbW90aW9uOiByZWR1Y2UpIikubWF0Y2hlcyl7CiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgiLmVkZ2UuZmxvdyIpLmZvckVhY2goZT0+ZS5jbGFzc0xpc3QucmVtb3ZlKCJmbG93IikpOwp9Cjwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4K" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 02 THE STUDIO ==================== -->
+<section id="studio">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">02 — The studio</h1>
+      <div class="section-note">A venture studio, not a fund and not an advocacy body: it builds the missing institutions directly, resources them through a shared capital stack, and places operators inside what it builds.</div>
+    </div>
+
+    <p class="measure">The Oceans Continuity Studio (OCS) builds ventures the way a venture studio builds companies — a repeatable formation process, a shared build capability drawn on across the whole portfolio, staged capital matched to what has been proven, and operators embedded in each venture rather than supervising from outside. Where a conventional venture studio spins out companies, this one spins out the governance bodies, legal instruments, data infrastructure, and financing facilities that ocean systems need and that no existing institution is positioned to build.</p>
+
+    <p class="measure">The reason it takes the studio form is the political-economy lock-in named above. The missing institutions are transnational, cross-sectoral, and long-horizon; they do not emerge from any single incumbent because every incumbent is structured to optimise its own mandate. A studio can hold the whole picture — assembling actors who would not otherwise coordinate, carrying capability between contexts, and staging capital so that early, catalytic money de-risks the later, larger money that follows. It is a capitalisation and coordination architecture for continuity, built to work at the scale the problem actually operates at.</p>
+
+    <table class="isnot">
+      <tr><th>The studio is</th><th>The studio is not</th></tr>
+      <tr><td>A formation studio with a capital function — it builds an institution, resources it, and hands it off to run under its own governance.</td><td>An advocacy body arguing for better ocean governance from outside it.</td></tr>
+      <tr><td>Operationally embedded in what it builds, through placed operators.</td><td>A grant-maker or adviser supervising at a distance.</td></tr>
+      <tr><td>A proof-of-pathway institution — build the model once, prove it, let it travel.</td><td>A consultancy producing frameworks nobody is resourced to run.</td></tr>
+      <tr><td>A portfolio spanning capability domains and marine systems.</td><td>A single-issue or single-geography project.</td></tr>
+      <tr><td>Capitalised in stages matched to proof — catalytic capital first, institutional capital last.</td><td>A conventional fund pricing execution against legible near-term demand.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== 03 ARCHITECTURE ==================== -->
+<section id="architecture">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">03 — The architecture</h1>
+      <div class="section-note">Four capability domains, a portfolio of place-based options, and shared build capability between them. Read the four terms once and the rest of this document follows the same geometry.</div>
+    </div>
+
+    <p class="measure">While the studio holds overarching portfolio design and orchestration functions, its internal architecture is structured around four intersecting, mutually constitutive elements:</p>
+
+    <div class="subsection">
+      <div class="arch-key">
+        <div class="ak-row">
+          <div class="ak-box b-iv">
+            <span class="ak-k">Necessary capabilities<span class="dstrip"><i></i><i></i><i></i><i></i></span></span>
+            <span class="ak-name">Domain</span>
+            <span class="ak-def">One of (currently) four capabilities required to close the structural gap outlined in <a href="#why">Section 01</a>. A domain may constitute a lab to develop replicable capabilities.</span>
+          </div>
+          <div class="ak-box b-opt">
+            <span class="ak-k">Transversal experimentation</span>
+            <span class="ak-name">Lab</span>
+            <span class="ak-def">A self-contained build entity on one domain building replicable domain-specific capabilities in service of the entire options portfolio. It serves every option at once, not one in turn.</span>
+          </div>
+          <div class="ak-box b-opt">
+            <span class="ak-k">Place-based outcomes portfolio</span>
+            <span class="ak-name">Option</span>
+            <span class="ak-def">A concrete body of place or context specific work in response to one or more marine challenges.<br></span>
+          </div>
+          <div class="ak-box b-lab">
+            <span class="ak-k">Option-specific instrumentation</span>
+            <span class="ak-name">Intervention</span>
+            <span class="ak-def">The named piece of work where a domain meets an option: what gets funded, staffed, and delivered.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">Distribution of responsibilities</div>
+      <p class="measure">The studio holds what is constitutive of the whole; a lab holds what is replicable across places; an option holds what is constituted by its place.</p>
+
+      <div class="dol">
+        <div class="dol-card d-option">
+          <span class="dol-name">The <u>studio</u> holds what is constitutive</span>
+          <span class="dol-holds">Portfolio design and orchestration, thesis and definitions; the capital stack and its sequencing; the templates and formats every option would otherwise rebuild; coordination and continuity through partner turnover.</span>
+          <span class="dol-eg"><span style="letter-spacing:0.04em; text-transform:uppercase;">Founding layer · Dark Matter Labs + xCO</span></span>
+        </div>
+        <div class="dol-card d-option">
+          <span class="dol-name">A <u>lab</u> holds what is replicable</span>
+          <span class="dol-holds">A self-contained build entity on one or more domain areas: it builds and versions domain-specific instruments for transversal application across the options portfolio, and trains the operators who carry them into place. A domain may run one lab, several, or none.</span>
+          <span class="dol-eg" style="text-transform:uppercase">Consortium, stewarded by anchor partner</span>
+        </div>
+        <div class="dol-card d-option">
+          <span class="dol-name">An <u>option</u> holds what is local</span>
+          <span class="dol-holds">The constituted body, the relationships, the politics of one marine system, and the translation of each instrument into that place.</span>
+          <span class="dol-eg" style="text-transform:uppercase">Consortium, stewarded by anchor partner</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">The four domains</div>
+      <p class="measure">Building continuity infrastructure for marine systems required consolidated intervention across four domain areas.<br></p>
+      <p style="margin:0 0 var(--sp-5); font-family:var(--font-mono); font-size:12px; color:#616160; font-style:italic;">Note: These are subject to evolve as our understanding of the risk field expands.</p>
+
+      <div class="domain-map">
+        <div class="domain-risk">The gap: <b>fragmented, jurisdiction-bound, thinly-verified, short-horizon governance</b></div>
+        <div class="connector"><div class="line"></div><div class="dot"></div></div>
+        <div class="chain">
+        <div class="chain-card c1">
+          <span class="cc-no">Domain 1</span>
+          <span class="cc-name">Data, sensing &amp; legibility</span>
+          <span class="cc-body">Makes marine and non-human systems readable as evidence a court, regulator, or insurer can act on.</span>
+          <span class="cc-closes">Closes: verification &amp; knowledge asymmetry.</span>
+          <span class="cc-hand">Hands on: <b>evidence, to a fixed specification.</b></span>
+          <span class="cc-lab">▸ Lab: Multispecies Ontologies</span>
+        </div>
+        <div class="ak-conn"><span class="d"></span></div>
+        <div class="chain-card c2">
+          <span class="cc-no">Domain 2</span>
+          <span class="cc-name">Standing &amp; litigation</span>
+          <span class="cc-body">Converts that evidence into legal standing and shared truth conditions that narrow the space for dispute.</span>
+          <span class="cc-closes">Closes: fragmented, contested authority.</span>
+          <span class="cc-hand">Hands on: <b>a claim, and parties bound to the same facts.</b></span>
+          <span class="cc-lab">▸ Lab: Litigation / Diplomacy</span>
+        </div>
+        <div class="ak-conn"><span class="d"></span></div>
+        <div class="chain-card c3">
+          <span class="cc-no">Domain 3</span>
+          <span class="cc-name">Governance infrastructure</span>
+          <span class="cc-body">Gives the claim somewhere to be decided continuously and across jurisdictions, rather than at periodic negotiation.</span>
+          <span class="cc-closes">Closes: jurisdictional mismatch.</span>
+          <span class="cc-hand">Hands on: <b>a body that can hold decisions over time.</b></span>
+        </div>
+        <div class="ak-conn"><span class="d"></span></div>
+        <div class="chain-card c4">
+          <span class="cc-no">Domain 4</span>
+          <span class="cc-name">Systemic financing</span>
+          <span class="cc-body">Funds the other three and converts verified outcomes into claims that capital can actually hold.</span>
+          <span class="cc-closes">Closes: financial misalignment.</span>
+          <span class="cc-hand">Hands on: <b>capital, and a reason for it to keep coming.</b></span>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">Studio architecture — at a glance</div>
+      <p class="measure">The four elements interact across the studio as described below.</p>
+      <p style="margin:0 0 var(--sp-5); font-family:var(--font-mono); font-size:12px; color:#616160; font-style:italic;">Note: These is a provisional matrix with indicative options and instruments that are subject to change and evolve as conditions and opportunities crystallise across contexts and partner constellations.</p>
+
+      <div class="matrix-frame">
+        <div class="matrix-inner">
+          <div class="foundband">
+            <span class="fb-title">Founding layer — holds the whole studio</span>
+            <div class="fb-line"><span class="who">Dark Matter Labs</span> <span class="fn">— orchestration · portfolio design &amp; management · strategic thought leadership · cross-pollination</span></div>
+            <div class="fb-line"><span class="who">xCO</span> <span class="fn">— thesis authorship · protocol stewardship · catalytic capital</span></div>
+            <div class="fb-line"></div>
+          </div>
+          <div class="mgrid">
+            <div class="mcell mhead">Domain ↓ / Option →<span class="optsub" style="color:#5F5C53">Potential consortium</span></div>
+            <div class="mcell mhead">North Sea / Doggerlands — <strong style="font-size:0.72rem; letter-spacing:0.03em;">Marine Regenerative Area</strong><span class="optsub"><b>Embassy of the North Sea</b> · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
+            <div class="mcell mhead">Baltic Sea — <strong style="font-size:0.72rem; letter-spacing:0.03em;">Marine Regenerative Area</strong><span class="optsub"><b>Embassy of the Baltic Sea</b> · Katapult Ocean · Bioregional Weaving Lab</span></div>
+            <div class="mcell mhead">Antarctic Sovereignty Initiative<span class="optsub">Impact Trust · Nature on Board</span></div>
+            <div class="mcell mhead">Whale Nation<span class="optsub" style="font-weight:700">Naia Trust</span></div>
+
+            <!-- domain 1 -->
+            <div class="mcell mrowlabel">1 · Data, Sensing &amp; Legibility<span class="lab-in-row lab1" style="font-size:10px; width:142px; height:41px">Lab: Multispecies Ontologies<br><br><br><br></span></div>
+            <div class="mcell"><span class="pill">Doggerland SWIM Index</span><br><br><span class="pill">Multispecies Data Observatory</span></div>
+            <div class="mcell"><span class="pill">Baltic SWIM Index</span><br><br><span class="pill">Multispecies Data Observatory</span></div>
+            <div class="mcell"><span class="empty">—</span></div>
+            <div class="mcell"><span class="pill">SWIM Index — Whales</span></div>
+
+            <!-- domain 2 -->
+            <div class="mcell mrowlabel">2 · Standing &amp; Litigation<span class="lab-in-row lab2" style="font-size:10px">Lab: Litigation / Diplomacy</span></div>
+            <div class="mcell"><span class="pill">Doggerland Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
+            <div class="mcell"><span class="pill">Baltic Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
+            <div class="mcell"><span class="empty">—</span></div>
+            <div class="mcell"><span class="pill">Whales Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
+
+            <!-- domain 3 -->
+            <div class="mcell mrowlabel">3 · Governance Infrastructure</div>
+            <div class="mcell"><span class="pill">Bioregional Governance Hub</span></div>
+            <div class="mcell"><span class="pill">Bioregional Governance Hub</span></div>
+            <div class="mcell"><span class="empty">—</span></div>
+            <div class="mcell"><span class="pill">Transnational Whales Trust</span></div>
+
+            <!-- domain 4 -->
+            <div class="mcell mrowlabel">4 · Systemic Financing</div>
+            <div class="mcell"><span class="pill">Bioregional Financing Facility</span></div>
+            <div class="mcell"><span class="pill">Bioregional Financing Facility</span></div>
+            <div class="mcell"><span class="empty">—</span></div>
+            <div class="mcell"><span class="pill">Whale Reserve &amp; Development Bank</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="matrix-legend"></div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">How the architecture grows</div>
+      <div class="split">
+        <div>
+          <p>The current portfolio addresses a specific slice of the ocean problem. The keystone map in <a href="#why">Section 01</a> shows the rest of it — load-bearing systems whose failure transmits into food, migration, coastline, and climate. Each is a candidate future option; each may surface capability needs that justify a new lab, or a domain the current four do not cover.</p>
+        </div>
+        <div class="margin-note" style="width:412px; height:105px"><span class="tag">One continuous picture.</span> The matrix described above is an indicative spread for Phase 1 of OCS. The keystone map is where the structure could extend next.</div>
+      </div>
+
+      <div class="expand-grid">
+        <div class="expand-card"><span class="ec-tag">New option</span><span class="ec-h">A system becomes a column</span>When work in a marine system is concrete enough to resource and a coalition will hold it, it enters the portfolio as an option cutting across the same four domains.</div>
+        <div class="expand-card"><span class="ec-tag">New lab</span><span class="ec-h">A capability becomes a lab</span>Labs run ahead of the portfolio: tools and methods with no column yet are the earliest signal that a capability has become replicable enough to be built once and drawn down by all.</div>
+        <div class="expand-card"><span class="ec-tag">New function</span><span class="ec-h">A need becomes a ringfenced entity</span>When the portfolio needs a function the current structure does not contain, the matrix makes space to ringfence it inside the studio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 04 OPTIONS ==================== -->
+<section id="options">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">04 — The options</h1>
+      <div class="section-note">An option is a concrete body of work in one marine system, held by a coalition, cutting across all four domains. This is the current roster and what each is for.</div>
+    </div>
+
+    <div class="split">
+      <div>
+        <p>Each option assembles the actors already active in a marine system around a shared body of work running across all four domains — data and legibility, standing and litigation, governance, and financing. An option is not a single project or instrument; it is the full cross-domain stack applied to one system, held by a coalition and stewarded by an anchor partner end to end. Options differ in their <b>organising unit</b> i.e. the wager each makes about what scale governance should actually operate at.</p>
+      </div>
+      <div class="margin-note"><span class="tag">Coalition, not client.</span> An option is held by the actors already moving in a system — the studio finds what is moving, connects who is stirring, and supplies the capital, method, and coordination the work needs to take root. Each carries its own concept paper as it matures.</div>
+    </div>
+
+    <div class="opt-grid">
+      <div class="opt-card live">
+        <span class="oc-status">In active development · Pilot option 1</span>
+        <span class="oc-name">North Sea / Doggerlands — Marine Regenerative Area</span>
+        <span class="oc-unit">organising unit: marine bioregion</span>
+        <span class="oc-body">A densely-used, multi-jurisdiction seascape where energy, shipping, fisheries, and data infrastructure already overlap — governed as one ecological system rather than a patchwork of national zones.</span>
+        <span class="oc-partners"><b>Potential Consortium —</b> Embassy of the North Sea (Anchor Partner) · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span>
+      </div>
+
+      <div class="opt-card live">
+        <span class="oc-status">In active development · Pilot option 2</span>
+        <span class="oc-name">Whale Nation</span>
+        <span class="oc-unit">organising unit: species / more-than-human sovereignty</span>
+        <span class="oc-body">A wager that the unit of governance can be a species rather than a territory: legal standing, fiduciary representation, and restoration-backed finance organised around whales as sovereign subjects.</span>
+        <span class="oc-partners"><b>Potential Consortium —</b> Naia Trust (Anchor Partner), Pacific Whales Fund</span>
+        <span class="oc-paper"><a href="https://dark-matter-labs.github.io/xCO-papers/the_whale_and_the_state_xco_concept_paper.html">Read: The Whale and the State →</a></span>
+      </div>
+
+      <div class="opt-card emerging">
+        <span class="oc-status">Emerging</span>
+        <span class="oc-name">Baltic Sea — Marine Regenerative Area</span>
+        <span class="oc-unit">organising unit: marine bioregion</span>
+        <span class="oc-body">The second/parallel bioregional option, and the first test of replication — reusing the North Sea model on a different sea with its own coalition and ecological profile.</span>
+        <span class="oc-partners"><b>Potential Consortium —</b> Embassy of the Baltic Sea (Anchor Partner) · Katapult Ocean · Bioregional Weaving Lab</span>
+      </div>
+
+      <div class="opt-card emerging">
+        <span class="oc-status">Emerging</span>
+        <span class="oc-name">Antarctic Sovereignty Initiative</span>
+        <span class="oc-unit">organising unit: territorial sovereignty</span>
+        <span class="oc-body">A wager on governance organized around a shared-sovereignty territory rather than a single ecological unit.</span>
+        <span class="oc-partners"><b>Potential Consortium —</b> Impact Trust · Nature on Board</span>
+      </div>
+    </div>
+
+    <p class="measure">As new marine systems from the keystone map are taken on, they enter here as new options against the same structure.</p>
+  </div>
+</section>
+
+<!-- ==================== 05 LABS ==================== -->
+<section id="labs">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">05 — The labs</h1>
+      <div class="section-note">This section outlines what a lab is made of, how an option draws an instrument down, and the current roster.</div>
+    </div>
+
+    <p class="measure">A lab is three things held together: a versioned portfolio of versioned domain-specific <b>instruments and capabilities</b>, a <b>consortium</b> of technical partners who maintain and extend it, and a <b>lab steward</b> i.e. an anchor organisation that convenes the consortium and holds it accountable to the studio's thesis.</p>
+
+    <div class="diagram">
+      <div class="lab-anat">
+        <div class="la-title">TRANSVERSAL LAB</div>
+        <div class="la-three">
+          <div class="node node-option" style="max-width:none;"><span class="node-label">Instruments</span><span class="node-annotation">versioned specs, tools, and templates</span></div>
+          <div class="node node-option" style="max-width:none;"><span class="node-label">Consortium</span><span class="node-annotation">technical partners who maintain it</span></div>
+          <div class="node node-option" style="max-width:none;"><span class="node-label">Lab Steward</span><span class="node-annotation">convenes and stewards the consortium</span></div>
+        </div>
+      </div>
+      <div class="connector"><div class="line"></div><div class="dot"></div></div>
+      <div class="diagram-band">
+        <div class="node node-field"><span class="node-label">Placed operator</span><span class="node-annotation">trained into the spec by the consortium</span></div>
+      </div>
+      <div class="connector"><div class="line"></div><div class="dot"></div></div>
+      <div class="diagram-band">
+        <div class="node node-option"><span class="node-label">Option instance</span><span class="node-annotation">local, conformant to spec</span></div>
+      </div>
+    </div>
+
+    <p class="measure">An option does not draw on a lab by reading a document — the mechanism is a placed operator, trained into the lab's current specification by the lab's own consortium, then carrying it into the option from the inside.</p>
+
+    <div class="h3">Proposed labs</div>
+
+    <div class="lab-grid">
+      <div class="lab-card lc1">
+        <span class="lc-domain">Domain 1 · Data &amp; Legibility</span>
+        <span class="lc-name">Multispecies Ontologies</span>
+        <div class="lc-partners"><span class="lc-h">Transversal instruments</span></div>
+        <div class="lc-block"><span class="lc-instr">SWIM Index</span> — a shared specification for making marine and non-human life legible as evidence.</div>
+        <div class="lc-block"><span class="lc-instr">Multispecies Data Observatory</span> — a common data schema and repository every option reports into.</div>
+        <div class="lc-partners"><span><b>Potential Consortium —</b></span> Interspecies Internet (Lab Steward) · Project CETI · Earth Species Project · ASRA · Miko Project</div>
+      </div>
+
+      <div class="lab-card lc2">
+        <span class="lc-domain">Domain 2 · Standing &amp; Litigation</span>
+        <span class="lc-name">Litigation / Diplomacy</span>
+        <div class="lc-partners"><span class="lc-h">Transversal instruments</span></div>
+        <div class="lc-block"><span class="lc-instr">Diplomacy Funding Stack</span> — a pooled funding mechanism for multispecies diplomacy, rather than a per-option ask.</div>
+        <div class="lc-block"><span class="lc-instr">Multispecies Diplomacy Project</span> — a reusable legal-argument and representation library, portable jurisdiction to jurisdiction.</div>
+        <div class="lc-partners"><span><b>Potential Consortium —</b></span> Ocean Vision Legal (Lab Steward) · ClientEarth · Moananui Sanctuary · SOCRATUS</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 06 CAPITAL ==================== -->
+<section id="capital">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">06 — The capital stack</h1>
+      <div class="margin-note"><span class="tag">Combinatorial by design.</span> The stack is built to take risk on combinatorial systems — several interacting functions financed as one operating environment.</div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">Capital pooling</div>
+      <p class="measure">Capital enters the studio through one of two tracks:</p>
+      <div class="expand-grid" style="grid-template-columns:repeat(2,1fr);">
+        <div class="expand-card"><span class="ec-tag">Track 1</span><span class="ec-h">Shared Pool</span>Funds the studio itself i.e. the full portfolio, labs, shared methodology, coordination function, etc. — from catalytic, mission-aligned capital.</div>
+        <div class="expand-card"><span class="ec-tag">Track 2</span><span class="ec-h">Option or Lab-Specific Pool</span>Funds a specific option or lab. The studio ensures this runs through a shared protocol, so that capital aimed at one option still produces outputs comparable across the portfolio.</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="h3">Capital stacking</div>
+      <p class="measure">Within either track, capital is stacked across four horizons:</p>
+
+    <div class="ladder">
+      <div class="rung r4">
+        <span class="htag mono">H4</span>
+        <div><span class="name">Institutional asset layer — takeout capital</span><span class="detail">Market-compatible instruments issued once outcomes are verified — the layer at which continuity work becomes ordinary investable infrastructure. Liquidity: instrument-specific. Nothing in the portfolio has reached issuance yet; this is the horizon the earlier layers build toward.</span></div>
+      </div>
+      <div class="rung r3">
+        <span class="htag mono">H3</span>
+        <div><span class="name">Development capital — strategic, risk-on</span><span class="detail">Staged, conditional capital that enters as an option proves out and scales what works. Expects a return but tolerates the risk of an unproven model. Liquidity: controlled transfer, no redemption assumption.</span></div>
+      </div>
+      <div class="rung r2">
+        <span class="htag mono">H2</span>
+        <div><span class="name">Mission equity — patient capital</span><span class="detail">Seed capital exchanged for responsibility to develop an option and standing accountability to the mission — not ownership, not a fixed deliverable. Released in tranches against milestones; where an option underperforms the response is graduated — continue, pivot, merge, pause, close, or transfer stewardship — never an automatic clawback and never silent tolerance. Liquidity: illiquid, restricted transfer.</span></div>
+      </div>
+      <div class="rung r1">
+        <span class="htag mono">H1</span>
+        <div><span class="name">Mission protection — catalytic / philanthropic capital</span><span class="detail">The earliest and most patient layer. Funds the verification rails, shared methodology, and baseline measurement that make an option investable by anything above it. Absorbs first loss. Liquidity: none — non-redeemable.</span></div>
+      </div>
+    </div>
+    <div class="matrix-legend"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 07 SEQUENCE ==================== -->
+<section id="sequence">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">07 — The formation sequence</h1>
+      <div class="section-note">One option and one lab first, to prove the model works — before capital or attention moves anywhere else. Four stages, run once, then repeated.</div>
+    </div>
+
+    <p class="measure">The studio proves its architecture on a single pairing before extending it: <b>North Sea as the pilot option, Multispecies Ontologies as the pilot lab.</b> The pairing is deliberate — a bioregion with a coalition already forming, matched to the one capability furthest along.<br></p>
+
+    <div class="diagram">
+      <div class="pilot-x">
+        <div class="px-lab"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.5L4.8 17.6A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.4L14 8.5V3"/><path d="M7.4 14h9.2"/></svg>Pilot lab</span><span class="px-name">Multispecies Ontologies</span><span class="px-sub"><b>Potential Consortium —</b> Interspecies Internet (Lab Steward) · Project CETI · Earth Species Project · ASRA · Miko Project</span></div>
+        <div class="px-opt"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Pilot option</span><span class="px-name">North Sea / Doggerlands</span><span class="px-sub"><b>Potential Consortium —</b> Embassy of the North Sea (Anchor Partner) · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
+      </div>
+    </div>
+
+    <p style="margin:0">Every option runs across these four stages:</p>
+
+    <div class="stages">
+      <div class="stage"><span class="stage-no mono">01</span><div class="stage-name">Seed</div><p>One option, one lab. Assemble the coalition around a first concrete capability and prove the shared protocol works in a live context.</p><span class="cap">Capital: H1</span></div>
+      <div class="stage"><span class="stage-no mono">02</span><div class="stage-name">Local anchoring</div><p>Formalise the anchor partner on mission-equity terms; place the first operator; stand up the governance body as a real decision-making forum.</p><span class="cap">Capital: H1 + first H2 tranche</span></div>
+      <div class="stage"><span class="stage-no mono">03</span><div class="stage-name">Construction</div><p>Build the option's instruments across the remaining domains.</p><span class="cap">Capital: H2 fully tranched, first H3 entry</span></div>
+      <div class="stage"><span class="stage-no mono">04</span><div class="stage-name">Self-sustaining operation</div><p>The coalition runs under its own governance. The studio's role shifts to replication, and the documented model seeds the next option.</p><span class="cap">Capital: H3 active, H4 viable once verified</span></div>
+    </div>
+
+    <div class="split">
+      <div>
+        <p>Once the pilot reaches self-sustaining operation, the next options reuse its documented model with local adaptation, and the studio begins entering the expansion horizon from <a href="#architecture">Section 03</a> — new systems, and where justified new labs and functions — one proven step at a time. Options already further along on a particular capability feed it back into the shared labs, so the portfolio compounds what each proves rather than starting each from zero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 08 ENGAGEMENT ==================== -->
+<section id="engagement">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">08 — The partner model</h1>
+      <div class="section-note">Three tiers of organisational relationship, plus a placed-operator mechanism running through them. Relationships attach per-relationship, not per-organisation.</div>
+    </div>
+
+    <div class="tier-flow">
+      <div class="tier">
+        <span class="t-tag">Tier 1 · per option or lab</span>
+        <span class="t-name">Anchor Partner</span>
+        <div class="t-row"><span class="t-k">Holds</span> — commitment over one option or lab end to end.</div>
+        <div class="t-row"><span class="t-k">Receives</span> — mission equity (<a href="#capital">§06</a>, H2): staged seed capital for responsibility; its operator's access to the labs; standing in a recognised portfolio.</div>
+        <div class="t-row"><span class="t-k">Produces</span> — outputs in the shared format; reporting reviewed on a fixed cadence against the milestones its capital was released for; hosting a placed operator.</div>
+      </div>
+      <div class="tier">
+        <span class="t-tag">Tier 2 · per intervention</span>
+        <span class="t-name">Contributing Partner</span>
+        <div class="t-row"><span class="t-k">Holds</span> — one or more intervention inside an option, or a seat in a lab's consortium.</div>
+        <div class="t-row"><span class="t-k">Receives</span> — access to the relevant slice of the lab's instrument; attribution; a targeted allocation scoped to that piece.</div>
+        <div class="t-row"><span class="t-k">Produces</span> — design outcomes, facilitation as needed, reporting on that piece, to whoever it contributes under.</div>
+        <div class="t-row"><span class="t-k">Brought in by</span> — the anchor partner or lab steward under delegated authority; not every relationship routes through the centre.</div>
+      </div>
+      <div class="tier">
+        <span class="t-tag">Tier 3 · capital</span>
+        <span class="t-name">Funding Partner</span>
+        <div class="t-row"><span class="t-k">Holds</span> — a capital position.</div>
+        <div class="t-row"><span class="t-k">Receives</span> — reporting and impact narrative, delivered collectively rather than as an individual governance seat.</div>
+        <div class="t-row"><span class="t-k">Distinct from</span> — the founding layer, which holds authorship and the earliest capital; a larger check does not convert one role into the other.</div>
+      </div>
+    </div>
+
+    <div class="split">
+      <p>Relationships attach per-relationship, not per-organisation: the same partner can fund the studio overall and separately anchor or contribute to one option.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="border-top:1.5px solid var(--fg); padding:var(--sp-6) 0; margin-top:var(--sp-4);">
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--sp-4);">
+    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Oceans Continuity Studio · Strategic Framework · v1.0 draft</span>
+    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">xCO · Dark Matter Labs</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    toggle.textContent = isDark ? 'dark' : 'light';
+  });
+</script>
+
+</body>
+</html>
