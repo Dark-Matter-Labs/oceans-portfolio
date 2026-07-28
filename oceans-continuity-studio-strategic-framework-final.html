@@ -13,13 +13,14 @@
     --color-xco-navy:#000064; --color-xco-ocean:#005096; --color-xco-teal:#0082aa;
     --color-xco-sand:#ffa064; --color-xco-dusk:#ff5a00;
     --d1:#0082aa; --d2:#9a7bc8; --d3:#4fa8ac; --d4:#e9b44c;
+    --status-live: oklch(0.48 0.1 152);
     --rule:rgba(28,27,23,0.12);
     --bg:var(--color-xco-paper); --fg:var(--color-xco-ink); --fg-muted:var(--color-xco-ink-muted);
     --sp-1:3px; --sp-2:5px; --sp-3:8px; --sp-4:13px; --sp-5:21px; --sp-6:34px; --sp-7:55px; --sp-8:89px; --sp-9:144px;
     --font-display:'Crimson Pro',Georgia,serif; --font-body:'Inter',-apple-system,sans-serif; --font-mono:'DM Mono','Courier New',monospace;
     --radius:0.125rem;
   }
-  [data-theme="dark"]{ --bg:var(--color-xco-ink); --fg:var(--color-xco-paper); --fg-muted:#A9A6A0; --rule:rgba(255,255,255,0.16); }
+  [data-theme="dark"]{ --bg:var(--color-xco-ink); --fg:var(--color-xco-paper); --fg-muted:#A9A6A0; --rule:rgba(255,255,255,0.16); --status-live: oklch(0.72 0.13 152); }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-body); font-weight:400; font-size:17px; line-height:1.55; transition:background .15s linear,color .15s linear;}
@@ -98,6 +99,11 @@
   .mapframe-wrap{border:1.5px solid var(--fg); background:#192640; position:relative;}
   .mapframe-wrap iframe{display:block; width:100%; height:1450px; border:0;}
   .mapframe-cap{font-family:var(--font-mono); font-size:.78rem; color:var(--fg-muted); margin-top:var(--sp-3);}
+  .cta-row{display:flex; align-items:center; justify-content:space-between; gap:var(--sp-6); flex-wrap:wrap;}
+  .cta-links{display:flex; flex-direction:column; gap:var(--sp-4);}
+  .cta-email{display:inline-block; font-family:var(--font-display); font-size:clamp(22px,3vw,32px); font-weight:500; color:var(--fg); border-bottom:1.5px solid var(--rule); line-height:1.2;}
+  .cta-email:hover{color:var(--color-xco-ocean); border-bottom-color:currentColor;}
+  .cta-arrow{font-family:var(--font-display); font-size:clamp(36px,6vw,64px); line-height:1; color:var(--fg); flex:none;}
   @media (max-width:720px){ .mapframe-wrap iframe{height:1100px;} }
 
   /* diagram primitives */
@@ -245,10 +251,10 @@
   .founding-card li{margin-bottom:var(--sp-3);}
 
   /* THE MATRIX */
-  .matrix-frame{border:1.5px solid var(--fg); overflow-x:auto;}
+  .matrix-frame{border:1.5px solid var(--fg); overflow-x:visible;}
   .matrix-legend:empty{display:none;}
-  .matrix-inner{min-width:1000px;}
-  .foundband{background:none; border-bottom:1px solid var(--rule); padding:var(--sp-5);}
+  .matrix-inner{min-width:0;}
+  .foundband{background:color-mix(in srgb, var(--fg) 4%, var(--bg)); border-bottom:1px solid var(--rule); padding:var(--sp-5);}
   .foundband .fb-title{display:block; font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--fg-muted); margin-bottom:var(--sp-4);}
   [data-theme="dark"] .foundband .fb-title{color:var(--fg-muted);}
   .fb-tiles{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-4);}
@@ -257,30 +263,36 @@
   .fb-tile .who{display:block; font-weight:500; font-size:14px; padding-bottom:var(--sp-3); margin-bottom:var(--sp-3); border-bottom:1px dotted var(--rule);}
   .fb-fns{display:flex; flex-direction:column; gap:var(--sp-2);}
   .fb-fns span{font-family:var(--font-mono); font-size:11.5px; line-height:1.4; color:var(--fg-muted);}
-  .mgrid{display:grid; grid-template-columns:170px repeat(4,1fr);}
+  .mgrid{display:grid; grid-template-columns:200px repeat(4,minmax(0,1fr));}
   .mcell{border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:var(--sp-4); font-size:13px;}
   .mcell:nth-child(5n){border-right:none;}
-  .mhead{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; border-bottom:1.5px solid var(--fg);}
+  .mhead{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; border-top:1px solid var(--fg); border-right:1px solid var(--fg); border-bottom:1.5px solid var(--fg); padding:var(--sp-5) var(--sp-4); display:flex; flex-direction:column;}
+  .mx-headtop{flex:none; height:80px; display:block;}
+  .lab-legend-row{display:block; margin-top:var(--sp-2); padding-top:var(--sp-2); border-top:1px dotted var(--rule);}
+  .lab-legend-tag{display:inline-block; padding:3px 8px; border:1.5px solid var(--fg-muted); border-radius:2px; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--fg-muted);}
   .mhead .optsub{display:block; text-transform:none; font-style:italic; margin-top:var(--sp-2); color:var(--fg-muted); font-weight:400; letter-spacing:0;}
   /* option columns are the primary read of the matrix */
   .mhead.opt{font-family:var(--font-display); font-size:24px; line-height:1.1; text-transform:none; letter-spacing:-.01em; color:var(--fg); border-top:3px solid var(--fg); background:var(--bg); padding:var(--sp-5) var(--sp-4);}
-  [data-theme="dark"] .mhead.opt{border-top-color:var(--fg);}
-  .mhead .axis-sub{display:block; font-family:var(--font-display); font-size:12px; font-style:italic; letter-spacing:0; text-transform:none; margin-top:var(--sp-2); color:var(--fg-muted);}
+  .mhead .axis-sub{display:block; font-family:var(--font-display); font-size:12px; font-style:italic; letter-spacing:0; text-transform:none; margin-top:var(--sp-3); padding-top:var(--sp-3); border-top:1px dotted var(--rule); color:var(--fg-muted);}
   .mhead.opt .optsub{font-size:12px; margin-top:var(--sp-3); padding-top:var(--sp-3); border-top:1px dotted var(--rule);}
   .mrowlabel{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.02em; color:var(--fg); background:color-mix(in srgb, var(--fg) 3%, var(--bg)); border-left:4px solid var(--rule);}
   .mrowlabel.r1{border-left-color:var(--d1); background:color-mix(in srgb,var(--d1) 11%,var(--bg));}
   .mrowlabel.r2{border-left-color:var(--d2); background:color-mix(in srgb,var(--d2) 11%,var(--bg));}
   .mrowlabel.r3{border-left-color:var(--d3); background:color-mix(in srgb,var(--d3) 11%,var(--bg));}
   .mrowlabel.r4{border-left-color:var(--d4); background:color-mix(in srgb,var(--d4) 16%,var(--bg));}
-  .mhead .axis-d{display:block; color:var(--fg); margin-top:var(--sp-4); padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .mhead .axis-d{display:block; color:var(--fg); margin-top:var(--sp-2); padding-top:var(--sp-2); border-top:1px dotted var(--rule);}
   .mhead .axis-d .dstrip{margin-left:var(--sp-3);}
   .mhead .axis-d .dstrip i{width:14px; height:4px;}
   .mhead .axis-o{display:block; font-size:.8rem; color:var(--fg);}
+  .mhead .axis-o .ostrip{display:inline-flex; gap:2px; flex:none; margin-left:var(--sp-3);}
+  .mhead .axis-o .ostrip i{width:14px; height:4px; display:block; background:var(--fg);}
+  .mhead.opt .opt-no{display:block; font-family:var(--font-mono); font-size:.7rem; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; margin-bottom:var(--sp-3);}
   /* instrument pills carry their row's domain colour, so colour = domain everywhere */
   .mcell.p1 .pill{border-color:var(--d1);} .mcell.p2 .pill{border-color:var(--d2);}
   .mcell.p3 .pill{border-color:var(--d3);} .mcell.p4 .pill{border-color:var(--d4);}
   [data-theme="dark"] .mhead .axis-o{color:var(--color-xco-teal);}
-  .mrowlabel .lab-in-row{display:block; margin-top:var(--sp-3); font-style:normal; text-transform:none; letter-spacing:0; font-size:12px; padding:var(--sp-2) var(--sp-3); border:1.5px solid; border-radius:2px;}
+  .mrowlabel .lab-in-row{display:block; margin-top:var(--sp-3); font-style:normal; text-transform:none; letter-spacing:0; padding:var(--sp-3) var(--sp-4); border:1.5px solid; border-radius:2px; font-family:var(--font-display); font-size:16px; font-weight:500; line-height:1.15;}
+  .lab-in-row .lab-consortium{display:block; font-family:var(--font-display); font-style:italic; font-weight:400; margin-top:var(--sp-3); padding-top:var(--sp-3); border-top:1px dotted var(--rule); color:var(--fg-muted); font-size:12px; line-height:1.5;}
   .lab1{color:var(--d1); border-color:var(--d1); background:color-mix(in srgb,var(--d1) 7%,var(--bg));}
   .lab2{color:var(--d2); border-color:var(--d2); background:color-mix(in srgb,var(--d2) 7%,var(--bg));}
   .lab4{color:#b6892f; border-color:var(--d4); background:color-mix(in srgb,var(--d4) 12%,var(--bg));}
@@ -310,7 +322,7 @@
   .lab-card.lc1{border-top-color:var(--d1);}
   .lab-card.lc2{border-top-color:var(--d2);}
   .lab-card.lc4{border-top-color:var(--d4);}
-  .lab-card .lc-domain{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted);}
+  .lab-card .lc-domain{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3);}
   .lab-card .lc-name{font-weight:500; font-size:19px; line-height:1.2;}
   .lab-card .lc-block .lc-h{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:block; margin-bottom:var(--sp-2);}
   .lab-card .lc-block{font-size:14px;}
@@ -327,7 +339,12 @@
   .opt-card.live{border-left:3px solid var(--fg);}
   .opt-card.emerging{border-left:3px dashed var(--color-xco-ocean);}
   [data-theme="dark"] .opt-card.emerging{border-left-color:var(--color-xco-teal);}
-  .opt-card .oc-status{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted);}
+  .opt-card .oc-status{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3);}
+  .status-badge{display:inline-block; font-family:var(--font-mono); font-size:9.5px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; padding:2px 7px; border-radius:2px; flex:none;}
+  .status-badge.live{color:var(--status-live); border:1px solid var(--status-live); background:color-mix(in srgb, var(--status-live) 12%, var(--bg));}
+  .status-badge.muted{color:var(--fg-muted); border:1px solid var(--rule); background:color-mix(in srgb, var(--fg) 4%, var(--bg));}
+  .status-badge.dev{color:var(--color-xco-ocean); border:1px solid var(--color-xco-ocean); background:color-mix(in srgb, var(--color-xco-ocean) 10%, var(--bg));}
+  [data-theme="dark"] .status-badge.dev{color:var(--color-xco-teal); border-color:var(--color-xco-teal); background:color-mix(in srgb, var(--color-xco-teal) 14%, var(--bg));}
   .opt-card .oc-name{font-weight:500; font-size:21px; line-height:1.15;}
   .opt-card .oc-unit{font-family:var(--font-mono); font-style:italic; font-size:12.5px; color:var(--color-xco-ocean);}
   [data-theme="dark"] .opt-card .oc-unit{color:var(--color-xco-teal);}
@@ -416,6 +433,7 @@
       <li><a href="#capital">06 Capital</a></li>
       <li><a href="#sequence">07 Formation Sequence</a></li>
       <li><a href="#engagement">08 Partners</a></li>
+      <li><a href="#contact">09 Contact</a></li>
     </ul>
     <button class="theme-toggle" id="themeToggle" type="button">dark</button>
   </div>
@@ -514,7 +532,7 @@
 
 <!-- ==================== 03 ARCHITECTURE ==================== -->
 <section id="architecture">
-  <div class="container">
+  <div class="container" style="max-width:1400px;">
     <div class="section-head">
       <h1 class="h1">03 — The architecture</h1>
       <div class="section-note">Four capability domains, a portfolio of place-based options, and shared build capability between them. Read the four terms once and the rest of this document follows the same geometry.</div>
@@ -562,12 +580,12 @@
         <div class="dol-card d-option">
           <span class="dol-name">A <u>lab</u> holds what is replicable</span>
           <span class="dol-holds">A self-contained build entity on one or more domain areas: it builds and versions domain-specific instruments for transversal application across the options portfolio, and trains the operators who carry them into place. A domain may run one lab, several, or none.</span>
-          <span class="dol-eg" style="text-transform:uppercase">Consortium, stewarded by anchor partner</span>
+          <span class="dol-eg" style="text-transform:uppercase">CONSORTIUM, HELD BY LAB STEWARD</span>
         </div>
         <div class="dol-card d-option">
           <span class="dol-name">An <u>option</u> holds what is local</span>
           <span class="dol-holds">The constituted body, the relationships, the politics of one marine system, and the translation of each instrument into that place.</span>
-          <span class="dol-eg" style="text-transform:uppercase">Consortium, stewarded by anchor partner</span>
+          <span class="dol-eg" style="text-transform:uppercase">CONSORTIUM, HELD BY ANCHOR PARTNER</span>
         </div>
       </div>
     </div>
@@ -587,7 +605,7 @@
           <span class="cc-body">Makes marine and non-human systems readable as evidence a court, regulator, or insurer can act on.</span>
           <span class="cc-closes">Closes: verification &amp; knowledge asymmetry.</span>
           <span class="cc-hand">Hands on: <b>evidence, to a fixed specification.</b></span>
-          <span class="cc-lab">▸ Lab: Multispecies Ontologies</span>
+          <span class="cc-lab">▪ Multispecies Ontologies Lab</span>
         </div>
         <div class="ak-conn"><span class="d"></span></div>
         <div class="chain-card c2">
@@ -596,7 +614,7 @@
           <span class="cc-body">Converts that evidence into legal standing and shared truth conditions that narrow the space for dispute.</span>
           <span class="cc-closes">Closes: fragmented, contested authority.</span>
           <span class="cc-hand">Hands on: <b>a claim, and parties bound to the same facts.</b></span>
-          <span class="cc-lab">▸ Lab: Litigation / Diplomacy</span>
+          <span class="cc-lab">▪ Oceans Diplomacy Lab</span>
         </div>
         <div class="ak-conn"><span class="d"></span></div>
         <div class="chain-card c3">
@@ -626,7 +644,7 @@
       <div class="matrix-frame">
         <div class="matrix-inner">
           <div class="foundband">
-            <span class="fb-title">Founding layer — holds the whole studio</span>
+            <span class="fb-title" style="color: #1c1b17; font-weight: 500">Founding layer — holds the whole studio</span>
             <div class="fb-tiles">
               <div class="fb-tile">
                 <span class="who">Dark Matter Labs (DM)</span>
@@ -649,35 +667,35 @@
             </div>
           </div>
           <div class="mgrid">
-            <div class="mcell mhead"><span class="axis-d">Option →</span><span class="axis-sub">Potential Consortium →</span><span class="axis-d">Domain ↓<span class="dstrip"><i></i><i></i><i></i><i></i></span></span></div>
-            <div class="mcell mhead opt">North Sea – Marine Regenerative Area<span class="optsub"><b>Embassy of the North Sea (Anchor Partner)</b> · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
-            <div class="mcell mhead opt">Whale Nation<span class="optsub"><b>Naia Trust (Anchor Partner) · Pacific Whales Fund</b></span></div>
-            <div class="mcell mhead opt">Antarctic Sovereignty Initiative<span class="optsub">Impact Trust · Nature on Board</span></div>
-            <div class="mcell mhead opt">Baltic Sea – Marine Regenerative Area<span class="optsub"><b>Embassy of the Baltic Sea (Anchor Partner)</b> · Katapult Ocean · Bioregional Weaving Lab</span></div>
+            <div class="mcell mhead"><div class="mx-headtop"><span class="axis-o" style="font-size: 11.52px">Options →<span class="ostrip"><i></i><i></i><i></i><i></i></span></span><span class="axis-d">Domains ↓<span class="dstrip"><i></i><i></i><i></i><i></i></span></span><span class="lab-legend-row"><span class="lab-legend-tag">Lab</span></span></div><span class="axis-sub" style="font-style:normal">Anchor Partner / Lab Steward</span><span class="axis-sub">Potential Consortium</span></div>
+            <div class="mcell mhead opt"><div class="mx-headtop"><span class="opt-no">01</span>North Sea – Marine Regenerative Area</div><span class="optsub" style="font-style:normal"><b>Embassy of the North Sea</b></span><span class="optsub">Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
+            <div class="mcell mhead opt"><div class="mx-headtop"><span class="opt-no">02</span>Whale Nation</div><span class="optsub" style="font-style:normal"><b>Naia Trust</b></span><span class="optsub"><b>Pacific Whales Fund</b></span></div>
+            <div class="mcell mhead opt"><div class="mx-headtop"><span class="opt-no">03</span>Antarctic Sovereignty Initiative</div><span class="optsub">Impact Trust · Nature on Board</span></div>
+            <div class="mcell mhead opt"><div class="mx-headtop"><span class="opt-no">04</span>Baltic Sea – Marine Regenerative Area</div><span class="optsub" style="font-style:normal"><b>Embassy of the Baltic Sea</b></span><span class="optsub">Katapult Ocean · Bioregional Weaving Lab</span></div>
 
             <!-- domain 1 -->
-            <div class="mcell mrowlabel r1">1 · Data, Sensing &amp; Legibility<span class="lab-in-row lab1" style="font-size:10px; width:142px; height:41px">Lab: Multispecies Ontologies<br><br><br><br><br><br></span></div>
+            <div class="mcell mrowlabel r1" style="font-weight: 500">01 · Data, Sensing &amp; Legibility<span class="lab-in-row lab1">Multispecies Ontologies Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Interspecies Internet</span><span class="lab-consortium">Project CETI · Earth Species Project · ASRA · Miko Project</span></span></div>
             <div class="mcell p1"><span class="pill">Doggerland SWIM Index</span><br><br><span class="pill">Multispecies Data Observatory</span></div>
             <div class="mcell p1"><span class="pill">SWIM Index — Whales</span></div>
             <div class="mcell p1"><span class="empty">—</span></div>
             <div class="mcell p1"><span class="pill">Baltic SWIM Index</span><br><br><span class="pill">Multispecies Data Observatory</span></div>
 
             <!-- domain 2 -->
-            <div class="mcell mrowlabel r2">2 · Standing &amp; Litigation<span class="lab-in-row lab2" style="font-size:10px">Lab: Litigation / Diplomacy</span></div>
+            <div class="mcell mrowlabel r2" style="font-weight: 500">02 · Standing &amp; Litigation<span class="lab-in-row lab2">Ocean Diplomacy Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Ocean Vision Legal</span><span class="lab-consortium">ClientEarth · Moananui Sanctuary · SOCRATUS</span></span></div>
             <div class="mcell p2"><span class="pill">Doggerland Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
             <div class="mcell p2"><span class="pill">Whales Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
             <div class="mcell p2"><span class="empty">—</span></div>
             <div class="mcell p2"><span class="pill">Baltic Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
           
             <!-- domain 3 -->
-            <div class="mcell mrowlabel r3">3 · Governance Infrastructure</div>
+            <div class="mcell mrowlabel r3" style="font-weight: 500">03 · Governance Infrastructure</div>
             <div class="mcell p3"><span class="pill">Bioregional Governance Hub</span></div>
             <div class="mcell p3"><span class="pill">Transnational Whales Trust</span></div>
             <div class="mcell p3"><span class="empty">—</span></div>
             <div class="mcell p3"><span class="pill">Bioregional Governance Hub</span></div>
 
             <!-- domain 4 -->
-            <div class="mcell mrowlabel r4">4 · Systemic Financing</div>
+            <div class="mcell mrowlabel r4" style="font-weight: 500">04 · Systemic Financing</div>
             <div class="mcell p4"><span class="pill">Bioregional Financing Facility</span></div>
             <div class="mcell p4"><span class="pill">Whale Reserve &amp; Development Bank</span></div>
             <div class="mcell p4"><span class="empty">—</span></div>
@@ -699,7 +717,7 @@
 
       <div class="expand-grid">
         <div class="expand-card"><span class="ec-tag">New option</span><span class="ec-h">A system becomes an option</span>When work in a marine system is concrete enough to resource and a coalition exists to hold it, it enters the portfolio as a new option cutting across all identified domains.</div>
-        <div class="expand-card"><span class="ec-tag">New lab</span><span class="ec-h">A capability becomes a lab</span>When a capability, tool, or method is identified as being replicable across options, a capability may constitute a lab to build transversal instruments to a shared interoperable specification.</div>
+        <div class="expand-card"><span class="ec-tag">New lab</span><span class="ec-h">A capability becomes a lab</span>When a capability, tool, or method is identified as being replicable across options, a lab may be constituted to build transversal instruments to a shared interoperable specification.</div>
         <div class="expand-card"><span class="ec-tag">New function</span><span class="ec-h">A need becomes a ringfenced entity</span>When the portfolio needs a function the current structure does not contain, the studio creates a dedicated function to hold it — with its own remit and resourcing.</div>
       </div>
     </div>
@@ -723,15 +741,15 @@
 
     <div class="opt-grid">
       <div class="opt-card live">
-        <span class="oc-status">In active development · Pilot option 1</span>
+        <span class="oc-status">option 1 <span class="status-badge live">PILOT</span></span>
         <span class="oc-name">North Sea / Doggerlands — Marine Regenerative Area</span>
         <span class="oc-unit">organising unit: marine bioregion</span>
         <span class="oc-body">A densely-used, multi-jurisdiction seascape where energy, shipping, fisheries, and data infrastructure already overlap — governed as one ecological system rather than a patchwork of national zones.</span>
-        <span class="oc-partners"><b>Potential Consortium —</b> Embassy of the North Sea (Anchor Partner) · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span>
+        <span class="oc-partners"><b>Potential Consortium —</b> Embassy of the North Sea (Anchor Partner) · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab<br></span>
       </div>
 
       <div class="opt-card live">
-        <span class="oc-status">In active development · Pilot option 2</span>
+        <span class="oc-status">option 2 <span class="status-badge dev">In active development</span></span>
         <span class="oc-name">Whale Nation</span>
         <span class="oc-unit">organising unit: species / more-than-human sovereignty</span>
         <span class="oc-body">A wager that the unit of governance can be a species rather than a territory: legal standing, fiduciary representation, and restoration-backed finance organised around whales as sovereign subjects.</span>
@@ -740,19 +758,19 @@
       </div>
 
       <div class="opt-card emerging">
-        <span class="oc-status">Emerging</span>
-        <span class="oc-name">Baltic Sea — Marine Regenerative Area</span>
-        <span class="oc-unit">organising unit: marine bioregion</span>
-        <span class="oc-body">The second/parallel bioregional option, and the first test of replication — reusing the North Sea model on a different sea with its own coalition and ecological profile.</span>
-        <span class="oc-partners"><b>Potential Consortium —</b> Embassy of the Baltic Sea (Anchor Partner) · Katapult Ocean · Bioregional Weaving Lab</span>
-      </div>
-
-      <div class="opt-card emerging">
-        <span class="oc-status">Emerging</span>
+        <span class="oc-status">option 3 <span class="status-badge muted">Emerging</span></span>
         <span class="oc-name">Antarctic Sovereignty Initiative</span>
         <span class="oc-unit">organising unit: territorial sovereignty</span>
         <span class="oc-body">A wager on governance organized around a shared-sovereignty territory rather than a single ecological unit.</span>
         <span class="oc-partners"><b>Potential Consortium —</b> Impact Trust · Nature on Board</span>
+      </div>
+
+      <div class="opt-card emerging">
+        <span class="oc-status">option 4 <span class="status-badge muted">Emerging</span></span>
+        <span class="oc-name">Baltic Sea — Marine Regenerative Area</span>
+        <span class="oc-unit">organising unit: marine bioregion</span>
+        <span class="oc-body">The second/parallel bioregional option, and the first test of replication — reusing the North Sea model on a different sea with its own coalition and ecological profile.</span>
+        <span class="oc-partners"><b>Potential Consortium —</b> Embassy of the Baltic Sea (Anchor Partner) · Katapult Ocean · Bioregional Weaving Lab</span>
       </div>
     </div>
 
@@ -772,7 +790,7 @@
 
     <div class="diagram">
       <div class="lab-anat">
-        <div class="la-title">TRANSVERSAL LAB</div>
+        <div class="la-title"><span style="font-style: normal;">TRANSVERSAL LAB — SUPPORTING ALL OPTIONS</span></div>
         <div class="la-three">
           <div class="node node-option" style="max-width:none;"><span class="node-label">Instruments</span><span class="node-annotation">versioned specs, tools, and templates</span></div>
           <div class="node node-option" style="max-width:none;"><span class="node-label">Consortium</span><span class="node-annotation">technical partners who maintain it</span></div>
@@ -796,18 +814,18 @@
 
     <div class="lab-grid">
       <div class="lab-card lc1">
-        <span class="lc-domain">Domain 1 · Data &amp; Legibility</span>
-        <span class="lc-name">Multispecies Ontologies</span>
-        <div class="lc-partners"><span class="lc-h">Transversal instruments</span></div>
+        <span class="lc-domain">Domain 1 · Data &amp; Legibility <span class="status-badge live">PILOT</span></span>
+        <span class="lc-name">Multispecies Ontologies Lab</span>
+        <div class="lc-partners"><span class="lc-h"><b>Transversal Instruments</b></span></div>
         <div class="lc-block"><span class="lc-instr">SWIM Index</span> — a shared specification for making marine and non-human life legible as evidence.</div>
         <div class="lc-block"><span class="lc-instr">Multispecies Data Observatory</span> — a common data schema and repository every option reports into.</div>
         <div class="lc-partners"><span><b>Potential Consortium —</b></span> Interspecies Internet (Lab Steward) · Project CETI · Earth Species Project · ASRA · Miko Project</div>
       </div>
 
       <div class="lab-card lc2">
-        <span class="lc-domain">Domain 2 · Standing &amp; Litigation</span>
-        <span class="lc-name">Litigation / Diplomacy</span>
-        <div class="lc-partners"><span class="lc-h">Transversal instruments</span></div>
+        <span class="lc-domain">Domain 2 · Standing &amp; Litigation <span class="status-badge muted">Emerging</span></span>
+        <span class="lc-name">Oceans Diplomacy Lab</span>
+        <div class="lc-partners"><span class="lc-h"><b>Transversal Instruments</b></span></div>
         <div class="lc-block"><span class="lc-instr">Diplomacy Funding Stack</span> — a pooled funding mechanism for multispecies diplomacy, rather than a per-option ask.</div>
         <div class="lc-block"><span class="lc-instr">Multispecies Diplomacy Project</span> — a reusable legal-argument and representation library, portable jurisdiction to jurisdiction.</div>
         <div class="lc-partners"><span><b>Potential Consortium —</b></span> Ocean Vision Legal (Lab Steward) · ClientEarth · Moananui Sanctuary · SOCRATUS</div>
@@ -875,8 +893,8 @@
 
     <div class="diagram">
       <div class="pilot-x">
-        <div class="px-lab"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.5L4.8 17.6A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.4L14 8.5V3"/><path d="M7.4 14h9.2"/></svg>Pilot lab</span><span class="px-name">Multispecies Ontologies</span><span class="px-sub"><b>Potential Consortium —</b> Interspecies Internet (Lab Steward) · Project CETI · Earth Species Project · ASRA · Miko Project</span></div>
-        <div class="px-opt"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Pilot option</span><span class="px-name">North Sea / Doggerlands</span><span class="px-sub"><b>Potential Consortium —</b> Embassy of the North Sea (Anchor Partner) · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
+        <div class="px-lab"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.5L4.8 17.6A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.4L14 8.5V3"/><path d="M7.4 14h9.2"/></svg>Pilot lab</span><span class="px-name">Multispecies Ontologies Lab</span><span class="px-sub"><b>Potential Consortium —</b> Interspecies Internet (Lab Steward) · Project CETI · Earth Species Project · ASRA · Miko Project</span></div>
+        <div class="px-opt"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Pilot option</span><span class="px-name">North Sea – Marine Regenerative Area</span><span class="px-sub"><b>Potential Consortium —</b> Embassy of the North Sea (Anchor Partner) · Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
       </div>
     </div>
 
@@ -932,6 +950,23 @@
 
     <div class="split">
       <p>Relationships attach per-relationship, not per-organisation: the same partner can fund the studio overall and separately anchor or contribute to one option.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 09 CONTACT ==================== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <h1 class="h1">09 — Get in touch</h1>
+      <div class="section-note">For more information or to explore partnership opportunities.</div>
+    </div>
+    <div class="cta-row">
+      <div class="cta-links">
+        <a class="cta-email" href="mailto:indy@darkmatterlabs.org" style="width: 340px; height: 38px; font-size: 20px">indy@darkmatterlabs.org</a>
+        <a class="cta-email" href="mailto:prateek@darkmatterlabs.org" style="width: 340px; height: 38px; font-size: 20px">prateek@darkmatterlabs.org</a>
+      </div>
+      <span class="cta-arrow">→</span>
     </div>
   </div>
 </section>
