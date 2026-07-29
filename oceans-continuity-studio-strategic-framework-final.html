@@ -264,6 +264,7 @@
   .fb-fns{display:flex; flex-direction:column; gap:var(--sp-2);}
   .fb-fns span{font-family:var(--font-mono); font-size:11.5px; line-height:1.4; color:var(--fg-muted);}
   .mgrid{display:grid; grid-template-columns:200px repeat(4,minmax(0,1fr));}
+  .mgrid-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;}
   .mcell{border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:var(--sp-4); font-size:13px;}
   .mcell:nth-child(5n){border-right:none;}
   .mhead{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; border-top:1px solid var(--fg); border-right:1px solid var(--fg); border-bottom:1.5px solid var(--fg); padding:var(--sp-5) var(--sp-4); display:flex; flex-direction:column;}
@@ -306,6 +307,8 @@
   .swatch.solid{border:1.5px solid var(--fg);}
   .swatch.dashed{border:1.5px dashed var(--color-xco-ocean);}
   [data-theme="dark"] .swatch.dashed{border-color:var(--color-xco-teal);}
+  .scroll-cue{display:none; font-family:var(--font-mono); font-style:italic; font-size:11.5px; color:var(--fg-muted); margin:0 0 var(--sp-4);}
+  @media (max-width:900px){ .scroll-cue{display:block;} .mgrid{min-width:1200px;} }
 
   /* LAB anatomy diagram */
   .lab-anat{border:1.5px dashed var(--color-xco-ocean); padding:var(--sp-6); max-width:680px; margin:0 auto;}
@@ -639,7 +642,8 @@
     <div class="subsection">
       <div class="h3">Studio architecture — at a glance</div>
       <p class="measure">The four elements interact across the studio as described below.</p>
-      <p class="note">Note: This is a <u>provisional matrix with indicative options and instruments that are subject to change</u> and evolve as conditions and opportunities crystallise across contexts and partner constellations.</p>
+      <p class="note">Note: This is a <u>provisional matrix with indicative partner constellations, options and instruments that are subject to change</u> and evolve as conditions and opportunities crystallise across contexts and partner constellations.</p>
+      <p class="scroll-cue">← Scroll to see all options →</p>
 
       <div class="matrix-frame">
         <div class="matrix-inner">
@@ -666,6 +670,7 @@
               </div>
             </div>
           </div>
+          <div class="mgrid-scroll">
           <div class="mgrid">
             <div class="mcell mhead"><div class="mx-headtop"><span class="axis-o" style="font-size: 11.52px">Options →<span class="ostrip"><i></i><i></i><i></i><i></i></span></span><span class="axis-d">Domains ↓<span class="dstrip"><i></i><i></i><i></i><i></i></span></span><span class="lab-legend-row"><span class="lab-legend-tag">Lab</span></span></div><span class="axis-sub" style="font-style:normal">Anchor Partner / Lab Steward</span><span class="axis-sub">Potential Consortium</span></div>
             <div class="mcell mhead opt"><div class="mx-headtop"><span class="opt-no">01</span>North Sea – Marine Regenerative Area</div><span class="optsub" style="font-style:normal"><b>Embassy of the North Sea</b></span><span class="optsub">Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
@@ -700,6 +705,7 @@
             <div class="mcell p4"><span class="pill">Whale Reserve &amp; Development Bank</span></div>
             <div class="mcell p4"><span class="empty">—</span></div>
             <div class="mcell p4"><span class="pill">Bioregional Financing Facility</span></div>
+          </div>
           </div>
         </div>
       </div>
