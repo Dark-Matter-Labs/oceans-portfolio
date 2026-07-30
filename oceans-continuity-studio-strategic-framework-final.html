@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oceans Continuity Studio — Strategic Framework - Draft v1.2</title>
+<title>Oceans Continuity Studio — Strategic Framework - Draft v.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -93,15 +93,15 @@
   /* two-stack */
   .twostack{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-5);}
   @media (max-width:720px){ .twostack{grid-template-columns:1fr;} }
-  .stackcard{border:1px solid var(--rule); padding:var(--sp-6);}
+  .stackcard{border:1.5px solid var(--fg); background:var(--bg); padding:var(--sp-6); position:relative;}
+  .stackcard .sc-corner-ico{position:absolute; top:var(--sp-6); right:var(--sp-6); width:28px; height:28px; stroke:var(--fg-muted); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;}
   .stackcard h4{margin:0 0 var(--sp-4); font-family:var(--font-body); font-weight:500; font-size:17px;}
   .stackcard .layer{font-size:14px; padding:var(--sp-2) 0; border-bottom:1px dotted var(--rule); color:var(--fg-muted);}
   .stackcard .layer:last-child{border-bottom:none;}
   .stackcard .layer b{color:var(--fg); font-weight:500;}
   .stackcard .num{display:block; font-family:var(--font-mono); font-size:11px; color:var(--fg-muted); margin:0 0 var(--sp-3);}
   .stackcard .intro{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.55; color:var(--fg-muted); margin:0 0 var(--sp-5);}
-  .stackcard.provision{border-top:3px solid var(--color-xco-teal);}
-  .stackcard.shock{border-top:3px solid var(--color-xco-dusk);}
+
 
   /* keystone map (interactive, native) */
   .km-frame{border:1.5px solid var(--fg);}
@@ -262,12 +262,12 @@
   .ak-box{padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3);}
   .ak-box .ak-k{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted); display:flex; align-items:center; justify-content:space-between; gap:var(--sp-4);}
   .ak-box .ak-name{font-size:19px; font-weight:500; line-height:1.15;}
-  .ak-box .ak-def{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.55; color:var(--fg-muted);}
+  .ak-box .ak-def{font-family:var(--font-body); font-style:normal; font-size:13.5px; line-height:1.5; color:var(--fg-muted);}
   .ak-box .ak-where{font-family:var(--font-mono); font-size:11.5px; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
   .ak-box.b-dom{border:1px solid var(--rule); border-top:3px solid var(--d1);}
   .ak-box.b-lab{border:1.5px dashed var(--color-xco-ocean);}
   .ak-box.b-opt{border:1.5px solid var(--fg);}
-  .ak-box.b-iv{border:1.5px solid var(--fg); background:color-mix(in srgb,var(--fg) 7%,var(--bg));}
+  .ak-box.b-iv{border:1.5px solid var(--fg); background:color-mix(in srgb,var(--fg) 4%,var(--bg));}
   .dstrip{display:inline-flex; gap:2px; flex:none;}
   .dstrip i{width:10px; height:3px; display:block;}
   .dstrip i:nth-child(1){background:var(--d1);} .dstrip i:nth-child(2){background:var(--d2);}
@@ -281,13 +281,13 @@
 
   /* domain chain (03) */
   .chain{display:grid; grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr; align-items:stretch;}
-  .chain-card{border:1.5px solid var(--fg); border-top:3px solid; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3); background:color-mix(in srgb, var(--fg) 7%, var(--bg));}
+  .chain-card{border:1.5px solid var(--fg); border-top:3px solid; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3); background:color-mix(in srgb, var(--fg) 4%, var(--bg));}
   .chain-card.c1{border-top-color:var(--d1);} .chain-card.c2{border-top-color:var(--d2);}
   .chain-card.c3{border-top-color:var(--d3);} .chain-card.c4{border-top-color:var(--d4);}
   .chain-card .cc-no{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted);}
   .chain-card .cc-name{font-weight:500; font-size:15.5px; line-height:1.2;}
   .chain-card .cc-body{font-size:13.5px; color:var(--fg-muted);}
-  .chain-card .cc-hand{font-family:var(--font-mono); font-style:italic; font-size:12px; line-height:1.5; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .chain-card .cc-hand{font-family:var(--font-mono); font-style:italic; font-size:12px; line-height:1.5; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-2); border-top:1.5px dotted var(--fg);}
   .chain-card .cc-hand b{font-style:normal; font-weight:500; color:var(--fg);}
   .chain-card .cc-closes{font-family:var(--font-mono); font-size:11.5px; line-height:1.5; color:var(--fg-muted);}
   .chain-card .cc-lab{font-family:var(--font-mono); font-size:11.5px; line-height:1.5; padding-top:var(--sp-3);}
@@ -366,6 +366,7 @@
   .mcell{border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:var(--sp-4); font-size:13px; min-width:0;}
   .mcell:nth-child(5n){border-right:none;}
   .mhead{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; border-top:1px solid var(--fg); border-right:1px solid var(--fg); border-bottom:1.5px solid var(--fg); padding:var(--sp-5) var(--sp-4); display:flex; flex-direction:column;}
+  .mhead.legend-cell{border-right:1.5px solid var(--fg);}
   .mx-headtop{flex:none; min-height:80px; height:auto; display:block;}
   .lab-legend-mock{display:flex; flex-direction:column; gap:9px; align-self:flex-start; width:100px; margin-top:var(--sp-3); padding:12px 10px; border:1px solid var(--fg-muted); border-radius:2px; background:color-mix(in srgb, var(--fg) 6%, var(--bg));}
   .lab-legend-mock .llm-title{display:block; font-family:var(--font-display); font-size:12px; font-style:normal; font-weight:500; text-transform:none; letter-spacing:0; color:var(--fg-muted); line-height:1;}
@@ -379,7 +380,7 @@
   .mhead.legend-cell{background:color-mix(in srgb, var(--fg) 4%, var(--bg));}
   .legend-cell .mx-headtop{min-height:0;}
   .mhead.opt .optsub{font-size:12px; margin-top:var(--sp-3); padding-top:var(--sp-3); border-top:1px dotted var(--rule);}
-  .mrowlabel{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.02em; color:var(--fg); background:color-mix(in srgb, var(--fg) 3%, var(--bg)); border-left:4px solid var(--rule);}
+  .mrowlabel{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.02em; color:var(--fg); background:color-mix(in srgb, var(--fg) 3%, var(--bg)); border-right:1.5px solid var(--fg); border-left:4px solid var(--rule);}
   .mrowlabel.r1{border-left-color:var(--d1); background:color-mix(in srgb,var(--d1) 11%,var(--bg));}
   .mrowlabel.r2{border-left-color:var(--d2); background:color-mix(in srgb,var(--d2) 11%,var(--bg));}
   .mrowlabel.r3{border-left-color:var(--d3); background:color-mix(in srgb,var(--d3) 11%,var(--bg));}
@@ -576,7 +577,7 @@
 <section id="why">
   <div class="container">
     <div class="section-head">
-      <h1 class="h1">01 — The Why: Meeting the moment</h1>
+      <h1 class="h1">01 — The why: meeting the moment</h1>
       <div class="section-note">The ocean has quietly become load-bearing infrastructure for modern civilisation. The systems built to govern it were designed for a time when it was not.</div>
     </div>
 
@@ -591,6 +592,7 @@
     <div class="subsection">
       <div class="twostack">
         <div class="stackcard provision">
+          <svg class="sc-corner-ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
           <span class="num">01</span>
           <h4>Ocean Provision Stack</h4>
           <div class="intro">The layered systems through which the ocean provisions the modern human economy, and are growing increasingly load-bearing as societies lean on them harder.</div>
@@ -601,6 +603,7 @@
           <div class="layer"><b>Life search</b> — biodiversity as an irreplaceable discovery reservoir</div>
         </div>
         <div class="stackcard shock">
+          <svg class="sc-corner-ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
           <span class="num">02</span>
           <h4>Ocean Shock Cascades</h4>
           <div class="intro">The escalating ocean-origin failures, climatic and ecological, that cross critical thresholds and transmit outward into the food, coastal, and climate systems that depend on the sea.</div>
@@ -770,7 +773,7 @@
         <div class="dol-card d-option">
           <span class="dol-name">The <u>studio</u> holds what is constitutive</span>
           <span class="dol-holds">Portfolio design and orchestration, thesis and definitions; the capital stack and its sequencing; the templates and formats every option would otherwise rebuild; coordination and continuity through partner turnover.</span>
-          <span class="dol-eg"><span style="letter-spacing:0.04em; text-transform:uppercase;">Founding layer · DML + xCO</span></span>
+          <span class="dol-eg"><span style="letter-spacing:0.04em; text-transform:uppercase;">Founding layer · DM + xCO</span></span>
         </div>
         <div class="dol-card d-option">
           <span class="dol-name">A <u>lab</u> holds what is replicable</span>
@@ -797,35 +800,30 @@
         <div class="chain-card c1">
           <span class="cc-no">Domain 1</span>
           <span class="cc-name">Data, sensing &amp; legibility</span>
-          <span class="cc-body">Makes marine and non-human systems readable as evidence a court, regulator, or insurer can act on.</span>
-          <span class="cc-closes">Closes: verification &amp; knowledge asymmetry.</span>
-          <span class="cc-hand">Delivers: <b>evidence, to a fixed specification.</b></span>
+          <span class="cc-body">Sensing, monitoring, and data communication that make marine and non-human life legible as evidence to courts, regulators, insurers, etc.</span>
+          <span class="cc-hand"></span>
           <span class="cc-lab">▪ Multispecies Ontologies Lab</span>
+          <span class="cc-lab">▪ Risk Intelligence Lab</span>
         </div>
         <div class="ak-conn"><span class="d"></span></div>
         <div class="chain-card c2">
           <span class="cc-no">Domain 2</span>
           <span class="cc-name">Sovereignty, representation &amp; diplomacy</span>
-          <span class="cc-body">Converts that evidence into legal standing and shared truth conditions that narrow the space for dispute.</span>
-          <span class="cc-closes">Closes: fragmented, contested authority.</span>
-          <span class="cc-hand">Delivers: <b>a claim, and parties bound to the same facts.</b></span>
+          <span class="cc-body">Legal standing and representation for marine systems, and negotiation among the states, companies, and communities with a stake in keystone marine systems.</span>
+          <span class="cc-hand"></span>
           <span class="cc-lab">▪ Oceans Diplomacy Lab</span>
         </div>
         <div class="ak-conn"><span class="d"></span></div>
         <div class="chain-card c3">
           <span class="cc-no">Domain 3</span>
           <span class="cc-name">Governance &amp; institutional infrastructure</span>
-          <span class="cc-body">Gives the claim somewhere to be decided continuously and across jurisdictions, rather than at periodic negotiation.</span>
-          <span class="cc-closes">Closes: jurisdictional mismatch.</span>
-          <span class="cc-hand">Delivers: <b>a body that can hold decisions over time.</b></span>
+          <span class="cc-body">Standing institutions that set rules and make binding decisions about a marine system continuously and across jurisdictions.</span>
         </div>
         <div class="ak-conn"><span class="d"></span></div>
         <div class="chain-card c4">
           <span class="cc-no">Domain 4</span>
           <span class="cc-name">Systemic financing</span>
-          <span class="cc-body">Funds the other three and converts verified outcomes into claims that capital can actually hold.</span>
-          <span class="cc-closes">Closes: financial misalignment.</span>
-          <span class="cc-hand">Delivers: <b>capital, and a reason for it to keep coming.</b></span>
+          <span class="cc-body">Financial infrastructure that blends risk tolerances to fund this work, and converts verified outcomes into claims capital can hold.</span>
         </div>
         </div>
         </div>
@@ -871,7 +869,7 @@
             <div class="mcell mhead opt col-inactive"><div class="mx-headtop"><div class="mtab-strip" role="tablist" aria-label="Select option to view"><button type="button" class="mtab-cell active" data-opt="1"><span class="tno">01</span>North Sea</button><button type="button" class="mtab-cell" data-opt="2"><span class="tno">02</span>Whales</button><button type="button" class="mtab-cell" data-opt="3"><span class="tno">03</span>Antarctica</button><button type="button" class="mtab-cell" data-opt="4"><span class="tno">04</span>Baltic</button></div>Baltic Sea – Marine Regenerative Area</div><span class="optsub">Embassy of the Baltic Sea</span><span class="status-badge muted" style="margin-top:10px;">Emerging</span></div>
 
             <!-- domain 1 -->
-            <div class="mcell mrowlabel r1" style="font-weight: 500">Data, Sensing &amp; Legibility<span class="lab-in-row lab1">Multispecies Ontologies Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Interspecies Internet</span><span class="lab-consortium">Project CETI · Earth Species Project · ASRA · Miko Project</span></span><span class="lab-in-row lab1">DML Risk Intelligence Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Dark Matter Labs</span></span></div>
+            <div class="mcell mrowlabel r1" style="font-weight: 500">Data, Sensing &amp; Legibility<span class="lab-in-row lab1">Multispecies Ontologies Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Interspecies Internet</span><span class="lab-consortium">Project CETI · Earth Species Project · ASRA · Miko Project</span></span><span class="lab-in-row lab1">Risk Intelligence Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Dark Matter Labs</span></span></div>
             <div class="mcell p1"><span class="pill">Doggerland SWIM Index</span><br><br><span class="pill">Multispecies Data Observatory</span><br><br><span class="pill">North Sea Risk Clinics</span></div>
             <div class="mcell p1"><span class="pill">SWIM Index — Whales</span></div>
             <div class="mcell p1 col-inactive"><span class="empty">—</span></div>
@@ -1041,7 +1039,7 @@
     <div class="lab-grid existing">
       <div class="lab-card lc1">
         <span class="lc-domain">Domain 1 · Data, Sensing &amp; Legibility <span class="status-badge muted">In-house</span></span>
-        <span class="lc-name">DML Risk Intelligence Lab</span>
+        <span class="lc-name">Risk Intelligence Lab</span>
         <div class="lc-block">Baseline risk sensing, problem space diagnosis, and simulation hosted by Dark Matter Labs' <a href="https://risk.darkmatterlabs.org/">existing risk-intelligence practice</a>.</div>
         <div class="lc-partners"><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg> Dark Matter Labs</div>
       </div>
@@ -1197,7 +1195,7 @@
 
 <footer style="border-top:1.5px solid var(--fg); padding:var(--sp-6) 0; margin-top:var(--sp-4);">
   <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--sp-4);">
-    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Oceans Continuity Studio · Strategic Framework · Draft v1.2</span>
+    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Oceans Continuity Studio · Strategic Framework · Draft v1.0</span>
     <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Dark Matter Labs · XCO</span>
   </div>
 </footer>
