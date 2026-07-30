@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oceans Continuity Studio — Strategic Framework - Draft v.1</title>
+<title>Oceans Continuity Studio — Strategic Framework - Draft v1.2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -23,7 +23,6 @@
     --font-display:'Crimson Pro',Georgia,serif; --font-body:'Inter',-apple-system,sans-serif; --font-mono:'DM Mono','Courier New',monospace;
     --radius:0.125rem;
   }
-  [data-theme="dark"]{ --bg:var(--color-xco-ink); --fg:var(--color-xco-paper); --fg-muted:#A9A6A0; --rule:rgba(255,255,255,0.16); --status-live: oklch(0.72 0.13 152); }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-body); font-weight:400; font-size:17px; line-height:1.55; transition:background .15s linear,color .15s linear;}
@@ -41,7 +40,6 @@
   .eyebrow{font-family:var(--font-mono); font-weight:500; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--fg-muted);}
   a{color:var(--color-xco-ocean); text-decoration:none; border-bottom:1px solid var(--rule);}
   a:hover{border-bottom-color:currentColor;}
-  [data-theme="dark"] a{color:var(--color-xco-teal);}
   hr,.rule{border:none; border-top:1px solid var(--rule); margin:0;}
 
   .cover{padding:var(--sp-8) 0 var(--sp-7); border-bottom:1.5px solid var(--fg);}
@@ -55,7 +53,15 @@
   .topnav ul{list-style:none; display:flex; gap:var(--sp-5); margin:0; padding:0; flex-wrap:wrap;}
   .topnav a{font-family:var(--font-mono); font-size:.78rem; color:var(--fg); border-bottom:none;}
   .topnav a:hover{color:var(--color-xco-ocean);}
-  .theme-toggle{font-family:var(--font-mono); font-size:.8rem; background:none; border:1px solid var(--fg); color:var(--fg); padding:var(--sp-2) var(--sp-4); cursor:pointer; border-radius:var(--radius);}
+  .nav-burger{display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:0; flex:none; margin-left:auto;}
+  .nav-burger span{display:block; width:100%; height:2px; background:var(--fg);}
+  @media (max-width:900px){
+    .topnav.scrolled .nav-burger{display:flex;}
+    .topnav.scrolled ul{display:none; width:100%; flex-direction:column; gap:0; order:1; padding-top:var(--sp-4); margin-top:var(--sp-4); border-top:1px solid var(--rule);}
+    .topnav.scrolled ul li{width:100%;}
+    .topnav.scrolled ul a{display:block; padding:var(--sp-3) 0;}
+    .topnav.scrolled.open ul{display:flex;}
+  }
 
   section{padding:var(--sp-8) 0; border-bottom:1px solid var(--rule);}
   section:last-of-type{border-bottom:none;}
@@ -76,7 +82,6 @@
   .margin-note{font-family:var(--font-mono); font-style:italic; font-size:.9375rem; line-height:1.6; color:var(--fg-muted); border-left:1px solid var(--rule); padding-left:var(--sp-5);}
   .margin-note + .margin-note{margin-top:var(--sp-5);}
   .tag{color:var(--color-xco-ocean); font-style:normal; font-weight:500;}
-  [data-theme="dark"] .tag{color:var(--color-xco-teal);}
 
   p{margin:0 0 var(--sp-5);}
   ul.plain{padding-left:1.1em; margin:0 0 var(--sp-5);}
@@ -124,9 +129,7 @@
   .km-idx-row:hover, .km-idx-row.active{background:color-mix(in srgb, var(--fg) 5%, var(--bg));}
   .km-idx-row:focus-visible{outline:2px solid var(--color-xco-ocean); outline-offset:-2px;}
   .km-idx-code{font-family:var(--font-mono); font-size:11px; color:var(--color-xco-paper); font-weight:500; background:var(--color-xco-ocean); border-radius:2px; text-align:center; padding:2px 0;}
-  [data-theme="dark"] .km-idx-code{background:var(--color-xco-teal);}
   .km-idx-code.sys{background:transparent; color:var(--fg-muted); border:1px dashed var(--fg-muted);}
-  [data-theme="dark"] .km-idx-code.sys{background:transparent;}
   .km-idx-name{font-family:var(--font-display); font-size:15px; font-weight:500; color:var(--fg); line-height:1.2; display:block;}
   .km-idx-dep{font-family:var(--font-body); font-size:10.5px; color:var(--fg-muted); display:block; margin-top:1px;}
   .km-idx-dot{width:9px; height:9px; border-radius:50%; flex:none;}
@@ -159,12 +162,10 @@
   .km-meta-v .big{font-family:var(--font-display); font-size:18px; color:var(--fg); font-weight:500; line-height:1.2;}
   .km-tip-badge{display:inline-block; font-family:var(--font-mono); font-size:10px; letter-spacing:.04em; padding:2px 8px; border-radius:2px; color:var(--color-xco-ink); font-weight:500;}
   .km-sec-h{font-family:var(--font-mono); font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--color-xco-ocean); margin:var(--sp-5) 0 var(--sp-3);}
-  [data-theme="dark"] .km-sec-h{color:var(--color-xco-teal);}
   .km-mech{font-size:13.5px; color:var(--fg); margin:0 0 var(--sp-3); line-height:1.55;}
   .km-chain{list-style:none; margin:var(--sp-3) 0 0; padding:0;}
   .km-chain li{position:relative; padding:0 0 var(--sp-4) 20px; font-size:12.5px; color:var(--fg-muted); line-height:1.5;}
   .km-chain li::before{content:""; position:absolute; left:4px; top:5px; width:7px; height:7px; border-radius:50%; background:var(--color-xco-ocean);}
-  [data-theme="dark"] .km-chain li::before{background:var(--color-xco-teal);}
   .km-chain li::after{content:""; position:absolute; left:7px; top:12px; bottom:0; width:1px; background:var(--rule);}
   .km-chain li:last-child{padding-bottom:0;}
   .km-chain li:last-child::after{display:none;}
@@ -195,7 +196,6 @@
 
   .km-bnode{cursor:pointer;}
   .km-bnode .core{fill:var(--color-xco-ocean); transition:fill .15s;}
-  [data-theme="dark"] .km-bnode .core{fill:var(--color-xco-teal);}
   .km-bnode .halo{fill:none; stroke-width:2;}
   .km-bnode .sysring{fill:none; stroke-dasharray:2 3; opacity:.85;}
   .km-bnode .code{font-family:var(--font-mono); font-size:8.5px; font-weight:500; fill:var(--color-xco-paper); text-anchor:middle; dominant-baseline:central; pointer-events:none;}
@@ -229,9 +229,7 @@
   .node-risk{background:var(--color-xco-dusk); color:var(--color-xco-paper); border:1.5px solid var(--color-xco-ink); max-width:360px; text-align:center; align-items:center;}
   .node-risk .node-annotation{color:rgba(255,255,255,.85);}
   .node-field{background:var(--bg); color:var(--fg); border:1.5px dashed var(--color-xco-ocean);}
-  [data-theme="dark"] .node-field{border-color:var(--color-xco-teal);}
   .node-field .node-annotation{color:var(--color-xco-ocean);}
-  [data-theme="dark"] .node-field .node-annotation{color:var(--color-xco-teal);}
   .node-option{background:var(--bg); color:var(--fg); border:1.5px solid var(--fg);}
   .node-option .node-annotation{color:var(--fg-muted);}
 
@@ -242,7 +240,7 @@
   .domain-cols{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-4);}
   @media (max-width:860px){ .domain-cols{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .domain-cols{grid-template-columns:1fr;} }
-  .domain-col{border:1px solid var(--rule); border-top-width:3px; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .domain-col{border:1.5px solid var(--fg); border-top-width:3px; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3); background:color-mix(in srgb, var(--fg) 7%, var(--bg));}
   .domain-col .dc-no{font-family:var(--font-mono); font-size:.72rem; color:var(--fg-muted);}
   .domain-col .dc-name{font-weight:500; font-size:15px; line-height:1.25;}
   .domain-col .dc-does{font-size:13px; color:var(--fg-muted);}
@@ -256,7 +254,6 @@
   /* architecture key (03) */
   .arch-key{margin:var(--sp-6) 0;}
   .ak-title{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--color-xco-ocean); margin-bottom:var(--sp-4);}
-  [data-theme="dark"] .ak-title{color:var(--color-xco-teal);}
   .ak-row{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-5); align-items:stretch;}
   .ak-note{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.6; color:var(--fg-muted); margin-top:var(--sp-4); padding-top:var(--sp-3); border-top:1px dotted var(--rule);}
   .ak-conn{display:flex; align-items:center; justify-content:center;}
@@ -269,7 +266,6 @@
   .ak-box .ak-where{font-family:var(--font-mono); font-size:11.5px; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
   .ak-box.b-dom{border:1px solid var(--rule); border-top:3px solid var(--d1);}
   .ak-box.b-lab{border:1.5px dashed var(--color-xco-ocean);}
-  [data-theme="dark"] .ak-box.b-lab{border-color:var(--color-xco-teal);}
   .ak-box.b-opt{border:1.5px solid var(--fg);}
   .ak-box.b-iv{border:1.5px solid var(--fg); background:color-mix(in srgb,var(--fg) 7%,var(--bg));}
   .dstrip{display:inline-flex; gap:2px; flex:none;}
@@ -285,7 +281,7 @@
 
   /* domain chain (03) */
   .chain{display:grid; grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr; align-items:stretch;}
-  .chain-card{border:1px solid var(--rule); border-top:3px solid; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .chain-card{border:1.5px solid var(--fg); border-top:3px solid; padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3); background:color-mix(in srgb, var(--fg) 7%, var(--bg));}
   .chain-card.c1{border-top-color:var(--d1);} .chain-card.c2{border-top-color:var(--d2);}
   .chain-card.c3{border-top-color:var(--d3);} .chain-card.c4{border-top-color:var(--d4);}
   .chain-card .cc-no{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted);}
@@ -301,24 +297,19 @@
   @media (max-width:860px){ .dol{grid-template-columns:1fr;} }
   .dol-card{padding:var(--sp-5) var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-3);}
   .dol-card.d-studio{border:1px solid var(--rule); border-top:3px solid var(--color-xco-ocean);}
-  [data-theme="dark"] .dol-card.d-studio{border-top-color:var(--color-xco-teal);}
   .dol-card.d-lab{border:1.5px dashed var(--color-xco-ocean);}
-  [data-theme="dark"] .dol-card.d-lab{border-color:var(--color-xco-teal);}
   .dol-card.d-option{border:1.5px solid var(--fg);}
   .dol-card .dol-k{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted);}
   .dol-card .dol-name{font-size:19px; font-weight:500; line-height:1.15;}
   .dol-card .dol-holds{font-size:14.5px;}
   .dol-card .dol-holds b{font-weight:500;}
   .dol-card .dol-test{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.55; color:var(--color-xco-ocean); border-top:1px dotted var(--rule); padding-top:var(--sp-3);}
-  [data-theme="dark"] .dol-card .dol-test{color:var(--color-xco-teal);}
   .dol-card .dol-eg{font-family:var(--font-mono); font-size:11.5px; line-height:1.6; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-3); border-top:1px dotted var(--rule);}
   .chain-loop{font-family:var(--font-mono); font-style:italic; font-size:12.5px; color:var(--color-xco-ocean); border-top:1px dotted var(--rule); padding-top:var(--sp-3);}
-  [data-theme="dark"] .chain-loop{color:var(--color-xco-teal);}
   @media (max-width:900px){ .chain{grid-template-columns:1fr;} }
 
   /* lab draw-down (03) */
   .ld-lab{border:1.5px dashed var(--color-xco-ocean); padding:var(--sp-5) var(--sp-6); max-width:660px; margin:0 auto; display:flex; flex-direction:column; gap:var(--sp-3); align-items:center; text-align:center;}
-  [data-theme="dark"] .ld-lab{border-color:var(--color-xco-teal);}
   .ld-lab .ld-tag{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--d1);}
   .ld-lab .ld-name{font-weight:500; font-size:19px;}
   .ld-lab .ld-spec{font-size:14px; color:var(--fg-muted); max-width:52ch;}
@@ -328,15 +319,12 @@
   @media (max-width:820px){ .lab-pair{grid-template-columns:1fr;} }
   .lab-pair-note{font-family:var(--font-mono); font-style:italic; font-size:12px; color:var(--fg-muted);}
   .eg-wrap{border-left:1.5px solid var(--color-xco-ocean); padding-left:var(--sp-5); margin-top:var(--sp-7);}
-  [data-theme="dark"] .eg-wrap{border-left-color:var(--color-xco-teal);}
   .eg-tag{display:inline-block; font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--color-xco-ocean); border:1.5px solid var(--color-xco-ocean); padding:1px var(--sp-3); margin-bottom:var(--sp-4);}
-  [data-theme="dark"] .eg-tag{color:var(--color-xco-teal); border-color:var(--color-xco-teal);}
   .ld-cols{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-5);}
   @media (max-width:820px){ .ld-cols{grid-template-columns:1fr;} }
   .ld-opt{border:1px solid var(--rule); padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3); align-items:flex-start;}
   .ld-opt.live{border-left:3px solid var(--fg);}
   .ld-opt.emerging{border-left:3px dashed var(--color-xco-ocean);}
-  [data-theme="dark"] .ld-opt.emerging{border-left-color:var(--color-xco-teal);}
   .ld-opt .ld-o{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted);}
   .ld-opt .ld-note{font-family:var(--font-mono); font-style:italic; font-size:11.5px; line-height:1.5; color:var(--fg-muted);}
   .ld-lab .ld-steward{font-family:var(--font-mono); font-size:11.5px; font-style:italic; color:var(--fg-muted); border-top:1px dotted var(--rule); padding-top:var(--sp-3); width:100%;}
@@ -357,7 +345,6 @@
   .founding-card{border:1px solid var(--rule); padding:var(--sp-6);}
   .founding-card .h3{color:var(--fg); text-transform:none; letter-spacing:0; font-size:19px; margin-bottom:var(--sp-4);}
   .founding-card .role-tag{font-family:var(--font-mono); font-size:.76rem; color:var(--color-xco-ocean); text-transform:uppercase; letter-spacing:.04em; display:block; margin-bottom:var(--sp-3);}
-  [data-theme="dark"] .founding-card .role-tag{color:var(--color-xco-teal);}
   .founding-card ul{margin:var(--sp-4) 0 0; padding-left:1.1em;}
   .founding-card li{margin-bottom:var(--sp-3);}
 
@@ -367,12 +354,11 @@
   .matrix-inner{min-width:0;}
   .foundband{background:color-mix(in srgb, var(--fg) 4%, var(--bg)); border-bottom:1px solid var(--rule); padding:var(--sp-5);}
   .foundband .fb-title{display:block; font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--fg-muted); margin-bottom:var(--sp-4);}
-  [data-theme="dark"] .foundband .fb-title{color:var(--fg-muted);}
   .fb-tiles{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-4);}
   @media (max-width:720px){ .fb-tiles{grid-template-columns:1fr;} }
   .fb-tile{background:var(--bg); border:1px solid var(--rule); padding:var(--sp-4) var(--sp-5);}
   .fb-tile .who{display:block; font-weight:500; font-size:14px; padding-bottom:var(--sp-3); margin-bottom:var(--sp-3); border-bottom:1px dotted var(--rule);}
-  .fb-fns{display:flex; flex-wrap:wrap; row-gap:4px;}
+  .fb-fns{line-height:1.55;}
   .fb-fns span + span::before{content:"·"; margin:0 6px; color:var(--fg-muted);}
   .fb-fns span{font-family:var(--font-mono); font-size:11.5px; line-height:1.4; color:var(--fg-muted);}
   .mgrid{display:grid; grid-template-columns:200px repeat(4,minmax(0,1fr));}
@@ -382,12 +368,13 @@
   .mhead{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; border-top:1px solid var(--fg); border-right:1px solid var(--fg); border-bottom:1.5px solid var(--fg); padding:var(--sp-5) var(--sp-4); display:flex; flex-direction:column;}
   .mx-headtop{flex:none; min-height:80px; height:auto; display:block;}
   .lab-legend-mock{display:flex; flex-direction:column; gap:9px; align-self:flex-start; width:100px; margin-top:var(--sp-3); padding:12px 10px; border:1px solid var(--fg-muted); border-radius:2px; background:color-mix(in srgb, var(--fg) 6%, var(--bg));}
-  .lab-legend-mock .llm-title{display:block; font-family:var(--font-display); font-size:12px; font-style:normal; font-weight:500; text-decoration:underline; text-transform:none; letter-spacing:0; color:var(--fg-muted); line-height:1;}
+  .lab-legend-mock .llm-title{display:block; font-family:var(--font-display); font-size:12px; font-style:normal; font-weight:500; text-transform:none; letter-spacing:0; color:var(--fg-muted); line-height:1;}
   .lab-legend-mock .llm-line{display:block; height:1px; background:var(--fg-muted); opacity:.45; width:100%;}
   .lab-legend-mock .llm-line.short{width:55%;}
   .mhead .optsub{display:block; text-transform:none; font-style:italic; margin-top:var(--sp-2); color:var(--fg-muted); font-weight:400; letter-spacing:0;}
   /* option columns are the primary read of the matrix */
   .mhead.opt{font-family:var(--font-display); font-size:24px; line-height:1.1; text-transform:none; letter-spacing:-.01em; color:var(--fg); border-top:3px solid var(--fg); background:var(--bg); padding:var(--sp-5) var(--sp-4);}
+  .mhead.opt .mx-headtop{min-height:170px;}
   .mhead .axis-sub{display:block; font-family:var(--font-display); font-size:12px; font-style:italic; letter-spacing:0; text-transform:none; margin-top:var(--sp-3); padding-top:var(--sp-3); border-top:1px dotted var(--rule); color:var(--fg-muted);}
   .mhead.legend-cell{background:color-mix(in srgb, var(--fg) 4%, var(--bg));}
   .legend-cell .mx-headtop{min-height:0;}
@@ -397,24 +384,22 @@
   .mrowlabel.r2{border-left-color:var(--d2); background:color-mix(in srgb,var(--d2) 11%,var(--bg));}
   .mrowlabel.r3{border-left-color:var(--d3); background:color-mix(in srgb,var(--d3) 11%,var(--bg));}
   .mrowlabel.r4{border-left-color:var(--d4); background:color-mix(in srgb,var(--d4) 16%,var(--bg));}
-  .mhead .axis-d{display:block; color:var(--fg); margin-top:var(--sp-2); padding-top:var(--sp-2); border-top:1px dotted var(--rule);}
+  .mhead .axis-d{display:block; color:var(--fg); margin-top:var(--sp-4); padding-top:var(--sp-3); border-top:1.5px solid var(--fg);}
   .mhead .axis-d .dstrip{margin-left:var(--sp-3);}
   .mhead .axis-d .dstrip i{width:14px; height:4px;}
-  .mhead .axis-o{display:block; font-size:.8rem; color:var(--fg);}
+  .mhead .axis-o{display:flex; align-items:center; height:53px; font-size:.8rem; color:var(--fg);}
   .mhead .axis-o .ostrip{display:inline-flex; gap:2px; flex:none; margin-left:var(--sp-3);}
   .mhead .axis-o .ostrip i{width:14px; height:4px; display:block; background:var(--fg);}
   .mhead.opt .opt-no{display:block; font-family:var(--font-mono); font-size:.7rem; letter-spacing:.03em; color:var(--fg-muted); font-weight:500; margin-bottom:var(--sp-3);}
   /* instrument pills carry their row's domain colour, so colour = domain everywhere */
   .mcell.p1 .pill{border-color:var(--d1);} .mcell.p2 .pill{border-color:var(--d2);}
   .mcell.p3 .pill{border-color:var(--d3);} .mcell.p4 .pill{border-color:var(--d4);}
-  [data-theme="dark"] .mhead .axis-o{color:var(--color-xco-teal);}
-  .mrowlabel .lab-in-row{display:block; margin-top:var(--sp-3); font-style:normal; text-transform:none; letter-spacing:0; padding:var(--sp-3) var(--sp-4); border:1.5px solid; border-radius:2px; font-family:var(--font-display); font-size:16px; font-weight:500; line-height:1.15;}
+  .mrowlabel .lab-in-row{display:block; margin-top:var(--sp-3); font-style:normal; text-transform:none; letter-spacing:0; padding:var(--sp-3) var(--sp-4); border:1.5px solid; border-radius:2px; font-family:var(--font-display); font-size:14px; font-weight:500; line-height:1.15;}
   .lab-in-row .lab-consortium{display:block; font-family:var(--font-display); font-style:italic; font-weight:400; margin-top:var(--sp-3); padding-top:var(--sp-3); border-top:1px dotted var(--rule); color:var(--fg-muted); font-size:12px; line-height:1.5;}
   .lab1{color:var(--d1); border-color:var(--d1); background:color-mix(in srgb,var(--d1) 7%,var(--bg));}
   .lab2{color:var(--d2); border-color:var(--d2); background:color-mix(in srgb,var(--d2) 7%,var(--bg));}
   .lab4{color:#b6892f; border-color:var(--d4); background:color-mix(in srgb,var(--d4) 12%,var(--bg));}
   .pill{display:inline-block; padding:3px var(--sp-3); border:1.5px dashed var(--color-xco-ocean); font-size:12.5px; border-radius:2px;}
-  [data-theme="dark"] .pill{border-color:var(--color-xco-teal);}
   .pill.solid{border-style:solid; border-color:var(--fg);}
   .empty{color:var(--fg-muted); font-family:var(--font-mono); font-size:.8rem;}
   .matrix-legend{display:flex; gap:var(--sp-5); margin-top:var(--sp-5); font-family:var(--font-mono); font-size:.78rem; color:var(--fg-muted); flex-wrap:wrap;}
@@ -422,16 +407,27 @@
   .swatch{width:14px; height:14px; display:inline-block;}
   .swatch.solid{border:1.5px solid var(--fg);}
   .swatch.dashed{border:1.5px dashed var(--color-xco-ocean);}
-  [data-theme="dark"] .swatch.dashed{border-color:var(--color-xco-teal);}
   .opt-tabs{display:none; gap:var(--sp-2); margin-bottom:var(--sp-4); flex-wrap:wrap;}
   .opt-tab{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; padding:var(--sp-2) var(--sp-3); border:1px solid var(--rule); background:var(--bg); color:var(--fg-muted); cursor:pointer; border-radius:2px; line-height:1.3;}
   .opt-tab.active{border-color:var(--fg); color:var(--fg); background:color-mix(in srgb, var(--fg) 6%, var(--bg)); font-weight:500;}
+  .mtab-strip{display:none;}
   .mhead.opt.col-inactive{border-top-color:var(--rule); color:var(--fg-muted);}
   @media (max-width:900px){
-    .opt-tabs{display:flex;}
-    .mgrid{grid-template-columns:128px minmax(0,1fr); min-width:0;}
+    .opt-tabs{display:none;}
+    .mgrid{grid-template-columns:220px minmax(0,1fr); min-width:0;}
     .mx-headtop{height:auto;}
     .mhead.opt .opt-no{display:none;}
+    .legend-cell .mx-headtop{min-height:0;}
+    .mhead.opt .mx-headtop{min-height:173px;}
+    .mhead{padding:var(--sp-4);}
+    .mhead.opt{padding:var(--sp-4);}
+    .legend-cell .axis-o{height:64px;}
+    .mtab-strip{display:grid; grid-template-columns:1fr 1fr; margin:calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4)) var(--sp-4); border-bottom:1.5px solid var(--fg);}
+    .mtab-cell{display:flex; align-items:center; justify-content:flex-start; text-align:left; font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; font-weight:500; color:var(--fg); background:none; border:none; border-right:1px solid var(--fg); border-bottom:1px solid var(--fg); padding:10px 16px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0;}
+    .mtab-cell:nth-child(2n){border-right:none;}
+    .mtab-cell:nth-child(n+3){border-bottom:none;}
+    .mtab-cell .tno{margin-right:8px;}
+    .mtab-cell.active{background:var(--fg); color:var(--bg); font-weight:500;}
     .mgrid[data-mobile-active="1"] > .mcell:nth-child(5n+3),
     .mgrid[data-mobile-active="1"] > .mcell:nth-child(5n+4),
     .mgrid[data-mobile-active="1"] > .mcell:nth-child(5n){display:none;}
@@ -448,9 +444,7 @@
 
   /* LAB anatomy diagram */
   .lab-anat{border:1.5px dashed var(--color-xco-ocean); padding:var(--sp-6); max-width:680px; margin:0 auto;}
-  [data-theme="dark"] .lab-anat{border-color:var(--color-xco-teal);}
   .lab-anat .la-title{text-align:center; margin-bottom:var(--sp-5); color:var(--color-xco-ocean); font-family:var(--font-mono); font-style:italic; font-size:12px;}
-  [data-theme="dark"] .lab-anat .la-title{color:var(--color-xco-teal);}
   .lab-anat .la-three{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-4);}
   @media (max-width:600px){ .lab-anat .la-three{grid-template-columns:1fr;} }
 
@@ -458,7 +452,7 @@
   .lab-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:var(--sp-5);}
   @media (min-width:901px){ .lab-grid.existing{grid-template-columns:repeat(2,minmax(320px,1fr));} }
   @media (max-width:900px){ .lab-grid{grid-template-columns:1fr;} }
-  .lab-card{border:1px solid var(--rule); border-top-width:3px; padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-4);}
+  .lab-card{border:1.5px solid var(--fg); border-top-width:3px; padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-4);}
   .lab-card.lc1{border-top-color:var(--d1);}
   .lab-card.lc2{border-top-color:var(--d2);}
   .lab-card.lc4{border-top-color:var(--d4);}
@@ -475,20 +469,17 @@
   /* OPTIONS roster */
   .opt-grid{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-5);}
   @media (max-width:820px){ .opt-grid{grid-template-columns:1fr;} }
-  .opt-card{border:1px solid var(--rule); padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .opt-card{border:1.5px solid var(--fg); padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-3);}
   .opt-card.live{border-left:3px solid var(--fg);}
   .opt-card.emerging{border-left:3px dashed var(--color-xco-ocean);}
-  [data-theme="dark"] .opt-card.emerging{border-left-color:var(--color-xco-teal);}
   .opt-card .oc-status{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3);}
   .status-badge{display:inline-block; font-family:var(--font-mono); font-size:9.5px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; padding:2px 7px; border-radius:2px; flex:none;}
   .status-badge.live{color:var(--status-live); border:1px solid var(--status-live); background:color-mix(in srgb, var(--status-live) 12%, var(--bg));}
   .status-badge.muted{color:var(--fg-muted); border:1px solid var(--rule); background:color-mix(in srgb, var(--fg) 4%, var(--bg));}
   .status-badge.dev{color:var(--color-xco-ocean); border:1px solid var(--color-xco-ocean); background:color-mix(in srgb, var(--color-xco-ocean) 10%, var(--bg));}
-  [data-theme="dark"] .status-badge.dev{color:var(--color-xco-teal); border-color:var(--color-xco-teal); background:color-mix(in srgb, var(--color-xco-teal) 14%, var(--bg));}
   .mhead > .status-badge{align-self:flex-start;}
   .opt-card .oc-name{font-weight:500; font-size:21px; line-height:1.15;}
   .opt-card .oc-unit{font-family:var(--font-mono); font-style:italic; font-size:12.5px; color:var(--color-xco-ocean);}
-  [data-theme="dark"] .opt-card .oc-unit{color:var(--color-xco-teal);}
   .opt-card .oc-body{font-size:14.5px; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
   .opt-card .oc-partners{font-size:13px; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
   .opt-card .oc-paper{font-family:var(--font-mono); font-size:.8rem; margin-top:var(--sp-2);}
@@ -500,7 +491,6 @@
   .stage .stage-name{font-weight:500; margin:var(--sp-2) 0 var(--sp-4); font-size:16px;}
   .stage p{font-size:13.5px; margin-bottom:var(--sp-3); color:var(--fg-muted);}
   .stage .cap{font-family:var(--font-mono); font-size:11.5px; color:var(--color-xco-ocean); border-top:1px dotted var(--rule); padding-top:var(--sp-3);}
-  [data-theme="dark"] .stage .cap{color:var(--color-xco-teal);}
   @media (max-width:880px){ .stages{grid-template-columns:1fr;} }
 
   /* pilot pairing (07) */
@@ -510,12 +500,10 @@
   .role-ico{flex:none; width:12px; height:12px; display:inline-block; vertical-align:-2px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; margin-right:3px;}
   .role-legend{margin-top:var(--sp-5); font-family:var(--font-mono); font-size:.78rem; color:var(--fg-muted); width:fit-content; margin-left:auto;}
   .role-legend div{display:flex; align-items:center; gap:var(--sp-3); line-height:1.8;}
-  [data-theme="dark"] .pilot-x .px-k{color:var(--color-xco-teal);}
   .pilot-x .px-name{font-weight:500; font-size:19px; line-height:1.2;}
   .pilot-x .px-sub{display:block; font-size:13px; line-height:1.55; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
   .pilot-x .px-blank{border:none;}
   .pilot-x .px-lab, .pilot-x .px-opt{border:1.5px solid var(--fg); background:color-mix(in srgb,var(--fg) 5%,var(--bg)); padding:var(--sp-5) var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-2);}
-  [data-theme="dark"] .pilot-x .px-lab{border-color:var(--color-xco-teal);}
 
   @media (max-width:720px){ .pilot-x{grid-template-columns:1fr;} }
 
@@ -544,7 +532,6 @@
   .tier{border:1px solid var(--rule); padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-4); position:relative;}
   .tier .t-corner-ico{position:absolute; top:var(--sp-6); right:var(--sp-6); width:28px; height:28px; stroke:var(--fg-muted); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;}
   .tier .t-tag{font-family:var(--font-mono); font-size:.74rem; text-transform:uppercase; letter-spacing:.03em; color:var(--color-xco-ocean);}
-  [data-theme="dark"] .tier .t-tag{color:var(--color-xco-teal);}
   .tier .t-name{font-weight:500; font-size:19px;}
   .tier .t-row{font-size:13.5px;}
   .tier .t-row .t-k{font-weight:500;}
@@ -561,13 +548,14 @@
   <div class="container">
     <div class="eyebrow">Dark Matter Labs · xCO</div>
     <div class="logo">Oceans Continuity Studio</div>
-    <span class="doc-type">Strategic Framework · Draft v1.0 · 30 July 2026 · <i>for internal review</i></span>
+    <span class="doc-type">Strategic Framework · Draft v1.2 · 30 July 2026 · <i>for internal review</i></span>
     <p class="lede measure">A venture studio building the institutions, instruments, capacities, and financing that keep marine systems — and everything depending on them — functioning over time.</p>
   </div>
 </header>
 
-<nav class="topnav">
+<nav class="topnav" id="topnav">
   <div class="container">
+    <button class="nav-burger" id="navBurger" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul>
       <li><a href="#why">01 Why</a></li>
       <li><a href="#studio" style="font-weight: 400">02 The Studio</a></li>
@@ -579,7 +567,6 @@
       <li><a href="#engagement">08 Partnerships</a></li>
       <li><a href="#contact">09 Contact</a></li>
     </ul>
-    <button class="theme-toggle" id="themeToggle" type="button">dark</button>
   </div>
 </nav>
 
@@ -752,16 +739,19 @@
             <span class="ak-k">Necessary capabilities<span class="dstrip"><i></i><i></i><i></i><i></i></span></span>
             <span class="ak-name">Domain</span>
             <span class="ak-def">Identified capability areas required to close the structural gap outlined in <a href="#why">Section 01</a>. A domain may constitute a lab to develop replicable capabilities.</span>
+            <span class="ak-where"><a href="#four-domains">See the four domains →</a></span>
           </div>
           <div class="ak-box b-opt">
             <span class="ak-k">Transversal experimentation</span>
             <span class="ak-name">Lab</span>
             <span class="ak-def">A self-contained entity within the studio building replicable domain-specific capabilities in service of the entire options portfolio.</span>
+            <span class="ak-where"><a href="#labs">See all labs →</a></span>
           </div>
           <div class="ak-box b-opt">
             <span class="ak-k">Place-based outcomes portfolio</span>
             <span class="ak-name">Option</span>
             <span class="ak-def">A concrete body of place or context specific work in response to one or more marine challenges.<br></span>
+            <span class="ak-where"><a href="#options">See all options →</a></span>
           </div>
           <div class="ak-box b-lab">
             <span class="ak-k">Option-specific instrumentation</span>
@@ -795,7 +785,7 @@
       </div>
     </div>
 
-    <div class="subsection">
+    <div class="subsection" id="four-domains">
       <div class="h3">The four domains</div>
       <p class="measure">Four capability areas we've identified as essential to closing that gap — not a sequence to move through, but a set that has to operate together.</p>
       <p class="note">Note: These are subject to evolve as our understanding of the risk field expands.</p>
@@ -874,35 +864,35 @@
           </div>
           <div class="mgrid-scroll">
           <div class="mgrid" data-mobile-active="1">
-            <div class="mcell mhead legend-cell"><div class="mx-headtop"><span class="axis-o" style="font-size: 11.52px">Options →<span class="ostrip"><i></i><i></i><i></i><i></i></span></span><span class="axis-d">Domains ↓<span class="dstrip"><i></i><i></i><i></i><i></i></span></span></div><span class="lab-legend-mock"><span class="llm-title">Lab</span><span class="llm-line"></span><span class="llm-line"></span><span class="llm-line short"></span></span><span class="axis-sub" style="font-style:normal">Anchor Partner / Lab Steward</span><span class="axis-sub">Potential Consortium</span></div>
-            <div class="mcell mhead opt"><div class="mx-headtop"><div class="opt-tabs" role="tablist" aria-label="Select option to view"><button type="button" class="opt-tab active" data-opt="1">01 North Sea</button><button type="button" class="opt-tab" data-opt="2">02 Whales</button><button type="button" class="opt-tab" data-opt="3">03 Antarctic</button><button type="button" class="opt-tab" data-opt="4">04 Baltic</button></div><span class="opt-no">01</span>North Sea – Marine Regenerative Area</div><span class="optsub" style="font-style:normal"><b>Embassy of the North Sea</b></span><span class="optsub">Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
-            <div class="mcell mhead opt"><div class="mx-headtop"><div class="opt-tabs" role="tablist" aria-label="Select option to view"><button type="button" class="opt-tab active" data-opt="1">01 North Sea</button><button type="button" class="opt-tab" data-opt="2">02 Whales</button><button type="button" class="opt-tab" data-opt="3">03 Antarctic</button><button type="button" class="opt-tab" data-opt="4">04 Baltic</button></div><span class="opt-no">02</span>Whale Nation</div><span class="optsub" style="font-style:normal"><b>Naia Trust</b></span><span class="optsub"><b>Pacific Whales Fund</b></span></div>
-            <div class="mcell mhead opt col-inactive"><div class="mx-headtop"><div class="opt-tabs" role="tablist" aria-label="Select option to view"><button type="button" class="opt-tab active" data-opt="1">01 North Sea</button><button type="button" class="opt-tab" data-opt="2">02 Whales</button><button type="button" class="opt-tab" data-opt="3">03 Antarctic</button><button type="button" class="opt-tab" data-opt="4">04 Baltic</button></div><span class="opt-no">03</span>Antarctic Sovereignty Initiative</div><span class="optsub">Impact Trust · Nature on Board</span><span class="status-badge muted" style="margin-top:10px;">Emerging</span></div>
-            <div class="mcell mhead opt col-inactive"><div class="mx-headtop"><div class="opt-tabs" role="tablist" aria-label="Select option to view"><button type="button" class="opt-tab active" data-opt="1">01 North Sea</button><button type="button" class="opt-tab" data-opt="2">02 Whales</button><button type="button" class="opt-tab" data-opt="3">03 Antarctic</button><button type="button" class="opt-tab" data-opt="4">04 Baltic</button></div><span class="opt-no">04</span>Baltic Sea – Marine Regenerative Area</div><span class="optsub">Embassy of the Baltic Sea</span><span class="status-badge muted" style="margin-top:10px;">Emerging</span></div>
+            <div class="mcell mhead legend-cell"><div class="mx-headtop"><span class="axis-o" style="font-size: 11.52px">Options <span style="font-weight:800; font-size:1.2em">→</span><span class="ostrip"><i></i><i></i><i></i><i></i></span></span><span class="axis-d">Domains <span style="font-weight:800; font-size:1.2em">↓</span><span class="dstrip"><i></i><i></i><i></i><i></i></span></span></div><span class="lab-legend-mock"><span class="llm-title">Lab</span><span class="llm-line"></span><span class="llm-line"></span><span class="llm-line short"></span></span><span class="axis-sub" style="font-style:normal">Anchor Partner / Lab Steward</span><span class="axis-sub">Potential Consortium</span></div>
+            <div class="mcell mhead opt"><div class="mx-headtop"><div class="mtab-strip" role="tablist" aria-label="Select option to view"><button type="button" class="mtab-cell active" data-opt="1"><span class="tno">01</span>North Sea</button><button type="button" class="mtab-cell" data-opt="2"><span class="tno">02</span>Whales</button><button type="button" class="mtab-cell" data-opt="3"><span class="tno">03</span>Antarctica</button><button type="button" class="mtab-cell" data-opt="4"><span class="tno">04</span>Baltic</button></div>North Sea – Marine Regenerative Area</div><span class="optsub" style="font-style:normal"><b>Embassy of the North Sea</b></span><span class="optsub">Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
+            <div class="mcell mhead opt"><div class="mx-headtop"><div class="mtab-strip" role="tablist" aria-label="Select option to view"><button type="button" class="mtab-cell active" data-opt="1"><span class="tno">01</span>North Sea</button><button type="button" class="mtab-cell" data-opt="2"><span class="tno">02</span>Whales</button><button type="button" class="mtab-cell" data-opt="3"><span class="tno">03</span>Antarctica</button><button type="button" class="mtab-cell" data-opt="4"><span class="tno">04</span>Baltic</button></div>Whale Nation</div><span class="optsub" style="font-style:normal"><b>Naia Trust</b></span><span class="optsub"><b>Pacific Whales Fund</b></span></div>
+            <div class="mcell mhead opt col-inactive"><div class="mx-headtop"><div class="mtab-strip" role="tablist" aria-label="Select option to view"><button type="button" class="mtab-cell active" data-opt="1"><span class="tno">01</span>North Sea</button><button type="button" class="mtab-cell" data-opt="2"><span class="tno">02</span>Whales</button><button type="button" class="mtab-cell" data-opt="3"><span class="tno">03</span>Antarctica</button><button type="button" class="mtab-cell" data-opt="4"><span class="tno">04</span>Baltic</button></div>Antarctic Sovereignty Initiative</div><span class="optsub">Impact Trust · Nature on Board</span><span class="status-badge muted" style="margin-top:10px;">Emerging</span></div>
+            <div class="mcell mhead opt col-inactive"><div class="mx-headtop"><div class="mtab-strip" role="tablist" aria-label="Select option to view"><button type="button" class="mtab-cell active" data-opt="1"><span class="tno">01</span>North Sea</button><button type="button" class="mtab-cell" data-opt="2"><span class="tno">02</span>Whales</button><button type="button" class="mtab-cell" data-opt="3"><span class="tno">03</span>Antarctica</button><button type="button" class="mtab-cell" data-opt="4"><span class="tno">04</span>Baltic</button></div>Baltic Sea – Marine Regenerative Area</div><span class="optsub">Embassy of the Baltic Sea</span><span class="status-badge muted" style="margin-top:10px;">Emerging</span></div>
 
             <!-- domain 1 -->
-            <div class="mcell mrowlabel r1" style="font-weight: 500">01 · Data, Sensing &amp; Legibility<span class="lab-in-row lab1">Multispecies Ontologies Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Interspecies Internet</span><span class="lab-consortium">Project CETI · Earth Species Project · ASRA · Miko Project</span></span><span class="lab-in-row lab1">DML Risk Intelligence Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Dark Matter Labs</span></span></div>
+            <div class="mcell mrowlabel r1" style="font-weight: 500">Data, Sensing &amp; Legibility<span class="lab-in-row lab1">Multispecies Ontologies Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Interspecies Internet</span><span class="lab-consortium">Project CETI · Earth Species Project · ASRA · Miko Project</span></span><span class="lab-in-row lab1">DML Risk Intelligence Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Dark Matter Labs</span></span></div>
             <div class="mcell p1"><span class="pill">Doggerland SWIM Index</span><br><br><span class="pill">Multispecies Data Observatory</span><br><br><span class="pill">North Sea Risk Clinics</span></div>
             <div class="mcell p1"><span class="pill">SWIM Index — Whales</span></div>
             <div class="mcell p1 col-inactive"><span class="empty">—</span></div>
             <div class="mcell p1 col-inactive"><span class="empty">—</span></div>
 
             <!-- domain 2 -->
-            <div class="mcell mrowlabel r2" style="font-weight: 500">02 · Sovereignty, Representation &amp; Diplomacy<span class="lab-in-row lab2">Ocean Diplomacy Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Ocean Vision Legal</span><span class="lab-consortium">ClientEarth · Moananui Sanctuary · SOCRATUS</span></span></div>
+            <div class="mcell mrowlabel r2" style="font-weight: 500">Sovereignty, Representation &amp; Diplomacy<span class="lab-in-row lab2">Ocean Diplomacy Lab<span class="lab-consortium" style="font-weight:500; font-style:normal">Ocean Vision Legal</span><span class="lab-consortium">ClientEarth · Moananui Sanctuary · SOCRATUS</span></span></div>
             <div class="mcell p2"><span class="pill">Doggerland Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
             <div class="mcell p2"><span class="pill">Whales Litigation Fund</span><br><br><span class="pill">Multispecies Diplomacy</span></div>
             <div class="mcell p2 col-inactive"><span class="empty">—</span></div>
             <div class="mcell p2 col-inactive"><span class="empty">—</span></div>
           
             <!-- domain 3 -->
-            <div class="mcell mrowlabel r3" style="font-weight: 500">03 · Governance &amp; Institutional Infrastructure</div>
+            <div class="mcell mrowlabel r3" style="font-weight: 500">Governance &amp; Institutional Infrastructure</div>
             <div class="mcell p3"><span class="pill">Bioregional Governance Hub</span></div>
             <div class="mcell p3"><span class="pill">Transnational Whales Trust</span></div>
             <div class="mcell p3 col-inactive"><span class="empty">—</span></div>
             <div class="mcell p3 col-inactive"><span class="empty">—</span></div>
 
             <!-- domain 4 -->
-            <div class="mcell mrowlabel r4" style="font-weight: 500">04 · Systemic Financing</div>
+            <div class="mcell mrowlabel r4" style="font-weight: 500">Systemic Financing</div>
             <div class="mcell p4"><span class="pill">Bioregional Financing Facility</span></div>
             <div class="mcell p4"><span class="pill">Whale Reserve &amp; Development Bank</span></div>
             <div class="mcell p4 col-inactive"><span class="empty">—</span></div>
@@ -1147,7 +1137,7 @@
 <section id="engagement">
   <div class="container">
     <div class="section-head">
-      <h1 class="h1">08 — The partnership model</h1>
+      <h1 class="h1">08 — The partner model</h1>
       <div class="section-note">Three tiers of organisational relationship, plus a placed-operator mechanism running through them. Relationships attach per-relationship, not per-organisation.</div>
     </div>
 
@@ -1207,7 +1197,7 @@
 
 <footer style="border-top:1.5px solid var(--fg); padding:var(--sp-6) 0; margin-top:var(--sp-4);">
   <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--sp-4);">
-    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Oceans Continuity Studio · Strategic Framework · Draft v1.0</span>
+    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Oceans Continuity Studio · Strategic Framework · Draft v1.2</span>
     <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Dark Matter Labs · XCO</span>
   </div>
 </footer>
@@ -1558,17 +1548,28 @@
 <script>
   function setActiveOption(opt) {
     document.querySelector('.mgrid').setAttribute('data-mobile-active', opt);
-    document.querySelectorAll('.opt-tab').forEach((b) => b.classList.toggle('active', b.dataset.opt === opt));
+    document.querySelectorAll('.opt-tab, .mtab-cell').forEach((b) => b.classList.toggle('active', b.dataset.opt === opt));
   }
-  document.querySelectorAll('.opt-tab').forEach((btn) => {
+  document.querySelectorAll('.opt-tab, .mtab-cell').forEach((btn) => {
     btn.addEventListener('click', () => setActiveOption(btn.dataset.opt));
   });
-  const toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', () => {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    toggle.textContent = isDark ? 'dark' : 'light';
+  const topnav = document.getElementById('topnav');
+  const navBurger = document.getElementById('navBurger');
+  const syncScrolled = () => {
+    if (window.scrollY > 40) topnav.classList.add('scrolled');
+    else { topnav.classList.remove('scrolled'); topnav.classList.remove('open'); navBurger.setAttribute('aria-expanded', 'false'); }
+  };
+  syncScrolled();
+  window.addEventListener('scroll', syncScrolled, { passive: true });
+  navBurger.addEventListener('click', () => {
+    const open = topnav.classList.toggle('open');
+    navBurger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  topnav.querySelectorAll('ul a').forEach((a) => {
+    a.addEventListener('click', () => {
+      topnav.classList.remove('open');
+      navBurger.setAttribute('aria-expanded', 'false');
+    });
   });
 </script>
 
