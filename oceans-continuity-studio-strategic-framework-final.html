@@ -513,8 +513,9 @@
   .role-legend{margin-top:var(--sp-5); font-family:var(--font-mono); font-size:.78rem; color:var(--fg-muted); width:fit-content; margin-left:auto;}
   .role-legend div{display:flex; align-items:center; gap:var(--sp-3); line-height:1.8;}
   .pilot-x .px-name{font-weight:500; font-size:19px; line-height:1.2;}
-  .pilot-x .px-sub{display:block; font-size:13px; line-height:1.55; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
-  .pilot-x .px-blank{border:none;}
+  .pilot-x .px-partners{display:flex; flex-direction:column; margin-top:auto;}
+  .pilot-x .px-anchor,.pilot-x .px-consortium{display:block; font-family:var(--font-display); font-size:15px; line-height:1.6; margin-top:var(--sp-3); padding-top:var(--sp-3); border-top:1px dotted var(--rule); color:var(--fg-muted); font-style:italic; font-weight:400; letter-spacing:0;}
+  .pilot-x .px-anchor{font-style:normal; font-weight:500;}
   .pilot-x .px-lab, .pilot-x .px-opt{border:1.5px solid var(--fg); background:color-mix(in srgb,var(--fg) 5%,var(--bg)); padding:var(--sp-5) var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-2);}
 
   @media (max-width:720px){ .pilot-x{grid-template-columns:1fr;} }
@@ -549,7 +550,7 @@
   .tier .t-row .t-k{font-weight:500;}
   .expand-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-4); margin-top:var(--sp-6);}
   @media (max-width:820px){ .expand-grid{grid-template-columns:1fr;} }
-  .expand-card{border:1px solid var(--rule); padding:var(--sp-5); font-size:14px;}
+  .expand-card{border:1.5px solid var(--fg); padding:var(--sp-5); font-size:14px;}
   .expand-card .ec-h{font-weight:500; display:block; margin-bottom:var(--sp-2);}
   .expand-card .ec-tag{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:block; margin-bottom:var(--sp-3);}
 </style>
@@ -802,7 +803,7 @@
     <div class="subsection" id="four-domains">
       <div class="h3">The four domains</div>
       <p class="measure">Four capability areas we've identified as essential to closing that gap — not a sequence to move through, but a set that has to operate together.</p>
-      <p class="note">Note: These are subject to evolve as our understanding of the risk field expands.</p>
+      <p class="note">NOTE: These are subject to evolve as our understanding of the risk field expands.</p>
 
       <div class="domain-map">
         <div class="domain-risk">The gap: <b>fragmented, jurisdiction-bound, thinly-verified, short-horizon governance</b></div>
@@ -842,7 +843,7 @@
     <div class="subsection">
       <div class="h3">Studio architecture — at a glance</div>
       <p class="measure">The four elements interact across the studio as described below.</p>
-      <p class="note">Note: This is a <u>provisional matrix with indicative partner constellations, options and instruments that are subject to change</u> and evolve as conditions and opportunities crystallise.</p>
+      <p class="note">NOTE: <u>The partner constellations, options and instruments outlined in this matrix are propositional and illustrative in nature</u>, offered to map a landscape of possibility rather than confirmed commitments. All configurations remain provisional and subject to revision as conditions and opportunities crystallize, and do not reflect formalized or mutually agreed partnerships.</p>
 
       <div class="matrix-frame">
         <div class="matrix-inner">
@@ -989,7 +990,7 @@
   <div class="container">
     <div class="section-head">
       <h1 class="h1">05 — The labs</h1>
-      <div class="section-note">This section outlines what a lab is, how an option draws an instrument down from a lab, as well as the current roster of existing and proposped labs.</div>
+      <div class="section-note">This section outlines what a lab is, how an option draws an instrument down from a lab, as well as the current roster of existing and proposed labs.</div>
     </div>
 
     <p class="measure">A lab is three things held together: a versioned portfolio of versioned domain-specific <b>instruments and capabilities</b>, a <b>consortium</b> of technical partners who maintain and extend it, and a <b>lab steward</b> i.e. an anchor organisation that convenes the consortium and holds it accountable to the studio's thesis.</p>
@@ -1064,7 +1065,6 @@
   <div class="container">
     <div class="section-head">
       <h1 class="h1">06 — The capital stack</h1>
-      <div class="section-note"><span class="tag">Combinatorial by design.</span> The stack is built to take risk on combinatorial systems — several interacting functions financed as one operating environment.</div>
     </div>
 
     <div class="subsection">
@@ -1119,8 +1119,8 @@
 
     <div class="diagram">
       <div class="pilot-x">
-        <div class="px-opt"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Pilot option</span><span class="px-name">North Sea – Marine Regenerative Area</span><span class="px-sub"><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg> Embassy of the North Sea<br><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></div>
-        <div class="px-lab"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.5L4.8 17.6A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.4L14 8.5V3"/><path d="M7.4 14h9.2"/></svg>Pilot lab</span><span class="px-name">Multispecies Ontologies Lab</span><span class="px-sub"><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg> Interspecies Internet<br><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> Project CETI · Earth Species Project · ASRA · Miko Project</span></div>
+        <div class="px-opt"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Pilot option</span><span class="px-name">North Sea – Marine Regenerative Area</span><span class="px-partners"><span class="px-anchor"><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg> Embassy of the North Sea</span><span class="px-consortium"><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> Doggerland Foundation · Katapult Ocean · Bioregional Weaving Lab</span></span></div>
+        <div class="px-lab"><span class="px-k"><svg class="px-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.5L4.8 17.6A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.4L14 8.5V3"/><path d="M7.4 14h9.2"/></svg>Pilot lab</span><span class="px-name">Multispecies Ontologies Lab</span><span class="px-partners"><span class="px-anchor"><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg> Interspecies Internet</span><span class="px-consortium"><svg class="role-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> Project CETI · Earth Species Project · ASRA · Miko Project</span></span></div>
       </div>
     </div>
 
@@ -1135,7 +1135,7 @@
 
     <div class="split">
       <div>
-        <p>Once the pilot reaches self-sustaining operation, the next options reuse its documented model with local adaptation, and the studio begins entering the expansion horizon from <a href="#architecture">Section 03</a> — new systems, and where justified new labs and functions — one proven step at a time. Options already further along on a particular capability feed it back into the shared labs, so the portfolio compounds what each proves rather than starting each from zero.</p>
+        <p>Once the pilot reaches self-sustaining operation, the next options reuse its documented model with local adaptation, and the studio begins entering the expansion horizon from <a href="#architecture">Section 03</a> — new systems, and where justified new labs and functions — one proven step at a time. Options already further along on a particular capability feed it back into the shared labs to compound the portfolio with each iteration.</p>
       </div>
     </div>
   </div>
