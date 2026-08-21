@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oceans Continuity Studio — Strategic Framework - Draft v1.3</title>
+<title>Oceans Continuity Studio — Strategic Framework - Draft v1.4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -553,6 +553,47 @@
   .expand-card{border:1.5px solid var(--fg); padding:var(--sp-5); font-size:14px;}
   .expand-card .ec-h{font-weight:500; display:block; margin-bottom:var(--sp-2);}
   .expand-card .ec-tag{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); display:block; margin-bottom:var(--sp-3);}
+
+  /* capital logic chain (06) */
+  .clc-pools{display:flex; flex-direction:column; gap:var(--sp-5); margin:var(--sp-6) 0;}
+  .clc-pool{border:1.5px solid var(--fg); display:grid; grid-template-columns:246px minmax(0,1fr);}
+  .clc-meta{border-right:1px dotted var(--rule); padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .clc-meta .clc-no{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted);}
+  .clc-meta .clc-name{font-size:19px; font-weight:500; line-height:1.15;}
+  .clc-meta .clc-seeds{font-family:var(--font-mono); font-size:11.5px; line-height:1.6; color:var(--fg-muted); margin-top:auto; padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .clc-main{padding:var(--sp-6); display:flex; flex-direction:column; gap:var(--sp-4);}
+  .clc-dock{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.55; color:var(--color-xco-ocean);}
+  .clc-lede{font-size:14.5px;}
+  .clc-rows{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-4) var(--sp-6); padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  .clc-rows .rk{display:block; font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg-muted); margin-bottom:var(--sp-1);}
+  .clc-rows .rv{font-size:13.5px; line-height:1.5; color:var(--fg-muted);}
+  .clc-say{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.55; color:var(--color-xco-ocean); padding-top:var(--sp-4); border-top:1px dotted var(--rule);}
+  [data-theme="dark"] .clc-dock,[data-theme="dark"] .clc-say{color:var(--color-xco-teal);}
+
+  .journey{display:flex; flex-direction:column; gap:var(--sp-4); margin:var(--sp-6) 0;}
+  .jrow{border:1px solid var(--rule); display:grid; grid-template-columns:170px 1fr 26px 1fr 26px 1fr; align-items:center;}
+  .jrow .j-tag{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.03em; color:var(--bg); background:var(--fg); padding:var(--sp-5) var(--sp-4); height:100%; display:flex; align-items:center;}
+  .jrow .j-cell{padding:var(--sp-5) var(--sp-4); font-size:13.5px; color:var(--fg);}
+  .jrow .j-cell .j-k{display:block; font-family:var(--font-mono); font-size:.64rem; text-transform:uppercase; letter-spacing:.03em; color:var(--fg-muted); margin-bottom:var(--sp-2);}
+  .jrow .j-arrow{text-align:center; color:var(--fg-muted); font-family:var(--font-display); font-size:16px;}
+
+  .loopflow{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1.5px solid var(--fg); margin:var(--sp-6) 0;}
+  .loopstep{background:var(--bg); padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-3);}
+  .loopstep .ls-arrow{font-family:var(--font-mono); font-size:16px; color:var(--color-xco-ocean);}
+  [data-theme="dark"] .loopstep .ls-arrow{color:var(--color-xco-teal);}
+  .loopstep .ls-name{font-weight:500; font-size:15px;}
+  .loopstep p{font-size:12.5px; color:var(--fg-muted); margin:0;}
+  .loopcaption{font-family:var(--font-mono); font-style:italic; font-size:12.5px; line-height:1.6; color:var(--color-xco-ocean); padding-top:var(--sp-4); border-top:1px dotted var(--rule); max-width:68ch; margin:var(--sp-5) 0 0;}
+  [data-theme="dark"] .loopcaption{color:var(--color-xco-teal);}
+  @media (max-width:900px){
+    .clc-pool{grid-template-columns:minmax(0,1fr);}
+    .clc-meta{border-right:none; border-bottom:1px dotted var(--rule);}
+    .clc-rows{grid-template-columns:minmax(0,1fr);}
+    .jrow{grid-template-columns:1fr;}
+    .jrow .j-arrow{transform:rotate(90deg); padding:var(--sp-2) 0;}
+    .jrow .j-tag{padding:var(--sp-4);}
+    .loopflow{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -561,7 +602,7 @@
   <div class="container">
     <div class="eyebrow">Dark Matter Labs · xCO</div>
     <div class="logo">Oceans Continuity Studio</div>
-    <span class="doc-type">Strategic Framework · Draft v1.3 · 10 August 2026 · <i>for internal review</i></span>
+    <span class="doc-type">Strategic Framework · Draft v1.4 · 13 August 2026 · <i>for internal review</i></span>
     <p class="lede measure">A venture studio building the institutions, instruments, capacities, and financing that keep marine systems — and everything depending on them — functioning over time.</p>
   </div>
 </header>
@@ -575,7 +616,7 @@
       <li><a href="#architecture">03 Operational Architecture</a></li>
       <li><a href="#options">04 Options</a></li>
       <li><a href="#labs">05 Labs</a></li>
-      <li><a href="#capital">06 Capital Stack</a></li>
+      <li><a href="#capital">06 Capital Logic Chain</a></li>
       <li><a href="#sequence">07 Formation Sequence</a></li>
       <li><a href="#engagement">08 Partnerships</a></li>
       <li><a href="#contact">09 Contact</a></li>
@@ -745,7 +786,8 @@
       <div class="section-note">Four capability domains, a portfolio of place-based options, and shared build capability between them.</div>
     </div>
 
-    <p class="measure">While the studio holds overarching portfolio design and orchestration functions, its internal architecture is structured around four intersecting, mutually constitutive elements:</p>
+    <div class="h3">Studio elements</div>
+    <p class="measure">While the studio holds overarching portfolio design and orchestration functions, its internal architecture is structured around <b>four intersecting, mutually constitutive elements</b>:</p>
 
     <div class="subsection">
       <div class="arch-key">
@@ -757,16 +799,16 @@
             <span class="ak-where"><a href="#four-domains">See the four domains →</a></span>
           </div>
           <div class="ak-box b-opt">
-            <span class="ak-k">Transversal experimentation</span>
-            <span class="ak-name">Lab</span>
-            <span class="ak-def">A self-contained entity within the studio building replicable domain-specific capabilities in service of the entire options portfolio.</span>
-            <span class="ak-where"><a href="#labs">See all labs →</a></span>
-          </div>
-          <div class="ak-box b-opt">
             <span class="ak-k">Place-based outcomes portfolio</span>
             <span class="ak-name">Option</span>
             <span class="ak-def">A concrete body of place or context specific work in response to one or more marine challenges.<br></span>
             <span class="ak-where"><a href="#options">See all options →</a></span>
+          </div>
+          <div class="ak-box b-opt">
+            <span class="ak-k">Transversal experimentation</span>
+            <span class="ak-name">Lab</span>
+            <span class="ak-def">A self-contained entity within the studio building replicable domain-specific capabilities in service of the entire options portfolio.</span>
+            <span class="ak-where"><a href="#labs">See all labs →</a></span>
           </div>
           <div class="ak-box b-lab">
             <span class="ak-k">Option-specific instrumentation</span>
@@ -779,30 +821,30 @@
 
     <div class="subsection">
       <div class="h3">Distribution of responsibilities</div>
-      <p class="measure">The studio holds what is constitutive of the whole; a lab holds what is replicable across places; an option holds what is constituted by its place.</p>
+      <p class="measure">Each constitutive elements holds a specific subset of commitments and responsibilities.</p>
 
       <div class="dol">
         <div class="dol-card d-option">
           <span class="dol-name">The <u>studio</u> holds what is constitutive</span>
           <span class="dol-holds">Portfolio design and orchestration, thesis and definitions; the capital stack and its sequencing; the templates and formats every option would otherwise rebuild; coordination and continuity through partner turnover.</span>
-          <span class="dol-eg"><span style="letter-spacing:0.04em; text-transform:uppercase;">Founding layer · DM + xCO</span></span>
-        </div>
-        <div class="dol-card d-option">
-          <span class="dol-name">A <u>lab</u> holds what is replicable</span>
-          <span class="dol-holds">A self-contained build entity on one or more domain areas: it builds and versions domain-specific instruments for transversal application across the options portfolio, and trains the operators who carry them into place. A domain may run one lab, several, or none.</span>
-          <span class="dol-eg" style="text-transform:uppercase">CONSORTIUM, HELD BY LAB STEWARD</span>
+          <span class="dol-eg"><span style="letter-spacing:0.04em; text-transform:uppercase;">Held by DM &amp; xCO</span></span>
         </div>
         <div class="dol-card d-option">
           <span class="dol-name">An <u>option</u> holds what is local</span>
           <span class="dol-holds">The constituted body, the relationships, the politics of one marine system, and the translation of each instrument into that place.</span>
           <span class="dol-eg" style="text-transform:uppercase">CONSORTIUM, HELD BY ANCHOR PARTNER</span>
         </div>
+        <div class="dol-card d-option">
+          <span class="dol-name">A <u>lab</u> holds what is replicable</span>
+          <span class="dol-holds">A self-contained build entity on one or more domain areas: it builds and versions domain-specific instruments for transversal application across the options portfolio, and trains the operators who carry them into place. A domain may run one lab, several, or none.</span>
+          <span class="dol-eg" style="text-transform:uppercase">CONSORTIUM, HELD BY LAB STEWARD</span>
+        </div>
       </div>
     </div>
 
     <div class="subsection" id="four-domains">
-      <div class="h3">The four domains</div>
-      <p class="measure">Four capability areas we've identified as essential to closing that gap — not a sequence to move through, but a set that has to operate together.</p>
+      <div class="h3">The domains — identified capability areas</div>
+      <p class="measure">Four capability areas we've identified as essential to closing that gap.</p>
       <p class="note">NOTE: These are subject to evolve as our understanding of the risk field expands.</p>
 
       <div class="domain-map">
@@ -1064,41 +1106,117 @@
 <section id="capital">
   <div class="container">
     <div class="section-head">
-      <h1 class="h1">06 — The capital stack</h1>
+      <h1 class="h1">06 — The capital logic chain</h1>
+      <div class="section-note">How capital is raised, organised, and allocated across the studio, its labs, and its options.</div>
+    </div>
+
+    <p class="measure">The studio operates through three units: its own founding layer, its labs, and its options. Each produces different assets on different horizons and is  judged by different evidence — coordination capacity that no single place can be billed for; replicable capability whose value is only realised in the options that later adopt it; and place-specific portfolios whose returns are long-dated and, at the outset, unpriceable. Capital is therefore raised into three pools, each coded to one unit and matched to the horizon and return that unit can honestly offer.</p>
+
+    <div class="subsection">
+      <div class="h3">The three pools</div>
+      <div class="clc-pools">
+      <div class="clc-pool">
+        <div class="clc-meta">
+          <span class="clc-no">Pool 01 · most upstream</span>
+          <span class="clc-name">Existential / Systemic Mission Equity Capital</span>
+          <span class="clc-seeds">Capitalises the <u>studio</u></span>
+        </div>
+        <div class="clc-main">
+          <span class="clc-dock">Docks as — membership in the studio itself</span>
+          <span class="clc-lede">Funds the studio's formation: sensing and mapping the risk field, option selection, the capital architecture itself, governance, and coordination through partner turnover. This is the capital that has to exist before anything downstream is bankable.</span>
+          <div class="clc-rows">
+            <div><span class="rk">Instrument</span><span class="rv">Mission Equity — membership in the studio entity plus contractual rights. No shares, no distributable capital.</span></div>
+            <div><span class="rk">Return</span><span class="rv">Non-direct. Governance standing, information and proximity rights, preferential first-look into Pools 02 and 03. Risk-in logic: capital protects the field it depends on, rather than betting on a return.</span></div>
+            <div><span class="rk">Rights mechanics</span><span class="rv">Preferential first-look rights into Pool 03 are not negotiated deal-by-deal. They are embedded directly in the Mission Equity instrument itself — holding it is what carries the standing right, for as long as the membership is active.</span></div>
+            <div><span class="rk">Horizon</span><span class="rv">Indefinite, mission-locked. The first wave is explicitly non-redeemable and non-repayable.</span></div>
+            <div><span class="rk">Risk framing</span><span class="rv">Risk-in: it protects the field everything downstream depends on.</span></div>
+            <div><span class="rk">Who docks here</span><span class="rv">Learning partners, then mission equity partners, then civilisation-scale and sovereign partners — capital holders backing the studio rather than any one place.</span></div>
+          </div>
+          <span class="clc-say">&ldquo;You&rsquo;re not backing an option. You&rsquo;re capitalising the studio that makes any ocean option investable at all.&rdquo;</span>
+        </div>
+      </div>
+
+      <div class="clc-pool">
+        <div class="clc-meta">
+          <span class="clc-no">Pool 02 · the connective layer</span>
+          <span class="clc-name">Capability Capital</span>
+          <span class="clc-seeds">Seeds a <u>lab</u></span>
+        </div>
+        <div class="clc-main">
+          <span class="clc-dock">Docks as — a build stake in one named lab</span>
+          <span class="clc-lede">Seeds and sustains a lab as a standing entity, not a single output: its research and development function, its operations, the consortium that maintains and extends it, the stewardship that holds it to the studio's thesis, and the training of the operators who carry its instruments into place. This is the machinery that makes options executable.</span>
+          <div class="clc-rows">
+            <div><span class="rk">Instrument</span><span class="rv">Two forms. Portfolio-level: a fund across the labs being built. Or direct: investment straight into one named lab and the instruments it builds. Either way, tranched against build and adoption milestones over a standing operating base, so the research function does not stall between tranches.</span></div>
+            <div><span class="rk">Return</span><span class="rv">Depends on maturity, not on the pool. A lab still building reads as capability return — protocol and IP standing, reusable infrastructure, not yet a priced asset. An instrument adopted across several options reads closer to conventional return, tied to that instrument&rsquo;s own uptake.</span></div>
+            <div><span class="rk">Horizon</span><span class="rv">Medium, and maturity-dependent — earlier-stage labs run longer and closer to Pool 01's patience. On the lab's own build-and-version cycle, not any one option's clock.</span></div>
+            <div><span class="rk">Risk framing</span><span class="rv">Build risk: whether what the lab builds is adopted and reused beyond the option it was first built for.</span></div>
+            <div><span class="rk">Who docks here</span><span class="rv">The lab steward and the technical consortium it convenes; mission-aligned foundations doing venture-philanthropy; capital holders who want the capability more than any one place.</span></div>
+          </div>
+          <span class="clc-say">&ldquo;This is the machinery, not the place. Build it once, and every option after the first draws it down instead of rebuilding it.&rdquo;</span>
+        </div>
+      </div>
+
+      <div class="clc-pool">
+        <div class="clc-meta">
+          <span class="clc-no">Pool 03 · most downstream</span>
+          <span class="clc-name">Option-level / First Participation Capital</span>
+          <span class="clc-seeds">Seeds an <u>option</u></span>
+        </div>
+        <div class="clc-main">
+          <span class="clc-dock">Docks as — the facility itself, at one named marine system</span>
+          <span class="clc-lede">Funds concrete interventions on the ground: the full portfolio an option runs across every domain, and the institutions that hold them — the governance body that makes binding decisions, the legal capacity that defends them, and the financing facility that eventually places capital on that system's own account. The most legible entry point in the whole chain.</span>
+          <div class="clc-rows">
+            <div><span class="rk">Instrument</span><span class="rv">Patient, milestone-tranched capital while the coalition and its portfolio are built, with a graduated response if it underperforms — continue, pivot, merge, pause, close, or transfer stewardship; never a silent tolerance, never an automatic clawback. Converts to the option's own market-compatible instrument once that facility is verified.</span></div>
+            <div><span class="rk">Return</span><span class="rv">Scales with proof: governance standing and milestone credit while proving, direct financial return once the named facility issues. Paid, ultimately, by the actor who already carries the exposure the intervention reduces.</span></div>
+            <div><span class="rk">Horizon</span><span class="rv">Illiquid while proving; facility tenor once issuing. Nothing in the portfolio has reached issuance yet.</span></div>
+            <div><span class="rk">Risk framing</span><span class="rv">Coalition risk early, market risk late.</span></div>
+            <div><span class="rk">Who docks here</span><span class="rv">An anchor partner and its option consortium; the named risk-holders whose own exposure that system's facility reduces; institutional and fund actors once the instrument is standardised.</span></div>
+          </div>
+          <span class="clc-say">&ldquo;This is the place you can actually point to. Direct standing in a real coalition, with the return maturing as the model proves out.&rdquo;</span>
+        </div>
+      </div>
+      </div>
     </div>
 
     <div class="subsection">
-      <div class="h3">Capital pooling</div>
-      <p class="measure">Capital enters the studio through one of two tracks:</p>
-      <div class="expand-grid" style="grid-template-columns:repeat(2,1fr);">
-        <div class="expand-card"><span class="ec-tag">Track 1</span><span class="ec-h">Shared Pool</span>Funds the studio itself i.e. the full portfolio, labs, shared methodology, coordination function, etc. — from catalytic, mission-aligned capital.</div>
-        <div class="expand-card"><span class="ec-tag">Track 2</span><span class="ec-h">Option or Lab-Specific Pool</span>Funds a specific option or lab. The studio ensures this runs through a shared protocol, so that capital aimed at one option still produces outputs comparable across the portfolio.</div>
+      <div class="h3">The capital journey</div>
+        <div class="journey">
+      <div class="jrow">
+        <div class="j-tag">01 · Mission Equity</div>
+        <div class="j-cell"><span class="j-k">Where they dock</span>Capital holder joins the studio entity as a member</div>
+        <div class="j-arrow">→</div>
+        <div class="j-cell"><span class="j-k">Deployed into</span>Sensing and mapping, option selection, capital architecture, coordination</div>
+        <div class="j-arrow">→</div>
+        <div class="j-cell"><span class="j-k">On the ground</span>The studio exists; the ocean option field becomes legible</div>
+      </div>
+      <div class="jrow">
+        <div class="j-tag">02 · Capability</div>
+        <div class="j-cell"><span class="j-k">Where they dock</span>Capital holder backs the lab fund, or one named lab directly</div>
+        <div class="j-arrow">→</div>
+        <div class="j-cell"><span class="j-k">Deployed into</span>A lab's research function, its operations and consortium, and the instruments it builds</div>
+        <div class="j-arrow">→</div>
+        <div class="j-cell"><span class="j-k">On the ground</span>Reusable capability exists; options become executable</div>
+      </div>
+      <div class="jrow">
+        <div class="j-tag">03 · First Participation</div>
+        <div class="j-cell"><span class="j-k">Where they dock</span>Capital holder takes a position in a named option's facility</div>
+        <div class="j-arrow">→</div>
+        <div class="j-cell"><span class="j-k">Deployed into</span>That system's governance body, its legal capacity, and its financing facility</div>
+        <div class="j-arrow">→</div>
+        <div class="j-cell"><span class="j-k">On the ground</span>A marine system holds; a coalition can make binding decisions on its behalf</div>
+      </div>
       </div>
     </div>
 
     <div class="subsection">
-      <div class="h3">Capital stacking</div>
-      <p class="measure">Within either track, capital is stacked across four horizons:</p>
-
-    <div class="ladder">
-      <div class="rung r4">
-        <span class="htag mono">H4</span>
-        <div><span class="name">Institutional asset layer — takeout capital</span><span class="detail">Market-compatible instruments issued once outcomes are verified — the layer at which continuity work becomes ordinary investable infrastructure. Liquidity: instrument-specific. Nothing in the portfolio has reached issuance yet; this is the horizon the earlier layers build toward.</span></div>
+      <div class="h3">What flows back up</div>
+        <div class="loopflow">
+      <div class="loopstep"><span class="ls-arrow">↑</span><span class="ls-name">Ground proof</span><p>A facility works. A governance body holds a real decision; a marine system places its first capital on its own account.</p></div>
+      <div class="loopstep"><span class="ls-arrow">↑</span><span class="ls-name">Learning compounds</span><p>Proof becomes field intelligence, feeding back into Pools 01 and 02.</p></div>
+      <div class="loopstep"><span class="ls-arrow">↑</span><span class="ls-name">Rights exercised</span><p>Pool 01's mission equity partners take their embedded first-look positions in the Pool 03 facilities that formation made possible.</p></div>
+      <div class="loopstep"><span class="ls-arrow">↑</span><span class="ls-name">Protocols diffuse</span><p>What Pool 02 built once travels to the next marine system, lowering the cost of the next facility.</p></div>
       </div>
-      <div class="rung r3">
-        <span class="htag mono">H3</span>
-        <div><span class="name">Development capital — strategic, risk-on</span><span class="detail">Staged, conditional capital that enters as an option proves out and scales what works. Expects a return but tolerates the risk of an unproven model. Liquidity: controlled transfer, no redemption assumption.</span></div>
-      </div>
-      <div class="rung r2">
-        <span class="htag mono">H2</span>
-        <div><span class="name">Mission equity — patient capital</span><span class="detail">Seed capital exchanged for responsibility to develop an option and standing accountability to the mission — not ownership, not a fixed deliverable. Released in tranches against milestones; where an option underperforms the response is graduated — continue, pivot, merge, pause, close, or transfer stewardship — never an automatic clawback and never silent tolerance. Liquidity: illiquid, restricted transfer.</span></div>
-      </div>
-      <div class="rung r1">
-        <span class="htag mono">H1</span>
-        <div><span class="name">Mission protection — catalytic / philanthropic capital</span><span class="detail">The earliest and most patient layer. Funds the verification rails, shared methodology, and baseline measurement that make an option investable by anything above it. Absorbs first loss. Liquidity: none — non-redeemable.</span></div>
-      </div>
-    </div>
-    <div class="matrix-legend"></div>
+      <p class="loopcaption">Money moves down the chain, 01 → 02 → 03 → the ground. Optionality, learning, and first access move back up it.</p>
     </div>
 
   </div>
@@ -1127,10 +1245,10 @@
     <p class="measure">Every option runs across these four stages:</p>
 
     <div class="stages">
-      <div class="stage"><span class="stage-no mono">01</span><div class="stage-name">Seed</div><p>One option, one lab. Assemble the coalition around a first concrete capability and prove the shared protocol works in a live context.</p><span class="cap">Capital: H1</span></div>
-      <div class="stage"><span class="stage-no mono">02</span><div class="stage-name">Local anchoring</div><p>Formalise the anchor partner on mission-equity terms; place the first operator; stand up the governance body as a real decision-making forum.</p><span class="cap">Capital: H1 + first H2 tranche</span></div>
-      <div class="stage"><span class="stage-no mono">03</span><div class="stage-name">Construction</div><p>Build the option's instruments across the remaining domains.</p><span class="cap">Capital: H2 fully tranched, first H3 entry</span></div>
-      <div class="stage"><span class="stage-no mono">04</span><div class="stage-name">Self-sustaining operation</div><p>The coalition runs under its own governance. The studio's role shifts to replication, and the documented model seeds the next option.</p><span class="cap">Capital: H3 active, H4 viable once verified</span></div>
+      <div class="stage"><span class="stage-no mono">01</span><div class="stage-name">Seed</div><p>One option, one lab. Assemble the coalition around a first concrete capability and prove the shared protocol works in a live context.</p><span class="cap">Capital: Mission Protection</span></div>
+      <div class="stage"><span class="stage-no mono">02</span><div class="stage-name">Local anchoring</div><p>Formalise the anchor partner on mission-equity terms; place the first operator; stand up the governance body as a real decision-making forum.</p><span class="cap">Capital: Mission Protection + first Option Capital tranche</span></div>
+      <div class="stage"><span class="stage-no mono">03</span><div class="stage-name">Construction</div><p>Build the option's instruments across the remaining domains.</p><span class="cap">Capital: Option Capital, tranching underway</span></div>
+      <div class="stage"><span class="stage-no mono">04</span><div class="stage-name">Self-sustaining operation</div><p>The coalition runs under its own governance. The studio's role shifts to replication, and the documented model seeds the next option.</p><span class="cap">Capital: Option Capital converting toward its own instrument</span></div>
     </div>
 
     <div class="split">
@@ -1155,7 +1273,7 @@
         <span class="t-tag">Tier 1 · per option or lab</span>
         <span class="t-name">Anchor Partner</span>
         <div class="t-row"><span class="t-k">Holds</span> — commitment over one option or lab end to end.</div>
-        <div class="t-row"><span class="t-k">Receives</span> — mission equity (<a href="#capital">§06</a>, H2): staged seed capital for responsibility; its operator's access to the labs; standing in a recognised portfolio.</div>
+        <div class="t-row"><span class="t-k">Receives</span> — option capital (<a href="#capital">§06</a>, Pool 03): patient, milestone-tranched capital while the coalition and its instruments are built; its operator's access to the labs; standing in a recognised portfolio.</div>
         <div class="t-row"><span class="t-k">Produces</span> — outputs in the shared format; reporting reviewed on a fixed cadence against the milestones its capital was released for; hosting a placed operator.</div>
       </div>
       <div class="tier">
@@ -1205,7 +1323,7 @@
 
 <footer style="border-top:1.5px solid var(--fg); padding:var(--sp-6) 0; margin-top:var(--sp-4);">
   <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--sp-4);">
-    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Oceans Continuity Studio · Strategic Framework · Draft v1.3</span>
+    <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Oceans Continuity Studio · Strategic Framework · Draft v1.4</span>
     <span class="mono" style="font-size:.8rem; color:var(--fg-muted);">Dark Matter Labs · XCO</span>
   </div>
 </footer>
